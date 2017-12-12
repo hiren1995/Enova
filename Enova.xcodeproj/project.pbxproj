@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D8975011FDFEDA40031EF45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8975001FDFEDA40031EF45 /* AppDelegate.swift */; };
+		2D8975031FDFEDA40031EF45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8975021FDFEDA40031EF45 /* ViewController.swift */; };
+		2D8975061FDFEDA40031EF45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D8975041FDFEDA40031EF45 /* Main.storyboard */; };
+		2D8975081FDFEDA40031EF45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D8975071FDFEDA40031EF45 /* Assets.xcassets */; };
+		2D89750B1FDFEDA40031EF45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D8975091FDFEDA40031EF45 /* LaunchScreen.storyboard */; };
+		2D8975161FDFEDA40031EF45 /* EnovaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8975151FDFEDA40031EF45 /* EnovaTests.swift */; };
+		2D8975211FDFEDA40031EF45 /* EnovaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8975201FDFEDA40031EF45 /* EnovaUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2D8975121FDFEDA40031EF45 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D8974F51FDFEDA30031EF45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D8974FC1FDFEDA30031EF45;
+			remoteInfo = Enova;
+		};
+		2D89751D1FDFEDA40031EF45 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D8974F51FDFEDA30031EF45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D8974FC1FDFEDA30031EF45;
+			remoteInfo = Enova;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2D8974FD1FDFEDA40031EF45 /* Enova.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enova.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D8975001FDFEDA40031EF45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2D8975021FDFEDA40031EF45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2D8975051FDFEDA40031EF45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2D8975071FDFEDA40031EF45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2D89750A1FDFEDA40031EF45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2D89750C1FDFEDA40031EF45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D8975111FDFEDA40031EF45 /* EnovaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EnovaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D8975151FDFEDA40031EF45 /* EnovaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnovaTests.swift; sourceTree = "<group>"; };
+		2D8975171FDFEDA40031EF45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D89751C1FDFEDA40031EF45 /* EnovaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EnovaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D8975201FDFEDA40031EF45 /* EnovaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnovaUITests.swift; sourceTree = "<group>"; };
+		2D8975221FDFEDA40031EF45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2D8974FA1FDFEDA30031EF45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D89750E1FDFEDA40031EF45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D8975191FDFEDA40031EF45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2D8974F41FDFEDA30031EF45 = {
+			isa = PBXGroup;
+			children = (
+				2D8974FF1FDFEDA40031EF45 /* Enova */,
+				2D8975141FDFEDA40031EF45 /* EnovaTests */,
+				2D89751F1FDFEDA40031EF45 /* EnovaUITests */,
+				2D8974FE1FDFEDA40031EF45 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2D8974FE1FDFEDA40031EF45 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2D8974FD1FDFEDA40031EF45 /* Enova.app */,
+				2D8975111FDFEDA40031EF45 /* EnovaTests.xctest */,
+				2D89751C1FDFEDA40031EF45 /* EnovaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2D8974FF1FDFEDA40031EF45 /* Enova */ = {
+			isa = PBXGroup;
+			children = (
+				2D8975001FDFEDA40031EF45 /* AppDelegate.swift */,
+				2D8975021FDFEDA40031EF45 /* ViewController.swift */,
+				2D8975041FDFEDA40031EF45 /* Main.storyboard */,
+				2D8975071FDFEDA40031EF45 /* Assets.xcassets */,
+				2D8975091FDFEDA40031EF45 /* LaunchScreen.storyboard */,
+				2D89750C1FDFEDA40031EF45 /* Info.plist */,
+			);
+			path = Enova;
+			sourceTree = "<group>";
+		};
+		2D8975141FDFEDA40031EF45 /* EnovaTests */ = {
+			isa = PBXGroup;
+			children = (
+				2D8975151FDFEDA40031EF45 /* EnovaTests.swift */,
+				2D8975171FDFEDA40031EF45 /* Info.plist */,
+			);
+			path = EnovaTests;
+			sourceTree = "<group>";
+		};
+		2D89751F1FDFEDA40031EF45 /* EnovaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2D8975201FDFEDA40031EF45 /* EnovaUITests.swift */,
+				2D8975221FDFEDA40031EF45 /* Info.plist */,
+			);
+			path = EnovaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2D8974FC1FDFEDA30031EF45 /* Enova */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D8975251FDFEDA40031EF45 /* Build configuration list for PBXNativeTarget "Enova" */;
+			buildPhases = (
+				2D8974F91FDFEDA30031EF45 /* Sources */,
+				2D8974FA1FDFEDA30031EF45 /* Frameworks */,
+				2D8974FB1FDFEDA30031EF45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Enova;
+			productName = Enova;
+			productReference = 2D8974FD1FDFEDA40031EF45 /* Enova.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2D8975101FDFEDA40031EF45 /* EnovaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D8975281FDFEDA40031EF45 /* Build configuration list for PBXNativeTarget "EnovaTests" */;
+			buildPhases = (
+				2D89750D1FDFEDA40031EF45 /* Sources */,
+				2D89750E1FDFEDA40031EF45 /* Frameworks */,
+				2D89750F1FDFEDA40031EF45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D8975131FDFEDA40031EF45 /* PBXTargetDependency */,
+			);
+			name = EnovaTests;
+			productName = EnovaTests;
+			productReference = 2D8975111FDFEDA40031EF45 /* EnovaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2D89751B1FDFEDA40031EF45 /* EnovaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D89752B1FDFEDA40031EF45 /* Build configuration list for PBXNativeTarget "EnovaUITests" */;
+			buildPhases = (
+				2D8975181FDFEDA40031EF45 /* Sources */,
+				2D8975191FDFEDA40031EF45 /* Frameworks */,
+				2D89751A1FDFEDA40031EF45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D89751E1FDFEDA40031EF45 /* PBXTargetDependency */,
+			);
+			name = EnovaUITests;
+			productName = EnovaUITests;
+			productReference = 2D89751C1FDFEDA40031EF45 /* EnovaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2D8974F51FDFEDA30031EF45 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "APPLE MAC MINI";
+				TargetAttributes = {
+					2D8974FC1FDFEDA30031EF45 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					2D8975101FDFEDA40031EF45 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2D8974FC1FDFEDA30031EF45;
+					};
+					2D89751B1FDFEDA40031EF45 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2D8974FC1FDFEDA30031EF45;
+					};
+				};
+			};
+			buildConfigurationList = 2D8974F81FDFEDA30031EF45 /* Build configuration list for PBXProject "Enova" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2D8974F41FDFEDA30031EF45;
+			productRefGroup = 2D8974FE1FDFEDA40031EF45 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2D8974FC1FDFEDA30031EF45 /* Enova */,
+				2D8975101FDFEDA40031EF45 /* EnovaTests */,
+				2D89751B1FDFEDA40031EF45 /* EnovaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2D8974FB1FDFEDA30031EF45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D89750B1FDFEDA40031EF45 /* LaunchScreen.storyboard in Resources */,
+				2D8975081FDFEDA40031EF45 /* Assets.xcassets in Resources */,
+				2D8975061FDFEDA40031EF45 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D89750F1FDFEDA40031EF45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D89751A1FDFEDA40031EF45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2D8974F91FDFEDA30031EF45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D8975031FDFEDA40031EF45 /* ViewController.swift in Sources */,
+				2D8975011FDFEDA40031EF45 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D89750D1FDFEDA40031EF45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D8975161FDFEDA40031EF45 /* EnovaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D8975181FDFEDA40031EF45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D8975211FDFEDA40031EF45 /* EnovaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2D8975131FDFEDA40031EF45 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D8974FC1FDFEDA30031EF45 /* Enova */;
+			targetProxy = 2D8975121FDFEDA40031EF45 /* PBXContainerItemProxy */;
+		};
+		2D89751E1FDFEDA40031EF45 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D8974FC1FDFEDA30031EF45 /* Enova */;
+			targetProxy = 2D89751D1FDFEDA40031EF45 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2D8975041FDFEDA40031EF45 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D8975051FDFEDA40031EF45 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2D8975091FDFEDA40031EF45 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D89750A1FDFEDA40031EF45 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2D8975231FDFEDA40031EF45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2D8975241FDFEDA40031EF45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2D8975261FDFEDA40031EF45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3NWJFVU6RP;
+				INFOPLIST_FILE = Enova/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.barodacoders.Enova;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2D8975271FDFEDA40031EF45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3NWJFVU6RP;
+				INFOPLIST_FILE = Enova/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.barodacoders.Enova;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2D8975291FDFEDA40031EF45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3NWJFVU6RP;
+				INFOPLIST_FILE = EnovaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.barodacoders.EnovaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Enova.app/Enova";
+			};
+			name = Debug;
+		};
+		2D89752A1FDFEDA40031EF45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3NWJFVU6RP;
+				INFOPLIST_FILE = EnovaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.barodacoders.EnovaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Enova.app/Enova";
+			};
+			name = Release;
+		};
+		2D89752C1FDFEDA40031EF45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3NWJFVU6RP;
+				INFOPLIST_FILE = EnovaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.barodacoders.EnovaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Enova;
+			};
+			name = Debug;
+		};
+		2D89752D1FDFEDA40031EF45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3NWJFVU6RP;
+				INFOPLIST_FILE = EnovaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.barodacoders.EnovaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Enova;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8974F81FDFEDA30031EF45 /* Build configuration list for PBXProject "Enova" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D8975231FDFEDA40031EF45 /* Debug */,
+				2D8975241FDFEDA40031EF45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8975251FDFEDA40031EF45 /* Build configuration list for PBXNativeTarget "Enova" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D8975261FDFEDA40031EF45 /* Debug */,
+				2D8975271FDFEDA40031EF45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8975281FDFEDA40031EF45 /* Build configuration list for PBXNativeTarget "EnovaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D8975291FDFEDA40031EF45 /* Debug */,
+				2D89752A1FDFEDA40031EF45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D89752B1FDFEDA40031EF45 /* Build configuration list for PBXNativeTarget "EnovaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D89752C1FDFEDA40031EF45 /* Debug */,
+				2D89752D1FDFEDA40031EF45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2D8974F51FDFEDA30031EF45 /* Project object */;
+}
