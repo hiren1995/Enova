@@ -25,7 +25,7 @@ extension UIView {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         
-        //self.layer.shouldRasterize = true  //never use set this to true...the addnewvalue view had bulr text due to this 
+        //self.layer.shouldRasterize = true  //never use set this to true...the addnewvalue view had bulr text due to this
     }
     
     func menuClicked()
@@ -102,8 +102,6 @@ extension LineChartView{
     }
     
 }
-
-
 
 extension UIButton{
     

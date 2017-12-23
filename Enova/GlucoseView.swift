@@ -36,6 +36,12 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var lblLowGlucose: UILabel!
     
     
+    @IBOutlet weak var txtFrom: UITextField!
+    
+    @IBOutlet weak var txtTo: UITextField!
+    
+    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(cancelPicker))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,8 +65,12 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         lblLowGlucose.text = String(describing: GlucoseValues.min()!)
         
         
+        self.view.addGestureRecognizer(tap)
+        
         // Do any additional setup after loading the view.
     }
+    
+    
     
     @IBAction func btnMenuPress(_ sender: Any) {
         
@@ -108,6 +118,9 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         AlphaView.isHidden = false
         newDataAddView.isHidden = false
         newDataAddView.layer.zPosition = 1
+        
+        txtNewValue.text = ""
+        
         //AlphaView.bringSubview(toFront: newDataAddView)
     }
     
@@ -141,11 +154,90 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         }
     }
     
+    @IBAction func txtFromClicked(_ sender: UITextField) {
+        
+        /*
+ 
+        //code for what to do when date field is tapped
+        var datePickerView  : UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePickerMode.date
+        sender.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(handleDatePicker), for: UIControlEvents.valueChanged)
+ 
+         */
+    }
+    
+    
+    @objc func handleDatePicker(sender: UIDatePicker , txtField: UITextField) {
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        
+        if txtField == txtFrom{
+            
+            txtFrom.text = dateFormatter.string(from: sender.date)
+        }
+        else
+        {
+            txtTo.text = dateFormatter.string(from: sender.date)
+        }
+    }
+    
+    @objc func cancelPicker(){
+        self.view.endEditing(true)
+        
+    }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
+    
+    
+    //---------------------------------- Code for adjusting view depending upon the keyboard open and close...------------------------------------------------------------------
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        
+        newDataAddView.frame.origin.y -= 150
+        
+        /*
+         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+         if newDataAddView.frame.origin.y == 165{
+         newDataAddView.frame.origin.y -= keyboardSize.height
+         }
+         }
+         */
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        
+        newDataAddView.frame.origin.y += 150
+        
+        /*
+         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+         if newDataAddView.frame.origin.y != 165{
+         newDataAddView.frame.origin.y += keyboardSize.height
+         }
+         }
+         */
+    }
+    
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+    
     
     /*
     // MARK: - Navigation
