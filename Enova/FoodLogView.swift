@@ -53,6 +53,8 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         cell.MealType.text = foodType[indexPath.row]
         cell.DateTime.text = date[indexPath.row]
+        cell.btnView.addTarget(self, action: #selector(openFoodLogInfo), for: .touchUpInside)
+        cell.btnViewbig.addTarget(self, action: #selector(openFoodLogInfo), for: .touchUpInside)
         
         return cell
     }
@@ -83,6 +85,17 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         self.present(addFoodLogView, animated: true, completion: nil)
         
     }
+    
+    @objc func openFoodLogInfo()
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let foodLogInfoView = storyboard.instantiateViewController(withIdentifier: "foodLogInfoView") as! FoodLogInfoView
+        
+        self.present(foodLogInfoView, animated: true, completion: nil)
+        
+    }
+    
     
     //-------------------------------  code for date picker for txtFrom button ----------------------------------------------------------
     

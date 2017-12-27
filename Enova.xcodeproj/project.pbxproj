@@ -26,6 +26,7 @@
 		2DB588661FF103A600DF088E /* KetonesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB588651FF103A600DF088E /* KetonesView.swift */; };
 		2DB588681FF10A1500DF088E /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB588671FF10A1500DF088E /* WeightView.swift */; };
 		2DBB7D301FF394A8005CEF05 /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB7D2F1FF394A8005CEF05 /* ProfileSettingView.swift */; };
+		2DBB7D321FF3CA10005CEF05 /* FoodLogInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB7D311FF3CA10005CEF05 /* FoodLogInfoView.swift */; };
 		2DEB27C41FEB8AB700D679FA /* GlucoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB27C31FEB8AB700D679FA /* GlucoseView.swift */; };
 		2DEB27C61FEB8B1900D679FA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB27C51FEB8B1900D679FA /* Constants.swift */; };
 		2DEB27C81FEB8DE100D679FA /* CustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB27C71FEB8DE100D679FA /* CustomClass.swift */; };
@@ -75,6 +76,7 @@
 		2DB588651FF103A600DF088E /* KetonesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KetonesView.swift; sourceTree = "<group>"; };
 		2DB588671FF10A1500DF088E /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
 		2DBB7D2F1FF394A8005CEF05 /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
+		2DBB7D311FF3CA10005CEF05 /* FoodLogInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogInfoView.swift; sourceTree = "<group>"; };
 		2DEB27C31FEB8AB700D679FA /* GlucoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseView.swift; sourceTree = "<group>"; };
 		2DEB27C51FEB8B1900D679FA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2DEB27C71FEB8DE100D679FA /* CustomClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomClass.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				2D7DF9011FF252C00039E991 /* FoodLogView.swift */,
 				2D7DF9031FF25B490039E991 /* FoodLogTableCell.swift */,
 				2D7DF9051FF2703B0039E991 /* AddFoodLogView.swift */,
+				2DBB7D311FF3CA10005CEF05 /* FoodLogInfoView.swift */,
 				2DBB7D2F1FF394A8005CEF05 /* ProfileSettingView.swift */,
 				2D08C76F1FE1229C0028FFDB /* ForgetPassword.swift */,
 				2D8975071FDFEDA40031EF45 /* Assets.xcassets */,
@@ -509,6 +512,7 @@
 				2D08C76E1FE109500028FFDB /* SignIn.swift in Sources */,
 				2DB588681FF10A1500DF088E /* WeightView.swift in Sources */,
 				2D8975011FDFEDA40031EF45 /* AppDelegate.swift in Sources */,
+				2DBB7D321FF3CA10005CEF05 /* FoodLogInfoView.swift in Sources */,
 				2D7DF9041FF25B490039E991 /* FoodLogTableCell.swift in Sources */,
 				2D08C7721FE15B790028FFDB /* LineChart.swift in Sources */,
 				2DEB27C41FEB8AB700D679FA /* GlucoseView.swift in Sources */,
