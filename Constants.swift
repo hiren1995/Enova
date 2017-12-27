@@ -10,5 +10,6 @@ import Foundation
 import UIKit
 
 var MenuClicked:Bool = false
-
+var MealClicked:Bool = false
+var DiabetesClicked:Bool = false
 

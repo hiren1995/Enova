@@ -47,13 +47,11 @@ class AddFoodLogView: UIViewController,UITextViewDelegate {
         
         MenuView.menuClicked()
         
-        
-        
     }
     
     
     @IBAction func btnMealSelectPress(_ sender: Any) {
-        MealSelectView.menuClicked()
+        MealSelectView.mealClicked()
     }
     
     
@@ -61,7 +59,7 @@ class AddFoodLogView: UIViewController,UITextViewDelegate {
         
            lblFoodLabel.text = "Meal"
            MealSelectView.isHidden = true
-           MenuClicked = false
+           MealClicked = false
     }
    
     
@@ -69,7 +67,7 @@ class AddFoodLogView: UIViewController,UITextViewDelegate {
         
         lblFoodLabel.text = "Snacks"
         MealSelectView.isHidden = true
-        MenuClicked = false
+        MealClicked = false
         
     }
     

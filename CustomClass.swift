@@ -55,6 +55,36 @@ extension UIView {
         }
     }
     
+    func mealClicked()
+    {
+        if MealClicked
+        {
+            MealClicked = false
+            self.isHidden = true
+        }
+        else
+        {
+            MealClicked = true
+            self.isHidden = false
+            self.layer.zPosition = 1
+        }
+    }
+    
+    func diabetesClicked()
+    {
+        if DiabetesClicked
+        {
+            DiabetesClicked = false
+            self.isHidden = true
+        }
+        else
+        {
+            DiabetesClicked = true
+            self.isHidden = false
+            self.layer.zPosition = 1
+        }
+    }
+    
     func menuViewBorder(scale: Bool = true)
     {
         self.layer.borderColor = UIColor.black.cgColor
@@ -125,16 +155,31 @@ extension LineChartView{
 
 extension UIButton{
     
-    func NavigateToNext(nextVC : UIViewController)
-    {
-        
-    }
-    
+   
     func setbuttonborder(colorValue: UIColor,widthValue: CGFloat,cornerRadiusValue : CGFloat) {
         
         self.layer.borderColor = colorValue.cgColor
         self.layer.borderWidth = widthValue
         self.layer.cornerRadius = cornerRadiusValue
     }
+}
+
+extension UIImageView{
+    func setImageborder(colorValue: UIColor,widthValue: CGFloat,cornerRadiusValue : CGFloat) {
+        
+        
+        
+        self.layer.borderColor = colorValue.cgColor
+        self.layer.borderWidth = widthValue
+        self.layer.cornerRadius = cornerRadiusValue
+        self.clipsToBounds = true
+    }
+    
+    func removeImageborder()
+    {
+        self.layer.borderWidth = 0.0
+        self.clipsToBounds = true
+    }
+    
 }
 

@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ProfileSettingView: UIViewController,UITextViewDelegate {
+var Gender:String = "Male"
+
+class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegate {
     
     @IBOutlet var HeaderView: UIView!
     
@@ -24,8 +26,13 @@ class ProfileSettingView: UIViewController,UITextViewDelegate {
     
     @IBOutlet weak var NoteText: UITextView!
     
+    @IBOutlet weak var txtDOB: UITextField!
     
     @IBOutlet weak var txtName: UITextField!
+    
+    @IBOutlet weak var imgMale: UIImageView!
+    
+    @IBOutlet weak var imgFemale: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +47,10 @@ class ProfileSettingView: UIViewController,UITextViewDelegate {
         
         btnDiabetes.setbuttonborder(colorValue: UIColor.gray, widthValue: 1.0, cornerRadiusValue: 0.0)
         
+        imgFemale.image = nil
+        imgFemale.backgroundColor = UIColor.white
+        imgFemale.setImageborder(colorValue: UIColor.black, widthValue: 1.0, cornerRadiusValue: 10.0)
+        
         addDoneButtonOnKeyboard()
 
         // Do any additional setup after loading the view.
@@ -53,14 +64,14 @@ class ProfileSettingView: UIViewController,UITextViewDelegate {
     
     @IBAction func btnDiabetesPress(_ sender: Any) {
         
-        DiabetesView.menuClicked()
+        DiabetesView.diabetesClicked()
     }
     
     @IBAction func btnPreDiabetesPress(_ sender: Any) {
         
         lblDiabetesType.text = "Pre-Diabetes"
         DiabetesView.isHidden = true
-        MenuClicked = false
+        DiabetesClicked = false
         
     }
     
@@ -68,14 +79,14 @@ class ProfileSettingView: UIViewController,UITextViewDelegate {
         
         lblDiabetesType.text = "Type II"
         DiabetesView.isHidden = true
-        MenuClicked = false
+        DiabetesClicked = false
     }
     
     @IBAction func btnDiabetesNone(_ sender: Any) {
         
         lblDiabetesType.text = "None"
         DiabetesView.isHidden = true
-        MenuClicked = false
+        DiabetesClicked = false
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -93,6 +104,48 @@ class ProfileSettingView: UIViewController,UITextViewDelegate {
             NoteText.textColor = UIColor.lightGray
         }
     }
+    
+    
+    @IBAction func btnMalePressed(_ sender: Any) {
+        
+        imgMale.image = UIImage(named: "radio-on")
+        imgMale.removeImageborder()
+        Gender = "Male"
+        imgFemale.image = nil
+        imgFemale.backgroundColor = UIColor.white
+        imgFemale.setImageborder(colorValue: UIColor.black, widthValue: 1.0, cornerRadiusValue: 10.0)
+    }
+    
+    @IBAction func btnFemalePressed(_ sender: Any) {
+        
+        imgFemale.image = UIImage(named: "radio-on")
+        imgFemale.removeImageborder()
+        Gender = "Female"
+        imgMale.image = nil
+        imgMale.backgroundColor = UIColor.white
+        imgMale.setImageborder(colorValue: UIColor.black, widthValue: 1.0, cornerRadiusValue: 10.0)
+    }
+    
+    
+     //-------------------------------  code for date picker for txtFrom button ----------------------------------------------------------
+    
+    @IBAction func TxtDOBTapped(_ sender: UITextField) {
+        
+        var datePickerView  : UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePickerMode.date
+        sender.inputView = datePickerView
+        
+        datePickerView.addTarget(self, action: #selector(handleDatePickertxtFrom), for: UIControlEvents.valueChanged)
+    }
+    @objc func handleDatePickertxtFrom(sender: UIDatePicker) {
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        
+        txtDOB.text = dateFormatter.string(from: sender.date)
+        
+    }
+    
+    //---------------------------------------------- End ------------------------------------------------------------------------------
     
     func addDoneButtonOnKeyboard()
     {
@@ -114,6 +167,7 @@ class ProfileSettingView: UIViewController,UITextViewDelegate {
        
         txtName.inputAccessoryView = doneToolbar
         NoteText.inputAccessoryView = doneToolbar
+        txtDOB.inputAccessoryView = doneToolbar
     }
     @objc func cancelKeyboard(){
         self.view.endEditing(true)
