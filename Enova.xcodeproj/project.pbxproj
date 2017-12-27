@@ -12,6 +12,10 @@
 		2D08C76E1FE109500028FFDB /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08C76D1FE109500028FFDB /* SignIn.swift */; };
 		2D08C7701FE1229C0028FFDB /* ForgetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08C76F1FE1229C0028FFDB /* ForgetPassword.swift */; };
 		2D08C7721FE15B790028FFDB /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08C7711FE15B790028FFDB /* LineChart.swift */; };
+		2D7DF9001FF21D4E0039E991 /* MeasurementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7DF8FF1FF21D4E0039E991 /* MeasurementsView.swift */; };
+		2D7DF9021FF252C00039E991 /* FoodLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7DF9011FF252C00039E991 /* FoodLogView.swift */; };
+		2D7DF9041FF25B490039E991 /* FoodLogTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7DF9031FF25B490039E991 /* FoodLogTableCell.swift */; };
+		2D7DF9061FF2703B0039E991 /* AddFoodLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7DF9051FF2703B0039E991 /* AddFoodLogView.swift */; };
 		2D8975011FDFEDA40031EF45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8975001FDFEDA40031EF45 /* AppDelegate.swift */; };
 		2D8975031FDFEDA40031EF45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8975021FDFEDA40031EF45 /* ViewController.swift */; };
 		2D8975061FDFEDA40031EF45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D8975041FDFEDA40031EF45 /* Main.storyboard */; };
@@ -19,6 +23,9 @@
 		2D89750B1FDFEDA40031EF45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D8975091FDFEDA40031EF45 /* LaunchScreen.storyboard */; };
 		2D8975161FDFEDA40031EF45 /* EnovaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8975151FDFEDA40031EF45 /* EnovaTests.swift */; };
 		2D8975211FDFEDA40031EF45 /* EnovaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8975201FDFEDA40031EF45 /* EnovaUITests.swift */; };
+		2DB588661FF103A600DF088E /* KetonesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB588651FF103A600DF088E /* KetonesView.swift */; };
+		2DB588681FF10A1500DF088E /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB588671FF10A1500DF088E /* WeightView.swift */; };
+		2DBB7D301FF394A8005CEF05 /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB7D2F1FF394A8005CEF05 /* ProfileSettingView.swift */; };
 		2DEB27C41FEB8AB700D679FA /* GlucoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB27C31FEB8AB700D679FA /* GlucoseView.swift */; };
 		2DEB27C61FEB8B1900D679FA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB27C51FEB8B1900D679FA /* Constants.swift */; };
 		2DEB27C81FEB8DE100D679FA /* CustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB27C71FEB8DE100D679FA /* CustomClass.swift */; };
@@ -48,6 +55,10 @@
 		2D08C76D1FE109500028FFDB /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		2D08C76F1FE1229C0028FFDB /* ForgetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPassword.swift; sourceTree = "<group>"; };
 		2D08C7711FE15B790028FFDB /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		2D7DF8FF1FF21D4E0039E991 /* MeasurementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementsView.swift; sourceTree = "<group>"; };
+		2D7DF9011FF252C00039E991 /* FoodLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogView.swift; sourceTree = "<group>"; };
+		2D7DF9031FF25B490039E991 /* FoodLogTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogTableCell.swift; sourceTree = "<group>"; };
+		2D7DF9051FF2703B0039E991 /* AddFoodLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodLogView.swift; sourceTree = "<group>"; };
 		2D8974FD1FDFEDA40031EF45 /* Enova.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enova.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D8975001FDFEDA40031EF45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D8975021FDFEDA40031EF45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +72,9 @@
 		2D89751C1FDFEDA40031EF45 /* EnovaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EnovaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D8975201FDFEDA40031EF45 /* EnovaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnovaUITests.swift; sourceTree = "<group>"; };
 		2D8975221FDFEDA40031EF45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DB588651FF103A600DF088E /* KetonesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KetonesView.swift; sourceTree = "<group>"; };
+		2DB588671FF10A1500DF088E /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
+		2DBB7D2F1FF394A8005CEF05 /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
 		2DEB27C31FEB8AB700D679FA /* GlucoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseView.swift; sourceTree = "<group>"; };
 		2DEB27C51FEB8B1900D679FA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2DEB27C71FEB8DE100D679FA /* CustomClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomClass.swift; sourceTree = "<group>"; };
@@ -137,6 +151,13 @@
 				2D08C76D1FE109500028FFDB /* SignIn.swift */,
 				2DF734131FE5240400A0A754 /* DashBoard.swift */,
 				2DEB27C31FEB8AB700D679FA /* GlucoseView.swift */,
+				2DB588651FF103A600DF088E /* KetonesView.swift */,
+				2DB588671FF10A1500DF088E /* WeightView.swift */,
+				2D7DF8FF1FF21D4E0039E991 /* MeasurementsView.swift */,
+				2D7DF9011FF252C00039E991 /* FoodLogView.swift */,
+				2D7DF9031FF25B490039E991 /* FoodLogTableCell.swift */,
+				2D7DF9051FF2703B0039E991 /* AddFoodLogView.swift */,
+				2DBB7D2F1FF394A8005CEF05 /* ProfileSettingView.swift */,
 				2D08C76F1FE1229C0028FFDB /* ForgetPassword.swift */,
 				2D8975071FDFEDA40031EF45 /* Assets.xcassets */,
 				2D8975091FDFEDA40031EF45 /* LaunchScreen.storyboard */,
@@ -480,13 +501,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DF734141FE5240400A0A754 /* DashBoard.swift in Sources */,
+				2D7DF9021FF252C00039E991 /* FoodLogView.swift in Sources */,
+				2D7DF9001FF21D4E0039E991 /* MeasurementsView.swift in Sources */,
 				2D8975031FDFEDA40031EF45 /* ViewController.swift in Sources */,
 				2D08C7701FE1229C0028FFDB /* ForgetPassword.swift in Sources */,
 				2DEB27C81FEB8DE100D679FA /* CustomClass.swift in Sources */,
 				2D08C76E1FE109500028FFDB /* SignIn.swift in Sources */,
+				2DB588681FF10A1500DF088E /* WeightView.swift in Sources */,
 				2D8975011FDFEDA40031EF45 /* AppDelegate.swift in Sources */,
+				2D7DF9041FF25B490039E991 /* FoodLogTableCell.swift in Sources */,
 				2D08C7721FE15B790028FFDB /* LineChart.swift in Sources */,
 				2DEB27C41FEB8AB700D679FA /* GlucoseView.swift in Sources */,
+				2D7DF9061FF2703B0039E991 /* AddFoodLogView.swift in Sources */,
+				2DBB7D301FF394A8005CEF05 /* ProfileSettingView.swift in Sources */,
+				2DB588661FF103A600DF088E /* KetonesView.swift in Sources */,
 				2DEB27C61FEB8B1900D679FA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

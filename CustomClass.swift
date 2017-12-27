@@ -28,6 +28,18 @@ extension UIView {
         //self.layer.shouldRasterize = true  //never use set this to true...the addnewvalue view had bulr text due to this
     }
     
+    func ShadowMealView(scale: Bool = true) {
+        
+        
+        self.layer.shadowOffset = CGSize.zero
+        self.layer.shadowOpacity = 0.7
+        self.layer.shadowRadius = 5.0
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        
+        //self.layer.shouldRasterize = true  //never use set this to true...the addnewvalue view had bulr text due to this
+    }
+    
     func menuClicked()
     {
         if MenuClicked
@@ -55,6 +67,12 @@ extension UIView {
         self.clipsToBounds = true
     }
     
+    func setborder(colorValue : UIColor)
+    {
+        self.layer.borderColor = colorValue.cgColor
+        self.layer.borderWidth = 1
+    }
+    
 }
 
 extension UIViewController{
@@ -69,6 +87,7 @@ extension UIViewController{
         // show the alert
         self.present(alert, animated: true, completion: nil)
     }
+   
 }
 
 extension LineChartView{
@@ -95,6 +114,7 @@ extension LineChartView{
         line.drawCircleHoleEnabled = false         //enabling the hole in the circle...
         //line1.circleHoleColor = NSUIColor.red     //setting the color of the circle hole..
         
+        line.circleRadius = 5.0
         
         self.animate(xAxisDuration: 2.0)
         
@@ -108,6 +128,13 @@ extension UIButton{
     func NavigateToNext(nextVC : UIViewController)
     {
         
+    }
+    
+    func setbuttonborder(colorValue: UIColor,widthValue: CGFloat,cornerRadiusValue : CGFloat) {
+        
+        self.layer.borderColor = colorValue.cgColor
+        self.layer.borderWidth = widthValue
+        self.layer.cornerRadius = cornerRadiusValue
     }
 }
 

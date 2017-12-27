@@ -1,18 +1,18 @@
 //
-//  GlucoseView.swift
+//  KetonesView.swift
 //  Enova
 //
-//  Created by APPLE MAC MINI on 21/12/17.
+//  Created by APPLE MAC MINI on 25/12/17.
 //  Copyright © 2017 APPLE MAC MINI. All rights reserved.
 //
 
 import UIKit
 import Charts
 
-var  days:[Int] = []
-var  GlucoseValues:[Double] = []
 
-class GlucoseView: UIViewController,UITextFieldDelegate {
+var  KetonesValues:[Double] = []
+
+class KetonesView: UIViewController,UITextFieldDelegate {
     
     @IBOutlet var HeaderView: UIView!
     
@@ -30,10 +30,10 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var txtNewValue: UITextField!
     
     
-    @IBOutlet weak var lblHighGlucose: UILabel!
+    @IBOutlet weak var lblHighKetones: UILabel!
     
     
-    @IBOutlet weak var lblLowGlucose: UILabel!
+    @IBOutlet weak var lblLowKetones: UILabel!
     
     
     @IBOutlet weak var txtFrom: UITextField!
@@ -41,10 +41,9 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var txtTo: UITextField!
     
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         HeaderView.ShadowHeader()
         MenuView.menuViewBorder()
@@ -57,15 +56,15 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         txtNewValue.delegate = self
         
         days = [1,2,3,4,5,6,7]
-        GlucoseValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0,17.0]
+        KetonesValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0,17.0]
         
-        setChart(dataPoints: days,values: GlucoseValues)
+        setChart(dataPoints: days,values: KetonesValues)
         
-        lblHighGlucose.text = String(describing: GlucoseValues.max()!)
-        lblLowGlucose.text = String(describing: GlucoseValues.min()!)
+        lblHighKetones.text = String(describing: KetonesValues.max()!)
+        lblLowKetones.text = String(describing: KetonesValues.min()!)
         
         addDoneButtonOnDatePicker()
-        
+
         // Do any additional setup after loading the view.
     }
     
@@ -74,7 +73,7 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
     @IBAction func btnMenuPress(_ sender: Any) {
         
         MenuView.menuClicked()
-    
+        
         
     }
     
@@ -87,7 +86,7 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         
         for i in 0...dataPoints.count - 1
         {
-           
+            
             if(values[i] >= 12.0)
             {
                 circleColors.append(NSUIColor.red)
@@ -105,13 +104,13 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
             
         }
         
-        let line1 = LineChartDataSet(values: dataEntries, label: "Glucose")
+        let line1 = LineChartDataSet(values: dataEntries, label: "Ketones")
         
         
-        lineChatView.MakeLineGraph(line: line1, circleColors: circleColors, labelText: "Glucose Graph")   // for Make Graph method check the CustomClass.swift
+        lineChatView.MakeLineGraph(line: line1, circleColors: circleColors, labelText: "Ketones Graph")   // for Make Graph method check the CustomClass.swift
         
     }
-
+    
     @IBAction func btnAdd(_ sender: Any) {
         
         AlphaView.isHidden = false
@@ -122,7 +121,7 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         
         //AlphaView.bringSubview(toFront: newDataAddView)
     }
-   
+    
     @IBAction func btnCancel(_ sender: Any) {
         
         AlphaView.isHidden = true
@@ -135,20 +134,20 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         
         if(txtNewValue.text == "")
         {
-            self.showAlert(title: "Alert", message: "Please Enter Glucose Level")
+            self.showAlert(title: "Alert", message: "Please Enter Ketones Level")
         }
         else
         {
             days.append(days.count+1)
-            GlucoseValues.append(Double(txtNewValue.text!)!)
+            KetonesValues.append(Double(txtNewValue.text!)!)
             newDataAddView.isHidden = true
             AlphaView.isHidden = true
-            setChart(dataPoints: days,values: GlucoseValues)
-            lblHighGlucose.text = String(describing: GlucoseValues.max()!)
-            lblLowGlucose.text = String(describing: GlucoseValues.min()!)
+            setChart(dataPoints: days,values: KetonesValues)
+            lblHighKetones.text = String(describing: KetonesValues.max()!)
+            lblLowKetones.text = String(describing: KetonesValues.min()!)
         }
     }
-   
+    
     //-------------------------------  code for date picker for txtFrom button ----------------------------------------------------------
     
     @IBAction func txtFromClicked(_ sender: UITextField) {
@@ -158,7 +157,7 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         sender.inputView = datePickerView
         
         datePickerView.addTarget(self, action: #selector(handleDatePickertxtFrom), for: UIControlEvents.valueChanged)
-       
+        
     }
     
     @objc func handleDatePickertxtFrom(sender: UIDatePicker) {
@@ -168,7 +167,7 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         txtFrom.text = dateFormatter.string(from: sender.date)
         
     }
-   
+    
     //---------------------------------------------- End ------------------------------------------------------------------------------
     
     
@@ -272,7 +271,6 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         
     }
     
-    
     @IBAction func btnBack(_ sender: UIButton) {
         
         self.dismiss(animated: true, completion: nil)
@@ -287,7 +285,7 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
+
     /*
     // MARK: - Navigation
 
