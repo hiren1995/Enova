@@ -28,7 +28,11 @@ class ForgetPassword: UIViewController,UITextFieldDelegate {
     
     @IBAction func btnRequest(_ sender: Any) {
         
-        performSegue(withIdentifier: "ForgetPaaswordToLogin", sender: self)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let signIn = storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
+        self.present(signIn, animated: true, completion: nil)
+        
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

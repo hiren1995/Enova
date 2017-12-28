@@ -8,6 +8,9 @@ target 'Enova' do
   # Pods for Enova
   
   pod 'Charts'
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
+  pod 'MBProgressHUD'
  
 
   target 'EnovaTests' do

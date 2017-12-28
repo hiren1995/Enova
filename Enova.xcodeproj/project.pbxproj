@@ -12,6 +12,7 @@
 		2D08C76E1FE109500028FFDB /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08C76D1FE109500028FFDB /* SignIn.swift */; };
 		2D08C7701FE1229C0028FFDB /* ForgetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08C76F1FE1229C0028FFDB /* ForgetPassword.swift */; };
 		2D08C7721FE15B790028FFDB /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08C7711FE15B790028FFDB /* LineChart.swift */; };
+		2D307ABD1FF4DD41001A06B1 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D307ABC1FF4DD41001A06B1 /* Reachability.swift */; };
 		2D7DF9001FF21D4E0039E991 /* MeasurementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7DF8FF1FF21D4E0039E991 /* MeasurementsView.swift */; };
 		2D7DF9021FF252C00039E991 /* FoodLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7DF9011FF252C00039E991 /* FoodLogView.swift */; };
 		2D7DF9041FF25B490039E991 /* FoodLogTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7DF9031FF25B490039E991 /* FoodLogTableCell.swift */; };
@@ -56,6 +57,7 @@
 		2D08C76D1FE109500028FFDB /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		2D08C76F1FE1229C0028FFDB /* ForgetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPassword.swift; sourceTree = "<group>"; };
 		2D08C7711FE15B790028FFDB /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		2D307ABC1FF4DD41001A06B1 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		2D7DF8FF1FF21D4E0039E991 /* MeasurementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementsView.swift; sourceTree = "<group>"; };
 		2D7DF9011FF252C00039E991 /* FoodLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogView.swift; sourceTree = "<group>"; };
 		2D7DF9031FF25B490039E991 /* FoodLogTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogTableCell.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				2DEB27C51FEB8B1900D679FA /* Constants.swift */,
 				2DEB27C71FEB8DE100D679FA /* CustomClass.swift */,
+				2D307ABC1FF4DD41001A06B1 /* Reachability.swift */,
 				2D8974FF1FDFEDA40031EF45 /* Enova */,
 				2D8975141FDFEDA40031EF45 /* EnovaTests */,
 				2D89751F1FDFEDA40031EF45 /* EnovaUITests */,
@@ -467,11 +470,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Enova/Pods-Enova-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -517,6 +524,7 @@
 				2D08C7721FE15B790028FFDB /* LineChart.swift in Sources */,
 				2DEB27C41FEB8AB700D679FA /* GlucoseView.swift in Sources */,
 				2D7DF9061FF2703B0039E991 /* AddFoodLogView.swift in Sources */,
+				2D307ABD1FF4DD41001A06B1 /* Reachability.swift in Sources */,
 				2DBB7D301FF394A8005CEF05 /* ProfileSettingView.swift in Sources */,
 				2DB588661FF103A600DF088E /* KetonesView.swift in Sources */,
 				2DEB27C61FEB8B1900D679FA /* Constants.swift in Sources */,

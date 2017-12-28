@@ -13,9 +13,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var storyboard = UIStoryboard(name: "Main", bundle: nil)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if Reachability.isConnectedToNetwork(){
+            
+            if isLogin{
+                
+                let initialView = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
+                self.window?.rootViewController = initialView
+                
+            }
+            else
+            {
+                let initialView = storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
+                self.window?.rootViewController = initialView
+            }
+            
+            
+        }
+        else
+        {
+            let alert = UIAlertController(title: "Alert", message:"No Internet", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // add an action (button)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            
+            // show the alert
+            self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
+        
+        
         return true
     }
 
