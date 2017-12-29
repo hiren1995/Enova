@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import MBProgressHUD
 
 class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
@@ -21,8 +24,14 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var foodLogTableView: UITableView!
     
-    let foodType = ["Meal","Snack","Meal","Snack","Meal","Snack","Meal","Snack"]
-    let date = ["Today,10:00 AM","Today,2:00 PM","Today,10:00 AM","Today,2:00 PM","Today,10:00 AM","Today,2:00 PM","Today,10:00 AM","Today,2:00 PM"]
+    var foodLogCount:Int = 0
+    var tempDict : JSON = JSON.null
+    
+    //let foodType = ["Meal","Snack","Meal","Snack","Meal","Snack","Meal","Snack"]
+    //let date = ["Today,10:00 AM","Today,2:00 PM","Today,10:00 AM","Today,2:00 PM","Today,10:00 AM","Today,2:00 PM","Today,10:00 AM","Today,2:00 PM"]
+    
+    var foodType:[String]? = nil
+    var date:[String]? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +46,8 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         foodLogTableView.dataSource = self
         
         foodLogTableView.allowsSelection = false
+        
+        loadFoodLogs()
 
         // Do any additional setup after loading the view.
     }
@@ -44,15 +55,22 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-       return foodType.count
+       return foodLogCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "foodlogcell") as! FoodLogTableCell
         
-        cell.MealType.text = foodType[indexPath.row]
-        cell.DateTime.text = date[indexPath.row]
+        //cell.MealType.text = foodType?[indexPath.row]
+        //cell.DateTime.text = date?[indexPath.row]
+        
+        if(tempDict.count != 0)
+        {
+        cell.MealType.text = tempDict["data"][indexPath.row]["food_category"].stringValue
+        cell.DateTime.text = tempDict["data"][indexPath.row]["created_at"].stringValue
+        }
+        
         cell.btnView.addTarget(self, action: #selector(openFoodLogInfo), for: .touchUpInside)
         cell.btnViewbig.addTarget(self, action: #selector(openFoodLogInfo), for: .touchUpInside)
         
@@ -60,7 +78,7 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 100
+        return 80
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -111,9 +129,9 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @objc func handleDatePickertxtFrom(sender: UIDatePicker) {
         var dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy"
+        dateFormatter.dateFormat = "dd-MM-yyyy"
         
-        txtFrom.text = dateFormatter.string(from: sender.date)
+        txtFrom.text = convertDateFormater(dateFormatter.string(from: sender.date))
         
     }
     
@@ -133,9 +151,9 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @objc func handleDatePickertxtTo(sender: UIDatePicker) {
         var dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy"
+        dateFormatter.dateFormat = "dd-MM-yyyy"
         
-        txtTo.text = dateFormatter.string(from: sender.date)
+        txtTo.text = convertDateFormater(dateFormatter.string(from: sender.date))
         
     }
     //---------------------------------------------- End ------------------------------------------------------------------------------
@@ -183,6 +201,72 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBAction func btnBack2(_ sender: UIButton) {
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func loadFoodLogs()
+    {
+        let currentDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let to_date = formatter.string(from: currentDate)
+        
+        //print(result+"23:59:59")
+        
+        let subtractDays = -7
+        var dateComponent = DateComponents()
+        dateComponent.day = subtractDays
+        
+        let temp = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+        let from_date = formatter.string(from: temp!)
+        
+        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        txtFrom.text = from_date
+        txtTo.text = to_date
+        
+        
+        let foodLogParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "from_date" : from_date , "to_date" : to_date+"23:59:59"]
+        
+        print(foodLogParameters)
+        
+        Alamofire.request(GetFoodLogAPI, method: .post, parameters: foodLogParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+            if(response.result.value != nil)
+            {
+                
+                print(JSON(response.result.value))
+                
+                self.tempDict = JSON(response.result.value!)
+                
+                //print(tempDict["data"]["user_id"])
+                
+                if(self.tempDict["status"] == "success")
+                {
+                    self.foodLogCount = self.tempDict["data"].count
+                    
+                    //print(self.tempDict["data"][0]["food_category"].stringValue)
+                    //print(self.tempDict["data"][0]["food_category"].stringValue)
+                   
+                    
+                    self.foodLogTableView.reloadData()
+                    
+                    spinnerActivity.hide(animated: true)
+                }
+                else if(self.tempDict["status"] == "error")
+                {
+                    spinnerActivity.hide(animated: true)
+                    self.showAlert(title: "Alert", message: "Something went Wrong")
+                }
+                
+                
+            }
+            else
+            {
+                spinnerActivity.hide(animated: true)
+                self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+            }
+        })
+        
+    
     }
 
     override func didReceiveMemoryWarning() {

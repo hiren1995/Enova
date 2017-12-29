@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uiB-Io-HFE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gwb-fe-79J">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -2703,7 +2703,7 @@
                                                                         <constraint firstAttribute="height" constant="21" id="iNi-pu-Vi7"/>
                                                                         <constraint firstAttribute="width" constant="58" id="rEY-Mj-uXe"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -2713,7 +2713,7 @@
                                                                         <constraint firstAttribute="height" constant="21" id="gKG-No-zgK"/>
                                                                         <constraint firstAttribute="width" constant="175" id="kCS-ga-but"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -2724,7 +2724,7 @@
                                                                         <constraint firstAttribute="height" constant="30" id="2TZ-N9-u9R"/>
                                                                         <constraint firstAttribute="width" constant="60" id="cM3-Is-pkf"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                                     <state key="normal" title="View">
                                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </state>
@@ -3417,6 +3417,16 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fj5-eX-5iq">
+                                                <rect key="frame" x="120" y="67" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="1Bt-S8-8Wz"/>
+                                                    <constraint firstAttribute="width" constant="100" id="8JP-dV-ZN6"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="btnUploadnewImg:" destination="F7W-eS-phn" eventType="touchUpInside" id="GmQ-do-BZr"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgA-gt-FfN">
                                                 <rect key="frame" x="10" y="175" width="42" height="15"/>
                                                 <constraints>
@@ -3503,6 +3513,9 @@
                                                         <integer key="value" value="20"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="btnSave:" destination="F7W-eS-phn" eventType="touchUpInside" id="uHU-R2-72d"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GENDER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8J-0W-6Mh">
                                                 <rect key="frame" x="10" y="240" width="64" height="21"/>
@@ -3644,13 +3657,6 @@
                                                     <outlet property="delegate" destination="F7W-eS-phn" id="0vp-ay-vCu"/>
                                                 </connections>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fj5-eX-5iq">
-                                                <rect key="frame" x="120" y="67" width="100" height="100"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="1Bt-S8-8Wz"/>
-                                                    <constraint firstAttribute="width" constant="100" id="8JP-dV-ZN6"/>
-                                                </constraints>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DOB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwt-S1-QZt">
                                                 <rect key="frame" x="10" y="346" width="64" height="21"/>
                                                 <constraints>
@@ -3841,9 +3847,11 @@
                         <outlet property="NoteText" destination="b4T-ef-xhc" id="5h0-vw-Zjd"/>
                         <outlet property="NoteView" destination="7IF-e5-FmU" id="6QU-X5-Hli"/>
                         <outlet property="btnDiabetes" destination="YDm-zI-FRw" id="Kpn-Nj-b8n"/>
+                        <outlet property="coverImg" destination="mqy-Ev-u8M" id="NrE-I1-rAn"/>
                         <outlet property="imgFemale" destination="V3n-ZJ-5nJ" id="z8R-ms-cSf"/>
                         <outlet property="imgMale" destination="ySr-ed-BNz" id="X0G-RD-mcd"/>
                         <outlet property="lblDiabetesType" destination="8e6-mh-X3c" id="BRw-sq-gIE"/>
+                        <outlet property="profileImg" destination="4Kq-lq-Ncw" id="lDD-pr-Yoa"/>
                         <outlet property="txtDOB" destination="JHG-hd-5Lh" id="QRl-tS-HwZ"/>
                         <outlet property="txtName" destination="Br9-B9-wB4" id="jNm-fo-mto"/>
                     </connections>

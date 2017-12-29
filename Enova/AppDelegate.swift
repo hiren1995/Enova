@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import MBProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,12 +21,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        if Reachability.isConnectedToNetwork(){
-            
-            if isLogin{
+            let Login = UserDefaults.standard.bool(forKey: isLogin)
+        
+            if Login{
                 
-                let initialView = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
-                self.window?.rootViewController = initialView
+                let loginParameters:Parameters = ["email": udefault.value(forKey: EmailAddress)! , "password" : udefault.value(forKey: Password)! , "device_token" : "" , "device_type" : 2]
+                
+                print(loginParameters)
+                
+                Alamofire.request(LoginAPI, method: .post, parameters: loginParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+                    if(response.result.value != nil)
+                    {
+                        
+                        print(JSON(response.result.value))
+                        
+                        let tempDict = JSON(response.result.value!)
+                        
+                        //print(tempDict["data"]["user_id"])
+                        
+                        if(tempDict["status"] == "success")
+                        {
+                            udefault.set(response.result.value, forKey: UserData)
+                            
+                            let initialView = self.storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
+                            self.window?.rootViewController = initialView
+                        }
+                        else if(tempDict["status"] == "error")
+                        {
+                            self.window?.rootViewController?.showAlert(title: "Alert", message: "Invalid Email or Password")
+                            let initialView = self.storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
+                            self.window?.rootViewController = initialView
+                        }
+                        
+                    }
+                    else
+                    {
+                        self.window?.rootViewController?.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+                        
+                    }
+                })
+
+                //let initialView = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
+                //self.window?.rootViewController = initialView
                 
             }
             else
@@ -31,23 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let initialView = storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
                 self.window?.rootViewController = initialView
             }
-            
-            
-        }
-        else
-        {
-            let alert = UIAlertController(title: "Alert", message:"No Internet", preferredStyle: UIAlertControllerStyle.alert)
-            
-            // add an action (button)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            
-            // show the alert
-            self.window?.rootViewController?.present(alert, animated: true, completion: nil)
-        }
-        
         
         return true
     }
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

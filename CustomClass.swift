@@ -185,3 +185,13 @@ extension UIImageView{
     
 }
 
+func convertDateFormater(_ date: String) -> String
+{
+    let dateFormatter = DateFormatter()
+    //dateFormatter.dateFormat = "yyyy-MM-dd"
+    dateFormatter.dateFormat = "dd-MM-yyyy"
+    let date = dateFormatter.date(from: date)
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    return  dateFormatter.string(from: date!)
+    
+}

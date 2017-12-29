@@ -10,8 +10,9 @@ target 'Enova' do
   pod 'Charts'
   pod 'Alamofire'
   pod 'SwiftyJSON'
-  pod 'MBProgressHUD'
- 
+  pod 'MBProgressHUD', '~> 1.1.0'
+  pod 'Kingfisher', '~> 4.0'
+  pod 'CropViewController'
 
   target 'EnovaTests' do
     inherit! :search_paths

@@ -24,6 +24,10 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSCameraUsageDescription</key>
+	<string> $(PRODUCT_NAME) wants to access Camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string> $(PRODUCT_NAME) wants to access Gallery</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import Kingfisher
+import MBProgressHUD
+import CropViewController
 
 var Gender:String = "Male"
 
-class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegate {
+class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CropViewControllerDelegate{
     
     @IBOutlet var HeaderView: UIView!
     
@@ -34,6 +39,13 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
     
     @IBOutlet weak var imgFemale: UIImageView!
     
+    @IBOutlet weak var profileImg: UIImageView!
+    
+    @IBOutlet weak var coverImg: UIView!
+    
+    var imagePicker = UIImagePickerController()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,6 +64,8 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
         imgFemale.setImageborder(colorValue: UIColor.black, widthValue: 1.0, cornerRadiusValue: 10.0)
         
         addDoneButtonOnKeyboard()
+        
+        loadUserData()
 
         // Do any additional setup after loading the view.
     }
@@ -108,22 +122,13 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
     
     @IBAction func btnMalePressed(_ sender: Any) {
         
-        imgMale.image = UIImage(named: "radio-on")
-        imgMale.removeImageborder()
-        Gender = "Male"
-        imgFemale.image = nil
-        imgFemale.backgroundColor = UIColor.white
-        imgFemale.setImageborder(colorValue: UIColor.black, widthValue: 1.0, cornerRadiusValue: 10.0)
+        MaleRadioButton()
     }
     
     @IBAction func btnFemalePressed(_ sender: Any) {
         
-        imgFemale.image = UIImage(named: "radio-on")
-        imgFemale.removeImageborder()
-        Gender = "Female"
-        imgMale.image = nil
-        imgMale.backgroundColor = UIColor.white
-        imgMale.setImageborder(colorValue: UIColor.black, widthValue: 1.0, cornerRadiusValue: 10.0)
+        FemaleRadioButton()
+        
     }
     
     
@@ -161,9 +166,6 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
         
         doneToolbar.items = items as! [UIBarButtonItem]
         doneToolbar.sizeToFit()
-        
-        //txtTo.inputAccessoryView = doneToolbar
-        //txtFrom.inputAccessoryView = doneToolbar
        
         txtName.inputAccessoryView = doneToolbar
         NoteText.inputAccessoryView = doneToolbar
@@ -215,6 +217,191 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
     //-------------------------------------------------------- End -----------------------------------------------------------------------------------------
     
     
+    func loadUserData()
+    {
+        let tempData = JSON(udefault.value(forKey: UserData))
+        
+        print(tempData)
+        
+        if(tempData != JSON.null)
+        {
+            txtName.text = tempData["data"]["full_name"].stringValue
+            lblDiabetesType.text = tempData["data"]["diabetes_type"].stringValue
+            txtDOB.text = tempData["data"]["dob"].stringValue
+            NoteText.text = tempData["data"]["medications"].stringValue
+            NoteText.textColor = UIColor.black
+            
+            if(tempData["data"]["gender"].stringValue == "Male")
+            {
+                MaleRadioButton()
+            }
+            else
+            {
+                FemaleRadioButton()
+            }
+            
+            KingfisherManager.shared.downloader.downloadImage(with: NSURL(string: userImgPath + tempData["data"]["profile_pic"].stringValue)! as URL, retrieveImageTask: RetrieveImageTask.empty, options: [], progressBlock: nil, completionHandler: { (image,error, imageURL, imageData) in
+                
+                    self.profileImg.image = image
+                    self.coverImg.isHidden = true
+            })
+        }
+    }
+    
+    func MaleRadioButton()
+    {
+        imgMale.image = UIImage(named: "radio-on")
+        imgMale.removeImageborder()
+        Gender = "Male"
+        imgFemale.image = nil
+        imgFemale.backgroundColor = UIColor.white
+        imgFemale.setImageborder(colorValue: UIColor.black, widthValue: 1.0, cornerRadiusValue: 10.0)
+    }
+    func FemaleRadioButton()
+    {
+        imgFemale.image = UIImage(named: "radio-on")
+        imgFemale.removeImageborder()
+        Gender = "Female"
+        imgMale.image = nil
+        imgMale.backgroundColor = UIColor.white
+        imgMale.setImageborder(colorValue: UIColor.black, widthValue: 1.0, cornerRadiusValue: 10.0)
+    }
+    
+    @IBAction func btnSave(_ sender: Any) {
+        
+        update()
+        
+    }
+    
+    func update()
+    {
+        let imgData = UIImageJPEGRepresentation(profileImg.image!, 1.0)
+        
+        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        let updateParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "full_name" : txtName.text! , "gender" : Gender , "diabetes_type" : lblDiabetesType.text! , "dob" : txtDOB.text!, "medications" : NoteText.text! ]
+        
+       
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            
+            for (key, value) in updateParameters {
+                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+            }
+            
+            if let data = imgData{
+                
+                multipartFormData.append(data, withName: "profile_pic", fileName: "image.jpg", mimeType: "image/jpg")
+                
+            }
+            
+        },to: UpdateProfileAPI, encodingCompletion: { (result) in
+            
+            switch result{
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    print("Succesfully uploaded")
+                    
+                    print(response.result.value)
+                    
+                    udefault.set(response.result.value, forKey: UserData)
+                    
+                    spinnerActivity.hide(animated: true)
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    
+                    let dashBoard = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
+                    
+                    self.present(dashBoard, animated: true, completion: nil)
+                    
+                }
+            case .failure(let error):
+                print("Error in upload: \(error.localizedDescription)")
+                spinnerActivity.hide(animated: true)
+                self.showAlert(title: "Alert", message: "Error in Uploading")
+                
+            }
+            
+        })
+        
+    }
+    
+    
+    @IBAction func btnUploadnewImg(_ sender: Any) {
+        
+        var alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        var cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openCamera()
+        }
+        var gallaryAction = UIAlertAction(title: "Gallery", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openGallary()
+        }
+        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
+        {
+            UIAlertAction in
+        }
+        
+        imagePicker.delegate = self
+        alert.addAction(cameraAction)
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    func openCamera()
+    {
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera))
+        {
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        else
+        {
+            let alertWarning = UIAlertView(title:"Warning", message: "You don't have camera", delegate:nil, cancelButtonTitle:"OK", otherButtonTitles:"")
+            alertWarning.show()
+        }
+    }
+    func openGallary()
+    {
+        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.allowsEditing = false
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    
+     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+     {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            
+            //profileImg.image = image
+            
+            self.dismiss(animated: true, completion: nil)
+            let cropViewController = CropViewController(image: image)
+            cropViewController.delegate = self
+            present(cropViewController, animated: true, completion: nil)
+            
+        } else{
+            print("Something went wrong")
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion:nil)
+    }
+    func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+        
+        profileImg.image = image
+        
+        dismiss(animated: true, completion: nil)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

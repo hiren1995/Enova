@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import MBProgressHUD
 
 class SignIn: UIViewController,UITextFieldDelegate {
 
@@ -54,22 +55,13 @@ class SignIn: UIViewController,UITextFieldDelegate {
         {
             if isValidEmail(testStr: txtEmail.text!)
             {
-                let loginParameters:Parameters = ["email": txtEmail.text! , "password" : txtPassword.text! , "device_token" : "" , "device_type" : 2]
+                udefault.set(txtEmail.text!, forKey: EmailAddress)
+                udefault.set(txtPassword.text!, forKey: Password)
                 
-               
-                Alamofire.request(LoginAPI, method: .post, parameters: loginParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
-                    if(response.result.value != nil)
-                    {
-                        print(JSON(response.result.value!))
-                        
-                    }
-                })
+                print(udefault.value(forKey: EmailAddress))
+                print(udefault.value(forKey: Password))
                 
-               // let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                
-               // let dashBoard = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
-                
-               // self.present(dashBoard, animated: true, completion: nil)
+                Authentication()
             }
             else
             {
@@ -77,6 +69,58 @@ class SignIn: UIViewController,UITextFieldDelegate {
             }
         }
        
+    }
+    
+    func Authentication()
+    {
+        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        
+        let loginParameters:Parameters = ["email": txtEmail.text! , "password" : txtPassword.text! , "device_token" : "" , "device_type" : 2]
+        
+        
+        Alamofire.request(LoginAPI, method: .post, parameters: loginParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+            if(response.result.value != nil)
+            {
+                
+                print(JSON(response.result.value))
+                
+                let tempDict = JSON(response.result.value!)
+                
+                //print(tempDict["data"]["user_id"])
+                
+                if(tempDict["status"] == "success")
+                {
+                    udefault.set(true, forKey: isLogin)
+                    
+                    udefault.set(tempDict["data"]["user_id"].intValue, forKey: UserId)
+                    
+                    udefault.set(response.result.value, forKey: UserData)
+                   
+                    spinnerActivity.hide(animated: true)
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    
+                    let dashBoard = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
+                    
+                    self.present(dashBoard, animated: true, completion: nil)
+                }
+                else if(tempDict["status"] == "error")
+                {
+                    spinnerActivity.hide(animated: true)
+                    self.showAlert(title: "Alert", message: "Invalid Email or Password")
+                }
+                
+            }
+            else
+            {
+                spinnerActivity.hide(animated: true)
+                self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+            }
+        })
+        
+        
+        
     }
     
     func isValidEmail(testStr:String) -> Bool {

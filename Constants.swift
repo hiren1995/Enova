@@ -12,9 +12,12 @@ import UIKit
 var MenuClicked:Bool = false
 var MealClicked:Bool = false
 var DiabetesClicked:Bool = false
-var isLogin:Bool = false
 
-var User
+
+var udefault = UserDefaults.standard
+
+
+
 
 //API
 
@@ -41,5 +44,10 @@ var AddWristAPI = "\(baseURL)/add/wrist"
 var AddForearmAPI = "\(baseURL)/add/forearm"
 
 
+// values for userdefaults...
 
-
+var UserId = "user_id"
+var isLogin = "isLogin"
+var EmailAddress = "email"
+var Password = "password"
+var UserData = "userdata"
