@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import CropViewController
+import MBProgressHUD
 
-class AddFoodLogView: UIViewController,UITextViewDelegate {
+class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CropViewControllerDelegate {
 
     
     @IBOutlet var HeaderView: UIView!
@@ -21,11 +25,16 @@ class AddFoodLogView: UIViewController,UITextViewDelegate {
     
     @IBOutlet weak var btnMealChoose: UIButton!
     
-    
     @IBOutlet weak var lblFoodLabel: UILabel!
     
-    
     @IBOutlet weak var MealSelectView: UIView!
+    
+    var imagePicker = UIImagePickerController()
+    
+    @IBOutlet weak var foodImg: UIImageView!
+    
+    @IBOutlet weak var coverImg: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -153,7 +162,149 @@ class AddFoodLogView: UIViewController,UITextViewDelegate {
     
     //-------------------------------------------------------- End -----------------------------------------------------------------------------------------
     
+    @IBAction func addFoodLog(_ sender: Any) {
+        
+        if(foodImg.image == nil)
+        {
+            self.showAlert(title: "Alert", message: "Please Select Food Image")
+        }
+        else if(NoteText.text == nil)
+        {
+            self.showAlert(title: "Alert", message: "Please Enter Note for Food")
+        }
+        else
+        {
+            let imgData = UIImageJPEGRepresentation(foodImg.image!, 1.0)
+            
+            let timeStamp = String(Date().currentTimeStamp)
+            
+            let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+            
+            let updateParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "food_category" : lblFoodLabel.text! , "timestamp" : timeStamp , "food_note" : NoteText.text]
+            
+            
+            Alamofire.upload(multipartFormData: { (multipartFormData) in
+                
+                for (key, value) in updateParameters {
+                    multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+                }
+                
+                if let data = imgData{
+                    
+                    multipartFormData.append(data, withName: "food_image", fileName: "image.jpg", mimeType: "image/jpg")
+                    
+                }
+                
+            },to: AddFoodLogAPI, encodingCompletion: { (result) in
+                
+                switch result{
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        print("Succesfully uploaded")
+                        
+                        print(response.result.value)
+                        
+                        udefault.set(response.result.value, forKey: UserData)
+                        
+                        spinnerActivity.hide(animated: true)
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        
+                        let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
+                        
+                        self.present(foodLogView, animated: true, completion: nil)
+                        
+                    }
+                case .failure(let error):
+                    print("Error in upload: \(error.localizedDescription)")
+                    spinnerActivity.hide(animated: true)
+                    self.showAlert(title: "Alert", message: "Error in Uploading")
+                    
+                }
+                
+            })
+        }
+        
+    }
     
+    
+    @IBAction func btnAddFoodImg(_ sender: Any) {
+        
+        var alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        var cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openCamera()
+        }
+        var gallaryAction = UIAlertAction(title: "Gallery", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openGallary()
+        }
+        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
+        {
+            UIAlertAction in
+        }
+        
+        imagePicker.delegate = self
+        alert.addAction(cameraAction)
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func openCamera()
+    {
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera))
+        {
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        else
+        {
+            let alertWarning = UIAlertView(title:"Warning", message: "You don't have camera", delegate:nil, cancelButtonTitle:"OK", otherButtonTitles:"")
+            alertWarning.show()
+        }
+    }
+    func openGallary()
+    {
+        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.allowsEditing = false
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            
+            //profileImg.image = image
+            
+            self.dismiss(animated: true, completion: nil)
+            let cropViewController = CropViewController(image: image)
+            cropViewController.delegate = self
+            present(cropViewController, animated: true, completion: nil)
+            
+        } else{
+            print("Something went wrong")
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion:nil)
+    }
+    func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+        
+        foodImg.image = image
+        coverImg.isHidden = true
+        
+        dismiss(animated: true, completion: nil)
+    }
     
     
     override func didReceiveMemoryWarning() {

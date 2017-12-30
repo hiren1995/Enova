@@ -43,8 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         {
                             udefault.set(response.result.value, forKey: UserData)
                             
-                            let initialView = self.storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
-                            self.window?.rootViewController = initialView
+                            //let initialView = self.storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
+                            //self.window?.rootViewController = initialView
                         }
                         else if(tempDict["status"] == "error")
                         {

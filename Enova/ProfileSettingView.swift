@@ -241,9 +241,17 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
             }
             
             KingfisherManager.shared.downloader.downloadImage(with: NSURL(string: userImgPath + tempData["data"]["profile_pic"].stringValue)! as URL, retrieveImageTask: RetrieveImageTask.empty, options: [], progressBlock: nil, completionHandler: { (image,error, imageURL, imageData) in
-                
+               
+                if(error == nil)
+                {
                     self.profileImg.image = image
                     self.coverImg.isHidden = true
+                }
+                else
+                {
+                    self.showAlert(title: "Alert", message: "Something Went Wrong while downloading Profile Image")
+                }
+               
             })
         }
     }
@@ -275,53 +283,69 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
     
     func update()
     {
-        let imgData = UIImageJPEGRepresentation(profileImg.image!, 1.0)
-        
-        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
-        
-        let updateParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "full_name" : txtName.text! , "gender" : Gender , "diabetes_type" : lblDiabetesType.text! , "dob" : txtDOB.text!, "medications" : NoteText.text! ]
-        
-       
-        Alamofire.upload(multipartFormData: { (multipartFormData) in
+        if (txtName.text == nil)
+        {
+            self.showAlert(title: "Alert", message: "Name Field cannot be empty")
+        }
+        else if (NoteText.text == nil)
+        {
+            self.showAlert(title: "Alert", message: "Please Enter Medications")
+        }
+        else if(profileImg.image == nil)
+        {
+            self.showAlert(title: "Alert", message: "Please Select Profile Image")
+        }
+        else
+        {
+            let imgData = UIImageJPEGRepresentation(profileImg.image!, 1.0)
             
-            for (key, value) in updateParameters {
-                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
-            }
+            let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
             
-            if let data = imgData{
+            let updateParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "full_name" : txtName.text! , "gender" : Gender , "diabetes_type" : lblDiabetesType.text! , "dob" : txtDOB.text!, "medications" : NoteText.text! ]
+            
+            
+            Alamofire.upload(multipartFormData: { (multipartFormData) in
                 
-                multipartFormData.append(data, withName: "profile_pic", fileName: "image.jpg", mimeType: "image/jpg")
+                for (key, value) in updateParameters {
+                    multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+                }
                 
-            }
-            
-        },to: UpdateProfileAPI, encodingCompletion: { (result) in
-            
-            switch result{
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    print("Succesfully uploaded")
+                if let data = imgData{
                     
-                    print(response.result.value)
-                    
-                    udefault.set(response.result.value, forKey: UserData)
-                    
-                    spinnerActivity.hide(animated: true)
-                    
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    
-                    let dashBoard = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
-                    
-                    self.present(dashBoard, animated: true, completion: nil)
+                    multipartFormData.append(data, withName: "profile_pic", fileName: "image.jpg", mimeType: "image/jpg")
                     
                 }
-            case .failure(let error):
-                print("Error in upload: \(error.localizedDescription)")
-                spinnerActivity.hide(animated: true)
-                self.showAlert(title: "Alert", message: "Error in Uploading")
                 
-            }
-            
-        })
+            },to: UpdateProfileAPI, encodingCompletion: { (result) in
+                
+                switch result{
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        print("Succesfully uploaded")
+                        
+                        print(response.result.value)
+                        
+                        udefault.set(response.result.value, forKey: UserData)
+                        
+                        spinnerActivity.hide(animated: true)
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        
+                        let dashBoard = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
+                        
+                        self.present(dashBoard, animated: true, completion: nil)
+                        
+                    }
+                case .failure(let error):
+                    print("Error in upload: \(error.localizedDescription)")
+                    spinnerActivity.hide(animated: true)
+                    self.showAlert(title: "Alert", message: "Error in Uploading")
+                    
+                }
+                
+            })
+        }
+        
         
     }
     

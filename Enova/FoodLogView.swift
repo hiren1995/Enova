@@ -11,6 +11,15 @@ import Alamofire
 import SwiftyJSON
 import MBProgressHUD
 
+var foodId_global:String? = nil
+var foodNote_global:String? = nil
+var foodImage_global:String? = nil
+var foodCategory_global:String? = nil
+var foodCreatedAt_global:String? = nil
+var foodTimeStamp_global:String? = nil
+var foodDeleted_global:String? = nil
+
+
 class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     
@@ -47,7 +56,28 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         foodLogTableView.allowsSelection = false
         
-        loadFoodLogs()
+        let currentDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let to_date = formatter.string(from: currentDate)
+        
+        //print(result+"23:59:59")
+        
+        let subtractDays = -7
+        var dateComponent = DateComponents()
+        dateComponent.day = subtractDays
+        
+        let temp = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+        let from_date = formatter.string(from: temp!)
+        
+        
+        
+        txtFrom.text = from_date
+        txtTo.text = to_date
+        
+        
+        
+        loadFoodLogs(From_date : from_date, To_date: to_date)
 
         // Do any additional setup after loading the view.
     }
@@ -67,12 +97,22 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         if(tempDict.count != 0)
         {
-        cell.MealType.text = tempDict["data"][indexPath.row]["food_category"].stringValue
-        cell.DateTime.text = tempDict["data"][indexPath.row]["created_at"].stringValue
+            cell.MealType.text = tempDict["data"][indexPath.row]["food_category"].stringValue
+            
+            let dateFormatter1 = DateFormatter()
+            dateFormatter1.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            let stringtodate = dateFormatter1.date(from: tempDict["data"][indexPath.row]["created_at"].stringValue)
+            
+            cell.DateTime.text = dateLanguageFormat(DateValue: stringtodate!)
+            
+            //cell.DateTime.text = tempDict["data"][indexPath.row]["created_at"].stringValue
         }
         
         cell.btnView.addTarget(self, action: #selector(openFoodLogInfo), for: .touchUpInside)
         cell.btnViewbig.addTarget(self, action: #selector(openFoodLogInfo), for: .touchUpInside)
+        cell.btnView.tag = indexPath.row
+        cell.btnViewbig.tag = indexPath.row
         
         return cell
     }
@@ -83,7 +123,7 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return CGFloat(20)
+        return CGFloat(10)
     }
     
     @IBAction func btnMenuPress(_ sender: Any) {
@@ -104,8 +144,31 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
     }
     
-    @objc func openFoodLogInfo()
+    @objc func openFoodLogInfo(_sender:UIButton)
     {
+        let i : Int = _sender.tag
+        
+        print(i)
+        
+        print(tempDict["data"][i])
+        print(tempDict["data"][i]["food_note"])
+        
+        
+        foodId_global = tempDict["data"][i]["id"].stringValue
+        foodImage_global = tempDict["data"][i]["food_image"].stringValue
+        foodCategory_global = tempDict["data"][i]["food_category"].stringValue
+        foodCreatedAt_global = tempDict["data"][i]["created_at"].stringValue
+        foodTimeStamp_global = tempDict["data"][i]["timestamp"].stringValue
+        
+        if(tempDict["data"][i]["deleted_at"] != JSON.null)
+        {
+            foodDeleted_global = tempDict["data"][i]["deleted_at"].stringValue
+        }
+        if(tempDict["data"][i]["food_note"] != JSON.null)
+        {
+            foodNote_global = tempDict["data"][i]["food_note"].stringValue
+        }
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let foodLogInfoView = storyboard.instantiateViewController(withIdentifier: "foodLogInfoView") as! FoodLogInfoView
@@ -133,6 +196,8 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         txtFrom.text = convertDateFormater(dateFormatter.string(from: sender.date))
         
+        compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
+        
     }
     
     //---------------------------------------------- End ------------------------------------------------------------------------------
@@ -154,6 +219,8 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         dateFormatter.dateFormat = "dd-MM-yyyy"
         
         txtTo.text = convertDateFormater(dateFormatter.string(from: sender.date))
+        
+         compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
         
     }
     //---------------------------------------------- End ------------------------------------------------------------------------------
@@ -195,37 +262,32 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @IBAction func btnBack(_ sender: UIButton) {
         
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let dashBoard = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
+        
+        self.present(dashBoard, animated: true, completion: nil)
     }
     
     @IBAction func btnBack2(_ sender: UIButton) {
         
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let dashBoard = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
+        
+        self.present(dashBoard, animated: true, completion: nil)
     }
     
-    func loadFoodLogs()
+    
+    func loadFoodLogs(From_date : String , To_date : String)
     {
-        let currentDate = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        let to_date = formatter.string(from: currentDate)
-        
-        //print(result+"23:59:59")
-        
-        let subtractDays = -7
-        var dateComponent = DateComponents()
-        dateComponent.day = subtractDays
-        
-        let temp = Calendar.current.date(byAdding: dateComponent, to: currentDate)
-        let from_date = formatter.string(from: temp!)
-        
         let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        txtFrom.text = from_date
-        txtTo.text = to_date
-        
-        
-        let foodLogParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "from_date" : from_date , "to_date" : to_date+"23:59:59"]
+        let foodLogParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "from_date" : From_date , "to_date" : To_date+"23:59:59"]
         
         print(foodLogParameters)
         
@@ -269,6 +331,26 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     }
 
+    
+    func compareDates(From_date: String , To_date : String)
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date_from = dateFormatter.date(from: From_date)
+        let date_to = dateFormatter.date(from: To_date)
+        
+        if(date_from! < date_to!)
+        {
+            
+            loadFoodLogs(From_date: dateFormatter.string(from: date_from!), To_date: dateFormatter.string(from: date_to!))
+        }
+        else
+        {
+            self.showAlert(title: "Invaild Input", message: "From Date cannot be greater than To Date")
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

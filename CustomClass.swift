@@ -184,6 +184,11 @@ extension UIImageView{
     }
     
 }
+extension Date {
+    var currentTimeStamp: UInt64 {
+        return UInt64((self.timeIntervalSince1970 + 62_135_596_800) * 10_000_000)
+    }
+}
 
 func convertDateFormater(_ date: String) -> String
 {
@@ -195,3 +200,16 @@ func convertDateFormater(_ date: String) -> String
     return  dateFormatter.string(from: date!)
     
 }
+
+func dateLanguageFormat(DateValue : Date) -> String
+{
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateStyle = .medium
+    dateFormatter.doesRelativeDateFormatting = true
+    
+    let timeFormatter = DateFormatter()
+    timeFormatter.dateFormat = "h:mm a"
+    
+    return "\(dateFormatter.string(from: DateValue)), \(timeFormatter.string(from: DateValue))"
+}
+
