@@ -8,6 +8,9 @@
 
 import UIKit
 import Charts
+import Alamofire
+import MBProgressHUD
+import SwiftyJSON
 
 
 var  KetonesValues:[Double] = []
@@ -40,7 +43,7 @@ class KetonesView: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var txtTo: UITextField!
     
-    
+    var tempDict : JSON = JSON.null
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,15 +58,37 @@ class KetonesView: UIViewController,UITextFieldDelegate {
         
         txtNewValue.delegate = self
         
-        days = [1,2,3,4,5,6,7]
-        KetonesValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0,17.0]
+        //days = [1,2,3,4,5,6,7]
+        //KetonesValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0,17.0]
         
-        setChart(dataPoints: days,values: KetonesValues)
+        //setChart(dataPoints: days,values: KetonesValues)
         
-        lblHighKetones.text = String(describing: KetonesValues.max()!)
-        lblLowKetones.text = String(describing: KetonesValues.min()!)
+        //lblHighKetones.text = String(describing: KetonesValues.max()!)
+        //lblLowKetones.text = String(describing: KetonesValues.min()!)
         
         addDoneButtonOnDatePicker()
+        
+        let currentDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let to_date = formatter.string(from: currentDate)
+        
+        //print(result+"23:59:59")
+        
+        let subtractDays = -7
+        var dateComponent = DateComponents()
+        dateComponent.day = subtractDays
+        
+        let temp = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+        let from_date = formatter.string(from: temp!)
+        
+        
+        
+        txtFrom.text = from_date
+        txtTo.text = to_date
+        
+        loadKetonesData(From_date : from_date, To_date: to_date)
+        
 
         // Do any additional setup after loading the view.
     }
@@ -84,30 +109,38 @@ class KetonesView: UIViewController,UITextFieldDelegate {
         
         var dataEntries: [ChartDataEntry] = []
         
-        for i in 0...dataPoints.count - 1
+        let userData = JSON(udefault.value(forKey: UserData)!)
+        
+        if(dataPoints.count != 0)
         {
-            
-            if(values[i] >= 12.0)
+            for i in 0...dataPoints.count - 1
             {
-                circleColors.append(NSUIColor.red)
-            }
-            else
-            {
-                circleColors.append(NSUIColor.green)
+                
+                if(values[i] >= userData["data"]["ketones"].doubleValue)
+                {
+                    circleColors.append(NSUIColor.red)
+                }
+                else
+                {
+                    circleColors.append(NSUIColor.green)
+                    
+                }
+                
+                let dataEntry = ChartDataEntry(x: Double(i), y: values[i] )
+                
+                dataEntries.append(dataEntry)
+                
                 
             }
             
-            let dataEntry = ChartDataEntry(x: Double(i), y: values[i] )
+            let line1 = LineChartDataSet(values: dataEntries, label: "Ketones")
             
-            dataEntries.append(dataEntry)
+            
+            lineChatView.MakeLineGraph(line: line1, circleColors: circleColors, labelText: "Ketones Graph")   // for Make Graph method check the CustomClass.swift
             
             
         }
         
-        let line1 = LineChartDataSet(values: dataEntries, label: "Ketones")
-        
-        
-        lineChatView.MakeLineGraph(line: line1, circleColors: circleColors, labelText: "Ketones Graph")   // for Make Graph method check the CustomClass.swift
         
     }
     
@@ -132,19 +165,62 @@ class KetonesView: UIViewController,UITextFieldDelegate {
         
         self.view.endEditing(true)
         
+        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        days = []
+        KetonesValues = []
+        
+        self.setChart(dataPoints: days,values: KetonesValues)
+        
+        
         if(txtNewValue.text == "")
         {
             self.showAlert(title: "Alert", message: "Please Enter Ketones Level")
         }
         else
         {
-            days.append(days.count+1)
-            KetonesValues.append(Double(txtNewValue.text!)!)
-            newDataAddView.isHidden = true
-            AlphaView.isHidden = true
-            setChart(dataPoints: days,values: KetonesValues)
-            lblHighKetones.text = String(describing: KetonesValues.max()!)
-            lblLowKetones.text = String(describing: KetonesValues.min()!)
+            let timeStamp = String(Date().currentTimeStamp)
+            
+            let addGlucoseParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "ketones" : txtNewValue.text! , "timestamp" : timeStamp]
+            
+            Alamofire.request(AddKetonesAPI, method: .post, parameters: addGlucoseParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+                if(response.result.value != nil)
+                {
+                    
+                    print(JSON(response.result.value))
+                    
+                    self.tempDict = JSON(response.result.value!)
+                    
+                    //print(tempDict["data"]["user_id"])
+                    
+                    if(self.tempDict["status"] == "success")
+                    {
+                        self.newDataAddView.isHidden = true
+                        self.AlphaView.isHidden = true
+                        
+                        self.lblHighKetones.text = self.tempDict["high_ketones"].stringValue
+                        self.lblLowKetones.text = self.tempDict["low_ketones"].stringValue
+                        
+                        spinnerActivity.hide(animated: true)
+                        
+                        self.viewDidLoad()
+                        
+                    }
+                    else if(self.tempDict["status"] == "error")
+                    {
+                        spinnerActivity.hide(animated: true)
+                        self.showAlert(title: "Alert", message: "Something went Wrong")
+                    }
+                    
+                    
+                }
+                else
+                {
+                    spinnerActivity.hide(animated: true)
+                    self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+                }
+            })
+            
         }
     }
     
@@ -164,7 +240,9 @@ class KetonesView: UIViewController,UITextFieldDelegate {
         var dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
         
-        txtFrom.text = dateFormatter.string(from: sender.date)
+        txtFrom.text = convertDateFormater(dateFormatter.string(from: sender.date))
+        
+        compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
         
     }
     
@@ -186,7 +264,9 @@ class KetonesView: UIViewController,UITextFieldDelegate {
         var dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
         
-        txtTo.text = dateFormatter.string(from: sender.date)
+        txtTo.text = convertDateFormater(dateFormatter.string(from: sender.date))
+        
+        compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
         
     }
     //---------------------------------------------- End ------------------------------------------------------------------------------
@@ -279,6 +359,90 @@ class KetonesView: UIViewController,UITextFieldDelegate {
         
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func loadKetonesData(From_date : String , To_date : String)
+    {
+        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        let KetonesParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "from_date" : From_date , "to_date" : To_date+"23:59:59"]
+        
+        print(KetonesParameters)
+        
+        days = []
+        KetonesValues = []
+        
+        self.setChart(dataPoints: days,values: KetonesValues)
+        
+        Alamofire.request(GetKetonesAPI, method: .post, parameters: KetonesParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+            if(response.result.value != nil)
+            {
+                
+                print(JSON(response.result.value))
+                
+                self.tempDict = JSON(response.result.value!)
+                
+                //print(tempDict["data"]["user_id"])
+                
+                if(self.tempDict["status"] == "success")
+                {
+                    self.lblHighKetones.text = self.tempDict["high_ketones"].stringValue
+                    self.lblLowKetones.text = self.tempDict["low_ketones"].stringValue
+                    
+                    for var i in 0...self.tempDict["data"].count-1
+                    {
+                        days.insert(i+1, at: i)
+                        KetonesValues.insert(self.tempDict["data"][i]["ketones"].doubleValue, at: i)
+                        
+                    }
+                    
+                    
+                    self.setChart(dataPoints: days,values: KetonesValues)
+                    
+                    spinnerActivity.hide(animated: true)
+                }
+                else if(self.tempDict["status"] == "error")
+                {
+                    spinnerActivity.hide(animated: true)
+                    self.showAlert(title: "Alert", message: "Something went Wrong")
+                }
+                
+                
+            }
+            else
+            {
+                spinnerActivity.hide(animated: true)
+                self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+            }
+        })
+        
+        
+    }
+    
+    func compareDates(From_date: String , To_date : String)
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date_from = dateFormatter.date(from: From_date)
+        let date_to = dateFormatter.date(from: To_date)
+        
+        print(From_date)
+        print(To_date)
+        
+        if(date_from! < date_to!)
+        {
+            days = []
+            KetonesValues = []
+            
+            self.setChart(dataPoints: days,values: KetonesValues)
+            
+            loadKetonesData(From_date: dateFormatter.string(from: date_from!), To_date: dateFormatter.string(from: date_to!))
+        }
+        else
+        {
+            self.showAlert(title: "Invaild Input", message: "From Date cannot be greater than To Date")
+        }
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

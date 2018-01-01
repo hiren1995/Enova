@@ -58,3 +58,8 @@ var FoodLogSelectedCategory = "foodlogselectedcategory"
 var FoodLogSelectedTime = "foodlogselectedtime"
 var FoodLogSelectedTimeStamp = "foodlogselectedtimestamp"
 var FoodLogSelectedDeletedAt = "foodlogselecteddeletedat"
+var GlucoseConditionValue = "glucoseConditionValue"
+var KetonesConditionValue = "ketonesConditionValue"
+var WeightConditionValue = "weightConditionValue"
+
+

@@ -144,12 +144,13 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         
         var dataEntries: [ChartDataEntry] = []
        
+        let userData = JSON(udefault.value(forKey: UserData)!)
+        
         if(dataPoints.count != 0)
         {
             for i in 0...dataPoints.count - 1
             {
-                
-                if(values[i] >= 90.0)
+                if(values[i] >= userData["data"]["glucose"].doubleValue)
                 {
                     circleColors.append(NSUIColor.red)
                 }
@@ -408,6 +409,11 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         let glucoseParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "from_date" : From_date , "to_date" : To_date+"23:59:59"]
         
         print(glucoseParameters)
+        
+        days = []
+        GlucoseValues = []
+        
+        self.setChart(dataPoints: days,values: GlucoseValues)
         
         
         Alamofire.request(GetGlucoseAPI, method: .post, parameters: glucoseParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
