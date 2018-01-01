@@ -8,6 +8,9 @@
 
 import UIKit
 import Charts
+import  Alamofire
+import SwiftyJSON
+import MBProgressHUD
 
 var  days:[Int] = []
 var  GlucoseValues:[Double] = []
@@ -40,7 +43,7 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var txtTo: UITextField!
     
-    
+    var tempDict : JSON = JSON.null
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,16 +59,38 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         
         txtNewValue.delegate = self
         
-        days = [1,2,3,4,5,6,7]
-        GlucoseValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0,17.0]
+        //days = [1,2,3,4,5,6,7]
+        //GlucoseValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0,17.0]
         
-        setChart(dataPoints: days,values: GlucoseValues)
+        //setChart(dataPoints: days,values: GlucoseValues)
         
-        lblHighGlucose.text = String(describing: GlucoseValues.max()!)
-        lblLowGlucose.text = String(describing: GlucoseValues.min()!)
+        //lblHighGlucose.text = String(describing: GlucoseValues.max()!)
+        //lblLowGlucose.text = String(describing: GlucoseValues.min()!)
         
         addDoneButtonOnDatePicker()
         
+        let currentDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let to_date = formatter.string(from: currentDate)
+        
+        //print(result+"23:59:59")
+        
+        let subtractDays = -7
+        var dateComponent = DateComponents()
+        dateComponent.day = subtractDays
+        
+        let temp = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+        let from_date = formatter.string(from: temp!)
+        
+        
+        
+        txtFrom.text = from_date
+        txtTo.text = to_date
+        
+        loadGlucoseData(From_date : from_date, To_date: to_date)
+        
+       
         // Do any additional setup after loading the view.
     }
     
@@ -78,7 +103,7 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         
     }
     
-    
+    /*
     func setChart(dataPoints: [Int] , values: [Double])
     {
         var circleColors: [NSUIColor] = []
@@ -111,6 +136,44 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         lineChatView.MakeLineGraph(line: line1, circleColors: circleColors, labelText: "Glucose Graph")   // for Make Graph method check the CustomClass.swift
         
     }
+    */
+    
+    func setChart(dataPoints: [Int] , values: [Double])
+    {
+        var circleColors: [NSUIColor] = []
+        
+        var dataEntries: [ChartDataEntry] = []
+       
+        if(dataPoints.count != 0)
+        {
+            for i in 0...dataPoints.count - 1
+            {
+                
+                if(values[i] >= 90.0)
+                {
+                    circleColors.append(NSUIColor.red)
+                }
+                else
+                {
+                    circleColors.append(NSUIColor.green)
+                    
+                }
+                
+                let dataEntry = ChartDataEntry(x: Double(i), y: values[i] )
+                
+                dataEntries.append(dataEntry)
+                
+                
+            }
+            
+            let line1 = LineChartDataSet(values: dataEntries, label: "Glucose")
+            
+            
+            lineChatView.MakeLineGraph(line: line1, circleColors: circleColors, labelText: "Glucose Graph")   // for Make Graph method check the CustomClass.swift
+            
+        }
+        
+    }
 
     @IBAction func btnAdd(_ sender: Any) {
         
@@ -130,8 +193,16 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func btnSave(_ sender: Any) {
-        
+       
         self.view.endEditing(true)
+        
+        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        days = []
+        GlucoseValues = []
+        
+        self.setChart(dataPoints: days,values: GlucoseValues)
+       
         
         if(txtNewValue.text == "")
         {
@@ -139,13 +210,57 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         }
         else
         {
-            days.append(days.count+1)
-            GlucoseValues.append(Double(txtNewValue.text!)!)
-            newDataAddView.isHidden = true
-            AlphaView.isHidden = true
-            setChart(dataPoints: days,values: GlucoseValues)
-            lblHighGlucose.text = String(describing: GlucoseValues.max()!)
-            lblLowGlucose.text = String(describing: GlucoseValues.min()!)
+           // days.append(days.count+1)
+            //GlucoseValues.append(Double(txtNewValue.text!)!)
+            //newDataAddView.isHidden = true
+            //AlphaView.isHidden = true
+            //setChart(dataPoints: days,values: GlucoseValues)
+            //lblHighGlucose.text = String(describing: GlucoseValues.max()!)
+            //lblLowGlucose.text = String(describing: GlucoseValues.min()!)
+            
+            let timeStamp = String(Date().currentTimeStamp)
+            
+            let addGlucoseParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "glucose" : txtNewValue.text! , "timestamp" : timeStamp]
+            
+            Alamofire.request(AddGlucoseAPI, method: .post, parameters: addGlucoseParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+                if(response.result.value != nil)
+                {
+                    
+                    print(JSON(response.result.value))
+                    
+                    self.tempDict = JSON(response.result.value!)
+                    
+                    //print(tempDict["data"]["user_id"])
+                    
+                    if(self.tempDict["status"] == "success")
+                    {
+                        self.newDataAddView.isHidden = true
+                        self.AlphaView.isHidden = true
+                        
+                        self.lblHighGlucose.text = self.tempDict["max_glucose"].stringValue
+                        self.lblLowGlucose.text = self.tempDict["min_glucose"].stringValue
+                        
+                        spinnerActivity.hide(animated: true)
+                        
+                        self.viewDidLoad()
+                        
+                    }
+                    else if(self.tempDict["status"] == "error")
+                    {
+                        spinnerActivity.hide(animated: true)
+                        self.showAlert(title: "Alert", message: "Something went Wrong")
+                    }
+                    
+                    
+                }
+                else
+                {
+                    spinnerActivity.hide(animated: true)
+                    self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+                }
+            })
+            
+            
         }
     }
    
@@ -165,7 +280,9 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         var dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
         
-        txtFrom.text = dateFormatter.string(from: sender.date)
+        txtFrom.text = convertDateFormater(dateFormatter.string(from: sender.date))
+        
+        compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
         
     }
    
@@ -187,7 +304,9 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         var dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
         
-        txtTo.text = dateFormatter.string(from: sender.date)
+        txtTo.text = convertDateFormater(dateFormatter.string(from: sender.date))
+        
+        compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
         
     }
     //---------------------------------------------- End ------------------------------------------------------------------------------
@@ -282,6 +401,86 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func loadGlucoseData(From_date : String , To_date : String)
+    {
+        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        let glucoseParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "from_date" : From_date , "to_date" : To_date+"23:59:59"]
+        
+        print(glucoseParameters)
+        
+        
+        Alamofire.request(GetGlucoseAPI, method: .post, parameters: glucoseParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+            if(response.result.value != nil)
+            {
+                
+                print(JSON(response.result.value))
+                
+                self.tempDict = JSON(response.result.value!)
+                
+                //print(tempDict["data"]["user_id"])
+                
+                if(self.tempDict["status"] == "success")
+                {
+                    self.lblHighGlucose.text = self.tempDict["max_glucose"].stringValue
+                    self.lblLowGlucose.text = self.tempDict["min_glucose"].stringValue
+                    
+                    for var i in 0...self.tempDict["data"].count-1
+                    {
+                        days.insert(i+1, at: i)
+                        GlucoseValues.insert(self.tempDict["data"][i]["glucose"].doubleValue, at: i)
+                        
+                    }
+                    
+                   
+                    self.setChart(dataPoints: days,values: GlucoseValues)
+                    
+                    spinnerActivity.hide(animated: true)
+                }
+                else if(self.tempDict["status"] == "error")
+                {
+                    spinnerActivity.hide(animated: true)
+                    self.showAlert(title: "Alert", message: "Something went Wrong")
+                }
+                
+                
+            }
+            else
+            {
+                spinnerActivity.hide(animated: true)
+                self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+            }
+        })
+        
+        
+    }
+    
+    func compareDates(From_date: String , To_date : String)
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date_from = dateFormatter.date(from: From_date)
+        let date_to = dateFormatter.date(from: To_date)
+        
+        print(From_date)
+        print(To_date)
+        
+        if(date_from! < date_to!)
+        {
+            days = []
+            GlucoseValues = []
+         
+            self.setChart(dataPoints: days,values: GlucoseValues)
+            
+            loadGlucoseData(From_date: dateFormatter.string(from: date_from!), To_date: dateFormatter.string(from: date_to!))
+        }
+        else
+        {
+            self.showAlert(title: "Invaild Input", message: "From Date cannot be greater than To Date")
+        }
+    }
+    
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

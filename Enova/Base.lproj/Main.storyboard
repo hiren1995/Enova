@@ -2698,7 +2698,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="323" height="70"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm8-AJ-5lp">
-                                                                    <rect key="frame" x="15" y="25.5" width="58" height="21"/>
+                                                                    <rect key="frame" x="15" y="24.5" width="58" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="iNi-pu-Vi7"/>
                                                                         <constraint firstAttribute="width" constant="58" id="rEY-Mj-uXe"/>

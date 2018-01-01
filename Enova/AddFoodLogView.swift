@@ -174,7 +174,7 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
         }
         else
         {
-            let imgData = UIImageJPEGRepresentation(foodImg.image!, 1.0)
+            let imgData = UIImageJPEGRepresentation(foodImg.image!, 0.5)
             
             let timeStamp = String(Date().currentTimeStamp)
             

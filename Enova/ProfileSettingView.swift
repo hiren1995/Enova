@@ -297,7 +297,7 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
         }
         else
         {
-            let imgData = UIImageJPEGRepresentation(profileImg.image!, 1.0)
+            let imgData = UIImageJPEGRepresentation(profileImg.image!, 0.5)
             
             let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
             
