@@ -124,12 +124,20 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
     
     @IBAction func btnBack(_ sender: UIButton) {
         
-        self.dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
+        
+        self.present(foodLogView, animated: true, completion: nil)
     }
     
     @IBAction func btnBack2(_ sender: UIButton) {
         
-        self.dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
+        
+        self.present(foodLogView, animated: true, completion: nil)
     }
 
     
@@ -174,6 +182,7 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
         }
         else
         {
+            
             let imgData = UIImageJPEGRepresentation(foodImg.image!, 0.5)
             
             let timeStamp = String(Date().currentTimeStamp)
