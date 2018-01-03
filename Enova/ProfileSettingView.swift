@@ -63,6 +63,8 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
         imgFemale.backgroundColor = UIColor.white
         imgFemale.setImageborder(colorValue: UIColor.black, widthValue: 1.0, cornerRadiusValue: 10.0)
         
+        profileImg.setImageborder(colorValue: UIColor.gray, widthValue: 1.0, cornerRadiusValue: 5.0)
+        
         addDoneButtonOnKeyboard()
         
         loadUserData()
@@ -71,9 +73,9 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
     }
 
     @IBAction func btnMenuPress(_ sender: Any) {
-        
+        /*
         MenuView.menuClicked()
-        
+        */
     }
     
     @IBAction func btnDiabetesPress(_ sender: Any) {

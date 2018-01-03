@@ -168,9 +168,7 @@ extension UIButton{
 
 extension UIImageView{
     func setImageborder(colorValue: UIColor,widthValue: CGFloat,cornerRadiusValue : CGFloat) {
-        
-        
-        
+       
         self.layer.borderColor = colorValue.cgColor
         self.layer.borderWidth = widthValue
         self.layer.cornerRadius = cornerRadiusValue

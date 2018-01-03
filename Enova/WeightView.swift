@@ -93,9 +93,9 @@ class WeightView: UIViewController,UITextFieldDelegate {
     
     
     @IBAction func btnMenuPress(_ sender: Any) {
-        
+        /*
         MenuView.menuClicked()
-        
+        */
         
     }
     
@@ -119,7 +119,7 @@ class WeightView: UIViewController,UITextFieldDelegate {
                 }
                 else
                 {
-                    circleColors.append(NSUIColor.green)
+                    circleColors.append(NSUIColor.init(red: 50/255, green: 153/255, blue: 50/255, alpha: 1.0))
                     
                 }
                 

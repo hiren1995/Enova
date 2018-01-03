@@ -127,9 +127,9 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     @IBAction func btnMenuPress(_ sender: Any) {
-        
+        /*
         MenuView.menuClicked()
-        
+        */
         
     }
     

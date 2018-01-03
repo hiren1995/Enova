@@ -47,15 +47,17 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
         MealSelectView.isHidden = true
         MealSelectView.ShadowMealView()
         
+        foodImg.setImageborder(colorValue: UIColor.gray, widthValue: 1.0, cornerRadiusValue: 5.0)
+        
         addDoneButtonOnKeyboard()
         
         // Do any additional setup after loading the view.
     }
     
     @IBAction func btnMenuPress(_ sender: Any) {
-        
+        /*
         MenuView.menuClicked()
-        
+        */
     }
     
     

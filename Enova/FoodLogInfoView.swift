@@ -42,15 +42,17 @@ class FoodLogInfoView: UIViewController {
         NoteView.setborder(colorValue: UIColor.lightGray)
         NoteView.roundCorners(value: 5)
         
+        foodImg.setImageborder(colorValue: UIColor.gray, widthValue: 1.0, cornerRadiusValue: 5.0)
+        
         loadData()
         
         // Do any additional setup after loading the view.
     }
     
     @IBAction func btnMenuPress(_ sender: Any) {
-        
+        /*
         MenuView.menuClicked()
-        
+        */
     }
     
     @IBAction func btnBack(_ sender: UIButton) {
