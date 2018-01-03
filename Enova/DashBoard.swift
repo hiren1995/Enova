@@ -97,6 +97,36 @@ class DashBoard: UIViewController{
         self.present(profileSettingView, animated: true, completion: nil)
     }
     
+    @IBAction func btnLogoutPress(_ sender: Any) {
+        
+        let LogoutAlert = UIAlertController(title: "Logout", message: "Are You Sure You Want To Logout.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        LogoutAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            
+            udefault.set(false, forKey: isLogin)
+            
+            udefault.removeObject(forKey: UserId)
+            udefault.removeObject(forKey: EmailAddress)
+            udefault.removeObject(forKey: Password)
+            udefault.removeObject(forKey: UserData)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let signIn = storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
+            
+            self.present(signIn, animated: true, completion: nil)
+            
+        }))
+        
+        LogoutAlert.addAction(UIAlertAction(title: "NO", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+            print("Logout Cancelled")
+            
+        }))
+        
+        present(LogoutAlert, animated: true, completion: nil)
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
