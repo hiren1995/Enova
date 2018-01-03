@@ -94,8 +94,6 @@ class FoodLogInfoView: UIViewController {
         lblDate.text = tempDateArray[0]
         lblTime.text = tempDateArray[1]
         
-        
-        
         KingfisherManager.shared.downloader.downloadImage(with: NSURL(string: foodImgPath + foodImage_global!)! as URL, retrieveImageTask: RetrieveImageTask.empty, options: [], progressBlock: nil, completionHandler: { (image,error, imageURL, imageData) in
             
             if(error == nil)

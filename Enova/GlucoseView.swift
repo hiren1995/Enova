@@ -21,23 +21,17 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
     
     @IBOutlet var MenuView: UIView!
     
-    
     @IBOutlet weak var newDataAddView: UIView!
     
     @IBOutlet weak var AlphaView: UIView!
     
-    
     @IBOutlet weak var lineChatView: LineChartView!
-    
     
     @IBOutlet weak var txtNewValue: UITextField!
     
-    
     @IBOutlet weak var lblHighGlucose: UILabel!
     
-    
     @IBOutlet weak var lblLowGlucose: UILabel!
-    
     
     @IBOutlet weak var txtFrom: UITextField!
     
