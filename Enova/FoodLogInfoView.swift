@@ -44,6 +44,9 @@ class FoodLogInfoView: UIViewController {
         
         foodImg.setImageborder(colorValue: UIColor.gray, widthValue: 1.0, cornerRadiusValue: 5.0)
         
+        lblDate.isHidden = true
+        lblTime.isHidden = true
+        
         loadData()
         
         // Do any additional setup after loading the view.
