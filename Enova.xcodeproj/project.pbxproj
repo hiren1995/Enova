@@ -123,12 +123,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D3D5DAD1FFE32DF00141D81 /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HTML;
+			sourceTree = "<group>";
+		};
+		2D3D5DAE1FFE331400141D81 /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2DEB27C71FEB8DE100D679FA /* CustomClass.swift */,
+				2DEB27C51FEB8B1900D679FA /* Constants.swift */,
+				2D307ABC1FF4DD41001A06B1 /* Reachability.swift */,
+			);
+			path = "Custom Classes";
+			sourceTree = "<group>";
+		};
 		2D8974F41FDFEDA30031EF45 = {
 			isa = PBXGroup;
 			children = (
-				2DEB27C51FEB8B1900D679FA /* Constants.swift */,
-				2DEB27C71FEB8DE100D679FA /* CustomClass.swift */,
-				2D307ABC1FF4DD41001A06B1 /* Reachability.swift */,
+				2D3D5DAE1FFE331400141D81 /* Custom Classes */,
+				2D3D5DAD1FFE32DF00141D81 /* HTML */,
 				2D8974FF1FDFEDA40031EF45 /* Enova */,
 				2D8975141FDFEDA40031EF45 /* EnovaTests */,
 				2D89751F1FDFEDA40031EF45 /* EnovaUITests */,
