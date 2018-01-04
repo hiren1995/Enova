@@ -21,9 +21,9 @@ var udefault = UserDefaults.standard
 
 //API
 
-var baseURL = "https://enovawellness.com/api"
-var userImgPath = "https://enovawellness.com/upload/user/"
-var foodImgPath = "https://enovawellness.com/upload/food/"
+var baseURL = "https://enovawellness.com/api/api/"
+var userImgPath = "https://enovawellness.com/api/upload/user/"
+var foodImgPath = "https://enovawellness.com/api/upload/food/"
 
 var LoginAPI = "\(baseURL)/login"
 var UpdateProfileAPI = "\(baseURL)/update-profile"

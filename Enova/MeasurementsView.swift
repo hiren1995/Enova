@@ -30,6 +30,8 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
 
     @IBOutlet weak var InnerScrollView: UIView!
     
+    @IBOutlet weak var ScrollView: UIScrollView!
+    
     @IBOutlet weak var newDataAddView: UIView!
     
     @IBOutlet weak var AlphaView: UIView!
@@ -65,7 +67,7 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
     
     var tempDict : JSON = JSON.null
     
-    
+    @IBOutlet weak var lblHips: UILabel!
     
     
     override func viewDidLoad() {
@@ -902,53 +904,86 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
                 
                 //print(tempDict["data"]["user_id"])
                 
+                let tempUserData = JSON(udefault.value(forKey: UserData))
                 
+                print(tempUserData)
+                
+                let userGender = tempUserData["data"]["gender"].stringValue
+                
+                //print(userGender)
                 
                 if(self.tempDict["status"] == "success")
                 {
-                    self.lblHighWaist.text = self.tempDict["diff"]["start_waist"].stringValue
-                    self.lblLowWaist.text = self.tempDict["diff"]["waist_diff"].stringValue
-                    self.lblStartHips.text = self.tempDict["diff"]["start_hips"].stringValue
-                    self.lblLossHips.text = self.tempDict["diff"]["hips_diff"].stringValue
-                    self.lblStartWrist.text = self.tempDict["diff"]["start_wrist"].stringValue
-                    self.lblLossWrist.text = self.tempDict["diff"]["wrist_diff"].stringValue
-                    self.lblStartForearm.text = self.tempDict["diff"]["start_forearm"].stringValue
-                    self.lbllossForearm.text = self.tempDict["diff"]["forearm_diff"].stringValue
-                    
-                    for var i in 0...self.tempDict["waist"].count-1
+                    if(userGender == "Male")
                     {
-                        daysWaist.insert(i+1, at: i)
+                        self.lblHighWaist.text = self.tempDict["diff"]["start_waist"].stringValue
+                        self.lblLowWaist.text = self.tempDict["diff"]["waist_diff"].stringValue
                         
-                        WaistValues.insert(self.tempDict["waist"][i]["waist"].doubleValue, at: i)
+                        for var i in 0...self.tempDict["waist"].count-1
+                        {
+                            daysWaist.insert(i+1, at: i)
+                            
+                            WaistValues.insert(self.tempDict["waist"][i]["waist"].doubleValue, at: i)
+                            
+                        }
+                        
+                        self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
+                        
+                        self.lblHips.isHidden = true
+                        
+                        self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: 539)
+                        
+                        self.InnerScrollView.translatesAutoresizingMaskIntoConstraints = true
+                        
+                        self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: self.InnerScrollView.frame.height)
+                    }
+                    else
+                    {
+                        
+                        self.lblHighWaist.text = self.tempDict["diff"]["start_waist"].stringValue
+                        self.lblLowWaist.text = self.tempDict["diff"]["waist_diff"].stringValue
+                        self.lblStartHips.text = self.tempDict["diff"]["start_hips"].stringValue
+                        self.lblLossHips.text = self.tempDict["diff"]["hips_diff"].stringValue
+                        self.lblStartWrist.text = self.tempDict["diff"]["start_wrist"].stringValue
+                        self.lblLossWrist.text = self.tempDict["diff"]["wrist_diff"].stringValue
+                        self.lblStartForearm.text = self.tempDict["diff"]["start_forearm"].stringValue
+                        self.lbllossForearm.text = self.tempDict["diff"]["forearm_diff"].stringValue
+                        
+                        for var i in 0...self.tempDict["waist"].count-1
+                        {
+                            daysWaist.insert(i+1, at: i)
+                            
+                            WaistValues.insert(self.tempDict["waist"][i]["waist"].doubleValue, at: i)
+                            
+                        }
+                        for var i in 0...self.tempDict["hips"].count-1
+                        {
+                            daysHips.insert(i+1, at: i)
+                            
+                            HipsValues.insert(self.tempDict["hips"][i]["hips"].doubleValue, at: i)
+                        }
+                        for var i in 0...self.tempDict["wrist"].count-1
+                        {
+                            daysWrist.insert(i+1, at: i)
+                            
+                            WristValues.insert(self.tempDict["wrist"][i]["wrist"].doubleValue, at: i)
+                        }
+                        for var i in 0...self.tempDict["forearm"].count-1
+                        {
+                            daysForearm.insert(i+1, at: i)
+                            ForearmValues.insert(self.tempDict["forearm"][i]["forearm"].doubleValue, at: i)
+                        }
+                        
+                        
+                        self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
+                        
+                        self.setChart(dataPoints: daysHips,values: HipsValues, type: 2)
+                        
+                        self.setChart(dataPoints: daysWrist,values: WristValues, type: 3)
+                        
+                        self.setChart(dataPoints: daysForearm,values: ForearmValues, type: 4)
                         
                     }
-                    for var i in 0...self.tempDict["hips"].count-1
-                    {
-                        daysHips.insert(i+1, at: i)
-                    
-                        HipsValues.insert(self.tempDict["hips"][i]["hips"].doubleValue, at: i)
-                    }
-                    for var i in 0...self.tempDict["wrist"].count-1
-                    {
-                        daysWrist.insert(i+1, at: i)
-                       
-                        WristValues.insert(self.tempDict["wrist"][i]["wrist"].doubleValue, at: i)
-                    }
-                    for var i in 0...self.tempDict["forearm"].count-1
-                    {
-                        daysForearm.insert(i+1, at: i)
-                        ForearmValues.insert(self.tempDict["forearm"][i]["forearm"].doubleValue, at: i)
-                    }
-                    
-                    
-                    self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
-                    
-                    self.setChart(dataPoints: daysHips,values: HipsValues, type: 2)
-                    
-                    self.setChart(dataPoints: daysWrist,values: WristValues, type: 3)
-                    
-                    self.setChart(dataPoints: daysForearm,values: ForearmValues, type: 4)
-                    
                     
                     spinnerActivity.hide(animated: true)
                 }
