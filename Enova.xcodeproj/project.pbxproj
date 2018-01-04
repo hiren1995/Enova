@@ -14,6 +14,7 @@
 		2D08C7721FE15B790028FFDB /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08C7711FE15B790028FFDB /* LineChart.swift */; };
 		2D307ABD1FF4DD41001A06B1 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D307ABC1FF4DD41001A06B1 /* Reachability.swift */; };
 		2D3D5DAC1FFE19C900141D81 /* ViewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3D5DAB1FFE19C800141D81 /* ViewImage.swift */; };
+		2D3D5DB01FFE33A200141D81 /* TOS.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D3D5DAF1FFE33A100141D81 /* TOS.html */; };
 		2D7DF9001FF21D4E0039E991 /* MeasurementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7DF8FF1FF21D4E0039E991 /* MeasurementsView.swift */; };
 		2D7DF9021FF252C00039E991 /* FoodLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7DF9011FF252C00039E991 /* FoodLogView.swift */; };
 		2D7DF9041FF25B490039E991 /* FoodLogTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7DF9031FF25B490039E991 /* FoodLogTableCell.swift */; };
@@ -60,6 +61,7 @@
 		2D08C7711FE15B790028FFDB /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		2D307ABC1FF4DD41001A06B1 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		2D3D5DAB1FFE19C800141D81 /* ViewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewImage.swift; sourceTree = "<group>"; };
+		2D3D5DAF1FFE33A100141D81 /* TOS.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = TOS.html; sourceTree = "<group>"; };
 		2D7DF8FF1FF21D4E0039E991 /* MeasurementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementsView.swift; sourceTree = "<group>"; };
 		2D7DF9011FF252C00039E991 /* FoodLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogView.swift; sourceTree = "<group>"; };
 		2D7DF9031FF25B490039E991 /* FoodLogTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogTableCell.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		2D3D5DAD1FFE32DF00141D81 /* HTML */ = {
 			isa = PBXGroup;
 			children = (
+				2D3D5DAF1FFE33A100141D81 /* TOS.html */,
 			);
 			path = HTML;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D89750B1FDFEDA40031EF45 /* LaunchScreen.storyboard in Resources */,
+				2D3D5DB01FFE33A200141D81 /* TOS.html in Resources */,
 				2D8975081FDFEDA40031EF45 /* Assets.xcassets in Resources */,
 				2D8975061FDFEDA40031EF45 /* Main.storyboard in Resources */,
 			);
