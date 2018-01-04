@@ -299,43 +299,29 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         
         lblAddViewName.text = "WAIST"
         
-        /*
         
-         newDataAddView.translatesAutoresizingMaskIntoConstraints = false
+        //newDataAddView.translatesAutoresizingMaskIntoConstraints = false
+       
+        //newDataAddView.frame = CGRect(x: w/2, y: h/2, width: 253, height: 232)
+        
+         //newDataAddView.translatesAutoresizingMaskIntoConstraints = false
          
-        let topSpaceWaist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 165)
-        let topSpaceHips = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 619)
-        let topSpaceWrist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1041)
-        let topSpaceForearms = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1464)
+        //let topSpaceWaist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 165)
+        //let topSpaceHips = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 619)
+        //let topSpaceWrist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1041)
+        //let topSpaceForearms = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1464)
         
-        if(lblAddViewName.text == "HIPS")
-        {
-            //NSLayoutConstraint.deactivate([topSpaceHips])
-            
-            newDataAddView.removeConstraint(topSpaceHips)
-            
-             InnerScrollView.removeConstraint(topSpaceHips)
-        }
-        else if(lblAddViewName.text == "WRIST")
-        {
-            //NSLayoutConstraint.deactivate([topSpaceWrist])
-            
-            newDataAddView.removeConstraint(topSpaceWrist)
-            
-            InnerScrollView.removeConstraint(topSpaceWrist)
-        }
-        else
-        {
-            //NSLayoutConstraint.deactivate([topSpaceForearms])
-            
-            newDataAddView.removeConstraint(topSpaceForearms)
-            
-             InnerScrollView.removeConstraint(topSpaceForearms)
-        }
+        //NSLayoutConstraint.deactivate([topSpaceHips])
+        //NSLayoutConstraint.deactivate([topSpaceWrist])
+        //NSLayoutConstraint.deactivate([topSpaceForearms])
         
-        NSLayoutConstraint.activate([topSpaceWaist])
         
-         */
+        // activate the constraints
+        
+        //NSLayoutConstraint.activate([topSpaceWaist])
+        
+        
+        
     }
     
     @IBAction func btnAddHips(_ sender: Any) {
@@ -348,46 +334,22 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         
         lblAddViewName.text = "HIPS"
         
-        /*
         
-        newDataAddView.translatesAutoresizingMaskIntoConstraints = false
+        //newDataAddView.translatesAutoresizingMaskIntoConstraints = false
         
-        let topSpaceWaist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 165)
-        let topSpaceHips = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 619)
-        let topSpaceWrist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1041)
-        let topSpaceForearms = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1464)
+        //let topSpaceWaist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 165)
+        //let topSpaceHips = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 619)
+       // let topSpaceWrist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1041)
+       // let topSpaceForearms = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1464)
         
-        if(lblAddViewName.text == "WAIST")
-        {
-            //NSLayoutConstraint.deactivate([topSpaceWaist])
-            
-            newDataAddView.removeConstraint(topSpaceWaist)
-            
-            InnerScrollView.removeConstraint(topSpaceWaist)
-            
-        }
-        else if(lblAddViewName.text == "WRIST")
-        {
-             //NSLayoutConstraint.deactivate([topSpaceWrist])
-            
-            newDataAddView.removeConstraint(topSpaceWrist)
-            
-            InnerScrollView.removeConstraint(topSpaceWrist)
-        }
-        else
-        {
-             //NSLayoutConstraint.deactivate([topSpaceForearms])
-            
-            newDataAddView.removeConstraint(topSpaceForearms)
-            
-            InnerScrollView.removeConstraint(topSpaceForearms)
-        }
-        
-        
+       // NSLayoutConstraint.deactivate([topSpaceWaist])
+        //NSLayoutConstraint.deactivate([topSpaceWrist])
+        //NSLayoutConstraint.deactivate([topSpaceForearms])
+    
         // activate the constraints
-        NSLayoutConstraint.activate([topSpaceHips])
+       // NSLayoutConstraint.activate([topSpaceHips])
  
-        */
+       
     }
     
     @IBAction func btnAddWrist(_ sender: Any) {
@@ -400,44 +362,24 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         
         lblAddViewName.text = "WRIST"
         
-        /*
         
-        newDataAddView.translatesAutoresizingMaskIntoConstraints = false
         
-        let topSpaceWaist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 165)
-        let topSpaceHips = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 619)
-        let topSpaceWrist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1041)
-        let topSpaceForearms = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1464)
+       // newDataAddView.translatesAutoresizingMaskIntoConstraints = false
         
-        if(lblAddViewName.text == "WAIST")
-        {
-            //NSLayoutConstraint.deactivate([topSpaceWaist])
-            
-            newDataAddView.removeConstraint(topSpaceWaist)
-            
-            InnerScrollView.removeConstraint(topSpaceWaist)
-        }
-        else if(lblAddViewName.text == "HIPS")
-        {
-            //NSLayoutConstraint.deactivate([topSpaceHips])
-            
-            newDataAddView.removeConstraint(topSpaceHips)
-            
-            InnerScrollView.removeConstraint(topSpaceHips)
-        }
-        else
-        {
-            //NSLayoutConstraint.deactivate([topSpaceForearms])
-            
-            newDataAddView.removeConstraint(topSpaceForearms)
-            
-            InnerScrollView.removeConstraint(topSpaceForearms)
-        }
-       
+       // let topSpaceWaist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 165)
+       // let topSpaceHips = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 619)
+       // let topSpaceWrist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1041)
+       // let topSpaceForearms = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1464)
+        
+        //NSLayoutConstraint.deactivate([topSpaceWaist])
+        //NSLayoutConstraint.deactivate([topSpaceHips])
+       // NSLayoutConstraint.deactivate([topSpaceForearms])
+        
+        
         // activate the constraints
-        NSLayoutConstraint.activate([topSpaceWrist])
+       // NSLayoutConstraint.activate([topSpaceWrist])
  
-        */
+        
     }
     
     @IBAction func btnAddForearms(_ sender: Any) {
@@ -450,45 +392,24 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         
         lblAddViewName.text = "FOREARM"
         
-        /*
+        
  
-        newDataAddView.translatesAutoresizingMaskIntoConstraints = false
+        //newDataAddView.translatesAutoresizingMaskIntoConstraints = false
         
-        let topSpaceWaist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 165)
-        let topSpaceHips = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 619)
-        let topSpaceWrist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1041)
-        let topSpaceForearms = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1464)
+        //let topSpaceWaist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 165)
+       // let topSpaceHips = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 619)
+       // let topSpaceWrist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1041)
+       // let topSpaceForearms = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1464)
         
+       // NSLayoutConstraint.deactivate([topSpaceWaist])
+        //NSLayoutConstraint.deactivate([topSpaceHips])
+         //NSLayoutConstraint.deactivate([topSpaceWrist])
     
-        if(lblAddViewName.text == "WAIST")
-        {
-            //NSLayoutConstraint.deactivate([topSpaceWaist])
-            
-            newDataAddView.removeConstraint(topSpaceWaist)
-            
-            InnerScrollView.removeConstraint(topSpaceWaist)
-            
-            
-        }
-        else if(lblAddViewName.text == "HIPS")
-        {
-            //NSLayoutConstraint.deactivate([topSpaceHips])
-            newDataAddView.removeConstraint(topSpaceWaist)
-            
-            InnerScrollView.removeConstraint(topSpaceWaist)
-        }
-        else
-        {
-            //NSLayoutConstraint.deactivate([topSpaceWrist])
-            newDataAddView.removeConstraint(topSpaceWrist)
-            
-            InnerScrollView.removeConstraint(topSpaceWrist)
-        }
         
         // activate the constraints
-        NSLayoutConstraint.activate([topSpaceForearms])
+       // NSLayoutConstraint.activate([topSpaceForearms])
  
-        */
+       
     }
     
     @IBAction func btnCancel(_ sender: Any) {
