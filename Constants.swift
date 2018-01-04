@@ -61,5 +61,5 @@ var FoodLogSelectedDeletedAt = "foodlogselecteddeletedat"
 var GlucoseConditionValue = "glucoseConditionValue"
 var KetonesConditionValue = "ketonesConditionValue"
 var WeightConditionValue = "weightConditionValue"
-
+var FoodImageDefault = "foodimage"
 

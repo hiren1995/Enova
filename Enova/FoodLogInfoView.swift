@@ -155,6 +155,24 @@ class FoodLogInfoView: UIViewController {
         })
     }
     
+    
+    @IBAction func btnImage(_ sender: Any) {
+        if(foodImg.image != nil)
+        {
+             let imgData = UIImageJPEGRepresentation(foodImg.image!, 1.0)! as NSData
+            
+             UserDefaults.standard.set(imgData, forKey: FoodImageDefault)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let viewImage = storyboard.instantiateViewController(withIdentifier: "viewImage") as! ViewImage
+            
+            self.present(viewImage, animated: true, completion: nil)
+        }
+       
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
