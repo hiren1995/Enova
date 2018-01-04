@@ -429,6 +429,17 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func btnTerms(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let webView = storyboard.instantiateViewController(withIdentifier: "webView") as! WebView
+        
+        self.present(webView, animated: true, completion: nil)
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

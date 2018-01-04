@@ -28,6 +28,21 @@
 	<string> $(PRODUCT_NAME) wants to access Camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string> $(PRODUCT_NAME) wants to access Gallery</string>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>enovawellness.com</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+            </dict>
+        </dict>
+    </dict>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
