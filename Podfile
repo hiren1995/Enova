@@ -8,7 +8,7 @@ target 'Enova' do
   # Pods for Enova
   
   pod 'Charts'
-  pod 'Alamofire'
+  pod 'Alamofire', '~> 4.4'
   pod 'SwiftyJSON'
   pod 'MBProgressHUD', '~> 1.1.0'
   pod 'Kingfisher', '~> 4.0'

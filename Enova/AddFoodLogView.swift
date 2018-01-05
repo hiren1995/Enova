@@ -292,10 +292,11 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
             
             //profileImg.image = image
             
-            self.dismiss(animated: true, completion: nil)
+            
             let cropViewController = CropViewController(image: image)
             cropViewController.delegate = self
             present(cropViewController, animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
             
         } else{
             print("Something went wrong")

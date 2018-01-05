@@ -222,9 +222,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29A-Rw-nOr">
-                                                        <rect key="frame" x="349" y="28" width="8" height="30"/>
+                                                        <rect key="frame" x="349" y="30" width="8" height="28"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="4Ii-YF-CT2"/>
+                                                            <constraint firstAttribute="height" constant="28" id="4Ii-YF-CT2"/>
                                                             <constraint firstAttribute="width" constant="8" id="wTT-Dj-tNB"/>
                                                         </constraints>
                                                         <state key="normal" backgroundImage="Options"/>

@@ -196,7 +196,7 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         txtFrom.text = convertDateFormater(dateFormatter.string(from: sender.date))
         
-        compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
+        //compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
         
     }
     
@@ -220,7 +220,7 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         txtTo.text = convertDateFormater(dateFormatter.string(from: sender.date))
         
-         compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
+         //compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
         
     }
     //---------------------------------------------- End ------------------------------------------------------------------------------
@@ -257,7 +257,7 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @objc func cancelPicker(){
         self.view.endEditing(true)
-        
+        compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
     }
     
     @IBAction func btnBack(_ sender: UIButton) {

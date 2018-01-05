@@ -66,6 +66,7 @@ class WeightView: UIViewController,UITextFieldDelegate {
         //lblLowWeight.text = String(describing: WeightValues.min()!)
         
         addDoneButtonOnDatePicker()
+        addDoneOnTextView()
         
         let currentDate = Date()
         let formatter = DateFormatter()
@@ -237,7 +238,7 @@ class WeightView: UIViewController,UITextFieldDelegate {
         
         txtFrom.text = convertDateFormater(dateFormatter.string(from: sender.date))
         
-        compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
+        //compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
         
     }
     
@@ -261,7 +262,7 @@ class WeightView: UIViewController,UITextFieldDelegate {
         
         txtTo.text = convertDateFormater(dateFormatter.string(from: sender.date))
         
-        compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
+        //compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
         
     }
     //---------------------------------------------- End ------------------------------------------------------------------------------
@@ -324,7 +325,7 @@ class WeightView: UIViewController,UITextFieldDelegate {
     func addDoneButtonOnDatePicker()
     {
         var doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
-        doneToolbar.barStyle = UIBarStyle.blackTranslucent
+        doneToolbar.barStyle = UIBarStyle.default
         
         var flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         var done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(cancelPicker))
@@ -338,12 +339,34 @@ class WeightView: UIViewController,UITextFieldDelegate {
         
         txtTo.inputAccessoryView = doneToolbar
         txtFrom.inputAccessoryView = doneToolbar
-        txtNewValue.inputAccessoryView = doneToolbar
+        //txtNewValue.inputAccessoryView = doneToolbar
     }
     
     @objc func cancelPicker(){
         self.view.endEditing(true)
+        compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
         
+    }
+    
+    func addDoneOnTextView()
+    {
+        var doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        doneToolbar.barStyle = UIBarStyle.default
+        
+        var flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        var done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(cancelTextPicker))
+        
+        var items = NSMutableArray()
+        items.add(flexSpace)
+        items.add(done)
+        
+        doneToolbar.items = items as! [UIBarButtonItem]
+        doneToolbar.sizeToFit()
+        txtNewValue.inputAccessoryView = doneToolbar
+    }
+    
+    @objc func cancelTextPicker(){
+        self.view.endEditing(true)
     }
     
     @IBAction func btnBack(_ sender: UIButton) {
