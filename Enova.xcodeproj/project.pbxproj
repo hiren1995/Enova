@@ -31,6 +31,8 @@
 		2DB588681FF10A1500DF088E /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB588671FF10A1500DF088E /* WeightView.swift */; };
 		2DBB7D301FF394A8005CEF05 /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB7D2F1FF394A8005CEF05 /* ProfileSettingView.swift */; };
 		2DBB7D321FF3CA10005CEF05 /* FoodLogInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB7D311FF3CA10005CEF05 /* FoodLogInfoView.swift */; };
+		2DC36A2620009BB200FF0563 /* MealSelectTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC36A2520009BB200FF0563 /* MealSelectTableCell.swift */; };
+		2DC36A292000CA1000FF0563 /* DiabetesSelectTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC36A282000CA1000FF0563 /* DiabetesSelectTableCell.swift */; };
 		2DEB27C41FEB8AB700D679FA /* GlucoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB27C31FEB8AB700D679FA /* GlucoseView.swift */; };
 		2DEB27C61FEB8B1900D679FA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB27C51FEB8B1900D679FA /* Constants.swift */; };
 		2DEB27C81FEB8DE100D679FA /* CustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB27C71FEB8DE100D679FA /* CustomClass.swift */; };
@@ -85,6 +87,8 @@
 		2DB588671FF10A1500DF088E /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
 		2DBB7D2F1FF394A8005CEF05 /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
 		2DBB7D311FF3CA10005CEF05 /* FoodLogInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogInfoView.swift; sourceTree = "<group>"; };
+		2DC36A2520009BB200FF0563 /* MealSelectTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSelectTableCell.swift; sourceTree = "<group>"; };
+		2DC36A282000CA1000FF0563 /* DiabetesSelectTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiabetesSelectTableCell.swift; sourceTree = "<group>"; };
 		2DEB27C31FEB8AB700D679FA /* GlucoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseView.swift; sourceTree = "<group>"; };
 		2DEB27C51FEB8B1900D679FA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2DEB27C71FEB8DE100D679FA /* CustomClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomClass.swift; sourceTree = "<group>"; };
@@ -185,8 +189,10 @@
 				2D7DF9011FF252C00039E991 /* FoodLogView.swift */,
 				2D7DF9031FF25B490039E991 /* FoodLogTableCell.swift */,
 				2D7DF9051FF2703B0039E991 /* AddFoodLogView.swift */,
+				2DC36A2520009BB200FF0563 /* MealSelectTableCell.swift */,
 				2DBB7D311FF3CA10005CEF05 /* FoodLogInfoView.swift */,
 				2DBB7D2F1FF394A8005CEF05 /* ProfileSettingView.swift */,
+				2DC36A282000CA1000FF0563 /* DiabetesSelectTableCell.swift */,
 				2D08C76F1FE1229C0028FFDB /* ForgetPassword.swift */,
 				2D3D5DAB1FFE19C800141D81 /* ViewImage.swift */,
 				2D3D5DB11FFE359700141D81 /* WebView.swift */,
@@ -543,6 +549,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DF734141FE5240400A0A754 /* DashBoard.swift in Sources */,
+				2DC36A292000CA1000FF0563 /* DiabetesSelectTableCell.swift in Sources */,
 				2D3D5DB21FFE359700141D81 /* WebView.swift in Sources */,
 				2D7DF9021FF252C00039E991 /* FoodLogView.swift in Sources */,
 				2D7DF9001FF21D4E0039E991 /* MeasurementsView.swift in Sources */,
@@ -560,6 +567,7 @@
 				2D7DF9061FF2703B0039E991 /* AddFoodLogView.swift in Sources */,
 				2D307ABD1FF4DD41001A06B1 /* Reachability.swift in Sources */,
 				2DBB7D301FF394A8005CEF05 /* ProfileSettingView.swift in Sources */,
+				2DC36A2620009BB200FF0563 /* MealSelectTableCell.swift in Sources */,
 				2DB588661FF103A600DF088E /* KetonesView.swift in Sources */,
 				2DEB27C61FEB8B1900D679FA /* Constants.swift in Sources */,
 			);

@@ -12,7 +12,7 @@ import SwiftyJSON
 import CropViewController
 import MBProgressHUD
 
-class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CropViewControllerDelegate {
+class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CropViewControllerDelegate,UITableViewDelegate,UITableViewDataSource{
 
     
     @IBOutlet var HeaderView: UIView!
@@ -26,14 +26,16 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
     @IBOutlet weak var btnMealChoose: UIButton!
     
     @IBOutlet weak var lblFoodLabel: UILabel!
-    
-    @IBOutlet weak var MealSelectView: UIView!
-    
+   
     var imagePicker = UIImagePickerController()
     
     @IBOutlet weak var foodImg: UIImageView!
     
     @IBOutlet weak var coverImg: UIView!
+    
+    @IBOutlet weak var MealSelectTableView: UITableView!
+
+    var tempDict : JSON = JSON.null
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,12 +46,21 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
         NoteView.setborder(colorValue: UIColor.lightGray)
         NoteView.roundCorners(value: 5)
         btnMealChoose.setbuttonborder(colorValue: UIColor.black, widthValue: 1.0, cornerRadiusValue: 0)
-        MealSelectView.isHidden = true
-        MealSelectView.ShadowMealView()
+       
+        
+        MealSelectTableView.delegate = self
+        MealSelectTableView.dataSource = self
+        MealSelectTableView.isHidden = true
+        MealSelectTableView.setTableShadow()
+        
         
         foodImg.setImageborder(colorValue: UIColor.gray, widthValue: 1.0, cornerRadiusValue: 5.0)
         
         addDoneButtonOnKeyboard()
+        
+        
+        LoadMealTypeData()
+        
         
         // Do any additional setup after loading the view.
     }
@@ -62,25 +73,11 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
     
     
     @IBAction func btnMealSelectPress(_ sender: Any) {
-        MealSelectView.mealClicked()
+        
+        
+        MealSelectTableView.isHidden = false
     }
     
-    
-    @IBAction func btnMeal(_ sender: Any) {
-        
-           lblFoodLabel.text = "Meal"
-           MealSelectView.isHidden = true
-           MealClicked = false
-    }
-   
-    
-    @IBAction func btnSnacks(_ sender: Any) {
-        
-        lblFoodLabel.text = "Snacks"
-        MealSelectView.isHidden = true
-        MealClicked = false
-        
-    }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
        
@@ -317,6 +314,78 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
         dismiss(animated: true, completion: nil)
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+       return  tempDict["data"].count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MealTypeCell") as! MealSelectTableCell
+        
+        //cell.MealType.text = foodType?[indexPath.row]
+        //cell.DateTime.text = date?[indexPath.row]
+        
+        if(tempDict.count != 0)
+        {
+            cell.lblMealTypeName.text = tempDict["data"][indexPath.row]["name"].stringValue
+            
+            //MealSelectTableView.translatesAutoresizingMaskIntoConstraints = true
+            
+            //let newHeight = self.MealSelectTableView.rowHeight * CGFloat(self.tempDict["data"].count)
+            
+            //MealSelectTableView.frame = CGRect(x: MealSelectTableView.frame.origin.x, y: MealSelectTableView.frame.origin.y, width: MealSelectTableView.frame.size.width, height: newHeight)
+            
+            
+            
+        }
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        lblFoodLabel.text = tempDict["data"][indexPath.row]["name"].stringValue
+        MealSelectTableView.isHidden = true
+        
+    }
+    
+    
+    func LoadMealTypeData()
+    {
+        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        Alamofire.request(GetMealTypeAPI).responseJSON { response in
+           
+            if(response.result.value != nil)
+            {
+                
+                print(JSON(response.result.value))
+                
+                self.tempDict = JSON(response.result.value!)
+                
+                //print(tempDict["data"]["user_id"])
+                
+                if(self.tempDict["status"] == "success")
+                {
+                    
+                    spinnerActivity.hide(animated: true)
+                    
+                    self.MealSelectTableView.reloadData()
+                }
+                else if(self.tempDict["status"] == "error")
+                {
+                    spinnerActivity.hide(animated: true)
+                    self.showAlert(title: "Alert", message: "Something went Wrong")
+                }
+                
+                
+            }
+            else
+            {
+                spinnerActivity.hide(animated: true)
+                self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+            }
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

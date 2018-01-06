@@ -15,15 +15,13 @@ import CropViewController
 
 var Gender:String = "Male"
 
-class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CropViewControllerDelegate{
+class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CropViewControllerDelegate,UITableViewDataSource,UITableViewDelegate{
     
     @IBOutlet var HeaderView: UIView!
     
     @IBOutlet var MenuView: UIView!
     
     @IBOutlet weak var btnDiabetes: UIButton!
-    
-    @IBOutlet weak var DiabetesView: UIView!
     
     @IBOutlet weak var lblDiabetesType: UILabel!
     
@@ -45,6 +43,10 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
     
     var imagePicker = UIImagePickerController()
     
+    var tempDict : JSON = JSON.null
+    
+    @IBOutlet weak var DiabetesTypeSelectTableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,8 +54,6 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
         HeaderView.ShadowHeader()
         MenuView.menuViewBorder()
         MenuView.isHidden = true
-        DiabetesView.ShadowMealView()
-        DiabetesView.isHidden = true
         NoteView.setborder(colorValue: UIColor.lightGray)
         NoteView.roundCorners(value: 5)
         
@@ -64,6 +64,13 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
         imgFemale.setImageborder(colorValue: UIColor.black, widthValue: 1.0, cornerRadiusValue: 10.0)
         
         profileImg.setImageborder(colorValue: UIColor.gray, widthValue: 1.0, cornerRadiusValue: 5.0)
+        
+        DiabetesTypeSelectTableView.delegate = self
+        DiabetesTypeSelectTableView.dataSource = self
+        DiabetesTypeSelectTableView.isHidden = true
+        DiabetesTypeSelectTableView.setTableShadow()
+        
+        loadDiabetesTypes()
         
         addDoneButtonOnKeyboard()
         
@@ -80,29 +87,8 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
     
     @IBAction func btnDiabetesPress(_ sender: Any) {
         
-        DiabetesView.diabetesClicked()
-    }
-    
-    @IBAction func btnPreDiabetesPress(_ sender: Any) {
         
-        lblDiabetesType.text = "Pre-Diabetes"
-        DiabetesView.isHidden = true
-        DiabetesClicked = false
-        
-    }
-    
-    @IBAction func btnDiabetestype2Press(_ sender: Any) {
-        
-        lblDiabetesType.text = "Type II"
-        DiabetesView.isHidden = true
-        DiabetesClicked = false
-    }
-    
-    @IBAction func btnDiabetesNone(_ sender: Any) {
-        
-        lblDiabetesType.text = "None"
-        DiabetesView.isHidden = true
-        DiabetesClicked = false
+        DiabetesTypeSelectTableView.isHidden = false
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -438,6 +424,70 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
         
         self.present(webView, animated: true, completion: nil)
         
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+      return  tempDict["data"].count
+        
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DiabetesCell") as! DiabetesSelectTableCell
+        
+        //cell.MealType.text = foodType?[indexPath.row]
+        //cell.DateTime.text = date?[indexPath.row]
+        
+        if(tempDict.count != 0)
+        {
+            cell.lblName.text = tempDict["data"][indexPath.row]["name"].stringValue
+            
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        lblDiabetesType.text = tempDict["data"][indexPath.row]["name"].stringValue
+        DiabetesTypeSelectTableView.isHidden = true
+    }
+    
+    func loadDiabetesTypes()
+    {
+        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        Alamofire.request(GetDiabetesTypeAPI).responseJSON { response in
+            
+            if(response.result.value != nil)
+            {
+                
+                print(JSON(response.result.value))
+                
+                self.tempDict = JSON(response.result.value!)
+                
+                //print(tempDict["data"]["user_id"])
+                
+                if(self.tempDict["status"] == "success")
+                {
+                    
+                    spinnerActivity.hide(animated: true)
+                    
+                    self.DiabetesTypeSelectTableView.reloadData()
+                }
+                else if(self.tempDict["status"] == "error")
+                {
+                    spinnerActivity.hide(animated: true)
+                    self.showAlert(title: "Alert", message: "Something went Wrong")
+                }
+                
+                
+            }
+            else
+            {
+                spinnerActivity.hide(animated: true)
+                self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+            }
+        }
     }
     
     

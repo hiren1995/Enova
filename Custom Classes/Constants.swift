@@ -42,6 +42,8 @@ var AddWaistAPI = "\(baseURL)/add/waist"
 var AddHipsAPI = "\(baseURL)/add/hips"
 var AddWristAPI = "\(baseURL)/add/wrist"
 var AddForearmAPI = "\(baseURL)/add/forearm"
+var GetMealTypeAPI = "\(baseURL)/get-food-category"
+var GetDiabetesTypeAPI = "\(baseURL)/get-diabetes-type"
 
 
 // values for userdefaults...

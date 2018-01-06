@@ -188,6 +188,23 @@ extension Date {
     }
 }
 
+extension UITableView{
+    
+    func setTableShadow()
+    {
+        self.layer.shadowOffset = CGSize.zero
+        self.layer.shadowOpacity = 0.7
+        self.layer.shadowRadius = 5.0
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        
+        self.layer.cornerRadius = 5
+        self.layer.masksToBounds = true
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.lightGray.cgColor
+    }
+}
+
 func convertDateFormater(_ date: String) -> String
 {
     let dateFormatter = DateFormatter()
