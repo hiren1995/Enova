@@ -191,24 +191,21 @@ class KetonesView: UIViewController,UITextFieldDelegate {
                     
                     print(JSON(response.result.value))
                     
-                    self.tempDict = JSON(response.result.value!)
+                    let tempDictketones = JSON(response.result.value!)
                     
                     //print(tempDict["data"]["user_id"])
                     
-                    if(self.tempDict["status"] == "success")
+                    if(tempDictketones["status"] == "success")
                     {
                         self.newDataAddView.isHidden = true
                         self.AlphaView.isHidden = true
-                        
-                        self.lblHighKetones.text = self.tempDict["high_ketones"].stringValue
-                        self.lblLowKetones.text = self.tempDict["low_ketones"].stringValue
                         
                         spinnerActivity.hide(animated: true)
                         
                         self.viewDidLoad()
                         
                     }
-                    else if(self.tempDict["status"] == "error")
+                    else if(tempDictketones["status"] == "error")
                     {
                         spinnerActivity.hide(animated: true)
                         self.showAlert(title: "Alert", message: "Something went Wrong")
@@ -377,10 +374,16 @@ class KetonesView: UIViewController,UITextFieldDelegate {
     
     @IBAction func btnBack(_ sender: UIButton) {
         
+        //self.dismiss(animated: true, completion: nil)
+        
+        self.fromLeft()
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func btnBack2(_ sender: UIButton) {
         
+        //self.dismiss(animated: true, completion: nil)
+        
+        self.fromLeft()
         self.dismiss(animated: true, completion: nil)
     }
     

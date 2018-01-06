@@ -143,7 +143,7 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
     func addDoneButtonOnKeyboard()
     {
         var doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
-        doneToolbar.barStyle = UIBarStyle.blackTranslucent
+        doneToolbar.barStyle = UIBarStyle.default
         
         var flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         var done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(cancelKeyboard))
@@ -166,12 +166,18 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
     
     @IBAction func btnBack(_ sender: UIButton) {
         
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        
+        self.fromLeft()
+        self.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func btnBack2(_ sender: UIButton) {
         
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        
+        self.fromLeft()
+        self.dismiss(animated: false, completion: nil)
     }
     
     
@@ -321,7 +327,10 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
                         
                         let dashBoard = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
                         
-                        self.present(dashBoard, animated: true, completion: nil)
+                        //self.present(dashBoard, animated: true, completion: nil)
+                        
+                        self.fromLeft()
+                        self.present(dashBoard, animated: false, completion: nil)
                         
                     }
                 case .failure(let error):
@@ -422,7 +431,10 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
         
         let webView = storyboard.instantiateViewController(withIdentifier: "webView") as! WebView
         
-        self.present(webView, animated: true, completion: nil)
+        //self.present(webView, animated: true, completion: nil)
+        
+        self.fromRight()
+        self.present(webView, animated: false, completion: nil)
         
     }
     

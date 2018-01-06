@@ -226,24 +226,21 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
                     
                     print(JSON(response.result.value))
                     
-                    self.tempDict = JSON(response.result.value!)
+                    let tempDictglucose = JSON(response.result.value!)
                     
                     //print(tempDict["data"]["user_id"])
                     
-                    if(self.tempDict["status"] == "success")
+                    if(tempDictglucose["status"] == "success")
                     {
                         self.newDataAddView.isHidden = true
                         self.AlphaView.isHidden = true
-                        
-                        self.lblHighGlucose.text = self.tempDict["max_glucose"].stringValue
-                        self.lblLowGlucose.text = self.tempDict["min_glucose"].stringValue
                         
                         spinnerActivity.hide(animated: true)
                         
                         self.viewDidLoad()
                         
                     }
-                    else if(self.tempDict["status"] == "error")
+                    else if(tempDictglucose["status"] == "error")
                     {
                         spinnerActivity.hide(animated: true)
                         self.showAlert(title: "Alert", message: "Something went Wrong")
@@ -414,10 +411,16 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
     
     @IBAction func btnBack(_ sender: UIButton) {
         
+        //self.dismiss(animated: true, completion: nil)
+        
+        self.fromLeft()
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func btnBack2(_ sender: UIButton) {
         
+        //self.dismiss(animated: true, completion: nil)
+        
+        self.fromLeft()
         self.dismiss(animated: true, completion: nil)
     }
     

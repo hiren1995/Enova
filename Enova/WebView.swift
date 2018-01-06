@@ -42,12 +42,18 @@ class WebView: UIViewController {
     
     @IBAction func btnBack(_ sender: UIButton) {
         
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        
+        self.fromLeft()
+        self.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func btnBack2(_ sender: UIButton) {
         
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        
+        self.fromLeft()
+        self.dismiss(animated: false, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

@@ -143,6 +143,7 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         
         let userData = JSON(udefault.value(forKey: UserData)!)
         
+       
         if(dataPoints.count != 0)
         {
             switch type {
@@ -435,10 +436,10 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         WristValues = []
         ForearmValues = []
         
-        self.setChart(dataPoints: days,values: WaistValues, type: 1)
-        self.setChart(dataPoints: days,values: HipsValues, type: 2)
-        self.setChart(dataPoints: days,values: WristValues, type: 3)
-        self.setChart(dataPoints: days,values: ForearmValues, type: 4)
+        self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
+        self.setChart(dataPoints: daysHips,values: HipsValues, type: 2)
+        self.setChart(dataPoints: daysWrist,values: WristValues, type: 3)
+        self.setChart(dataPoints: daysForearm,values: ForearmValues, type: 4)
         
         
         
@@ -460,30 +461,22 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
                         
                         print(JSON(response.result.value))
                         
-                        //self.tempDict = JSON(response.result.value!)
+                        let tempDictWAIST = JSON(response.result.value!)
                         
                         //print(tempDict["data"]["user_id"])
                         
-                        if(self.tempDict["status"] == "success")
+                        if(tempDictWAIST["status"] == "success")
                         {
                             self.newDataAddView.isHidden = true
                             self.AlphaView.isHidden = true
                             
-                            self.lblHighWaist.text = self.tempDict["diff"]["start_waist"].stringValue
-                            self.lblLowWaist.text = self.tempDict["diff"]["waist_diff"].stringValue
-                            self.lblStartHips.text = self.tempDict["diff"]["start_hips"].stringValue
-                            self.lblLossHips.text = self.tempDict["diff"]["hips_diff"].stringValue
-                            self.lblStartWrist.text = self.tempDict["diff"]["start_wrist"].stringValue
-                            self.lblLossWrist.text = self.tempDict["diff"]["wrist_diff"].stringValue
-                            self.lblStartForearm.text = self.tempDict["diff"]["start_forearm"].stringValue
-                            self.lbllossForearm.text = self.tempDict["diff"]["forearm_diff"].stringValue
                             
                             spinnerActivity.hide(animated: true)
                             
                             self.viewDidLoad()
                             
                         }
-                        else if(self.tempDict["status"] == "error")
+                        else if(tempDictWAIST["status"] == "error")
                         {
                             spinnerActivity.hide(animated: true)
                             self.showAlert(title: "Alert", message: "Something went Wrong")
@@ -508,30 +501,22 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
                         
                         print(JSON(response.result.value))
                         
-                        //self.tempDict = JSON(response.result.value!)
+                        let tempDictHIPS = JSON(response.result.value!)
                         
                         //print(tempDict["data"]["user_id"])
                         
-                        if(self.tempDict["status"] == "success")
+                        if(tempDictHIPS["status"] == "success")
                         {
                             self.newDataAddView.isHidden = true
                             self.AlphaView.isHidden = true
                             
-                            self.lblHighWaist.text = self.tempDict["diff"]["start_waist"].stringValue
-                            self.lblLowWaist.text = self.tempDict["diff"]["waist_diff"].stringValue
-                            self.lblStartHips.text = self.tempDict["diff"]["start_hips"].stringValue
-                            self.lblLossHips.text = self.tempDict["diff"]["hips_diff"].stringValue
-                            self.lblStartWrist.text = self.tempDict["diff"]["start_wrist"].stringValue
-                            self.lblLossWrist.text = self.tempDict["diff"]["wrist_diff"].stringValue
-                            self.lblStartForearm.text = self.tempDict["diff"]["start_forearm"].stringValue
-                            self.lbllossForearm.text = self.tempDict["diff"]["forearm_diff"].stringValue
                             
                             spinnerActivity.hide(animated: true)
                             
                             self.viewDidLoad()
                             
                         }
-                        else if(self.tempDict["status"] == "error")
+                        else if(tempDictHIPS["status"] == "error")
                         {
                             spinnerActivity.hide(animated: true)
                             self.showAlert(title: "Alert", message: "Something went Wrong")
@@ -556,30 +541,21 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
                         
                         print(JSON(response.result.value))
                         
-                        //self.tempDict = JSON(response.result.value!)
+                        let tempDictWRIST = JSON(response.result.value!)
                         
                         //print(tempDict["data"]["user_id"])
                         
-                        if(self.tempDict["status"] == "success")
+                        if(tempDictWRIST["status"] == "success")
                         {
                             self.newDataAddView.isHidden = true
                             self.AlphaView.isHidden = true
-                            
-                            self.lblHighWaist.text = self.tempDict["diff"]["start_waist"].stringValue
-                            self.lblLowWaist.text = self.tempDict["diff"]["waist_diff"].stringValue
-                            self.lblStartHips.text = self.tempDict["diff"]["start_hips"].stringValue
-                            self.lblLossHips.text = self.tempDict["diff"]["hips_diff"].stringValue
-                            self.lblStartWrist.text = self.tempDict["diff"]["start_wrist"].stringValue
-                            self.lblLossWrist.text = self.tempDict["diff"]["wrist_diff"].stringValue
-                            self.lblStartForearm.text = self.tempDict["diff"]["start_forearm"].stringValue
-                            self.lbllossForearm.text = self.tempDict["diff"]["forearm_diff"].stringValue
-                            
+                           
                             spinnerActivity.hide(animated: true)
                             
                             self.viewDidLoad()
                             
                         }
-                        else if(self.tempDict["status"] == "error")
+                        else if(tempDictWRIST["status"] == "error")
                         {
                             spinnerActivity.hide(animated: true)
                             self.showAlert(title: "Alert", message: "Something went Wrong")
@@ -604,30 +580,21 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
                         
                         print(JSON(response.result.value))
                         
-                        //self.tempDict = JSON(response.result.value!)
+                        let tempDictFOREARM = JSON(response.result.value!)
                         
                         //print(tempDict["data"]["user_id"])
                         
-                        if(self.tempDict["status"] == "success")
+                        if(tempDictFOREARM["status"] == "success")
                         {
                             self.newDataAddView.isHidden = true
                             self.AlphaView.isHidden = true
-                            
-                            self.lblHighWaist.text = self.tempDict["diff"]["start_waist"].stringValue
-                            self.lblLowWaist.text = self.tempDict["diff"]["waist_diff"].stringValue
-                            self.lblStartHips.text = self.tempDict["diff"]["start_hips"].stringValue
-                            self.lblLossHips.text = self.tempDict["diff"]["hips_diff"].stringValue
-                            self.lblStartWrist.text = self.tempDict["diff"]["start_wrist"].stringValue
-                            self.lblLossWrist.text = self.tempDict["diff"]["wrist_diff"].stringValue
-                            self.lblStartForearm.text = self.tempDict["diff"]["start_forearm"].stringValue
-                            self.lbllossForearm.text = self.tempDict["diff"]["forearm_diff"].stringValue
                             
                             spinnerActivity.hide(animated: true)
                             
                             self.viewDidLoad()
                             
                         }
-                        else if(self.tempDict["status"] == "error")
+                        else if(tempDictFOREARM == "error")
                         {
                             spinnerActivity.hide(animated: true)
                             self.showAlert(title: "Alert", message: "Something went Wrong")
@@ -805,11 +772,17 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
     
     @IBAction func btnBack(_ sender: UIButton) {
         
+        //self.dismiss(animated: true, completion: nil)
+        
+        self.fromLeft()
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func btnBack2(_ sender: UIButton) {
         
+        //self.dismiss(animated: true, completion: nil)
+        
+        self.fromLeft()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -833,10 +806,10 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         WristValues = []
         ForearmValues = []
         
-        self.setChart(dataPoints: days,values: WaistValues, type: 1)
-        self.setChart(dataPoints: days,values: HipsValues, type: 2)
-        self.setChart(dataPoints: days,values: WristValues, type: 3)
-        self.setChart(dataPoints: days,values: ForearmValues, type: 4)
+        self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
+        self.setChart(dataPoints: daysHips,values: HipsValues, type: 2)
+        self.setChart(dataPoints: daysWrist,values: WristValues, type: 3)
+        self.setChart(dataPoints: daysForearm,values: ForearmValues, type: 4)
         
         Alamofire.request(GetMeasurementsAPI, method: .post, parameters: MeasurementsParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
             if(response.result.value != nil)
@@ -971,10 +944,10 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
             WristValues = []
             ForearmValues = []
             
-            self.setChart(dataPoints: days,values: WaistValues, type: 1)
-            self.setChart(dataPoints: days,values: HipsValues, type: 2)
-            self.setChart(dataPoints: days,values: WristValues, type: 3)
-            self.setChart(dataPoints: days,values: ForearmValues, type: 4)
+            self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
+            self.setChart(dataPoints: daysHips,values: HipsValues, type: 2)
+            self.setChart(dataPoints: daysWrist,values: WristValues, type: 3)
+            self.setChart(dataPoints: daysForearm,values: ForearmValues, type: 4)
             
             loadMeasurementsData(From_date: dateFormatter.string(from: date_from!), To_date: dateFormatter.string(from: date_to!))
         }

@@ -59,6 +59,9 @@ class ForgetPassword: UIViewController,UITextFieldDelegate {
                         
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let signIn = storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
+                        //self.present(signIn, animated: true, completion: nil)
+                        
+                        self.fromLeft()
                         self.present(signIn, animated: true, completion: nil)
                         
                     }))

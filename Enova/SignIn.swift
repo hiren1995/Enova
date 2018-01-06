@@ -38,7 +38,10 @@ class SignIn: UIViewController,UITextFieldDelegate {
         
         let forgetPassword = storyboard.instantiateViewController(withIdentifier: "forgetPassword") as! ForgetPassword
         
-        self.present(forgetPassword, animated: true, completion: nil)
+        //self.present(forgetPassword, animated: true, completion: nil)
+        
+        self.fromRight()
+        self.present(forgetPassword, animated: false, completion: nil)
     }
     
     @IBAction func btnLogin(_ sender: Any) {
@@ -103,7 +106,11 @@ class SignIn: UIViewController,UITextFieldDelegate {
                     
                     let dashBoard = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
                     
-                    self.present(dashBoard, animated: true, completion: nil)
+                    self.fromRight()
+                    
+                    //self.present(dashBoard, animated: true, completion: nil)
+                    
+                    self.present(dashBoard, animated: false, completion: nil)
                 }
                 else if(tempDict["status"] == "error")
                 {

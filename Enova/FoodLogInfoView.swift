@@ -64,7 +64,10 @@ class FoodLogInfoView: UIViewController {
         
         let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
         
-        self.present(foodLogView, animated: true, completion: nil)
+        //self.present(foodLogView, animated: true, completion: nil)
+        
+        self.fromLeft()
+        self.present(foodLogView, animated: false, completion: nil)
     }
     
     @IBAction func btnBack2(_ sender: UIButton) {
@@ -73,7 +76,10 @@ class FoodLogInfoView: UIViewController {
         
         let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
         
-        self.present(foodLogView, animated: true, completion: nil)
+        //self.present(foodLogView, animated: true, completion: nil)
+        
+        self.fromLeft()
+        self.present(foodLogView, animated: false, completion: nil)
     }
     
     func loadData()
@@ -118,44 +124,65 @@ class FoodLogInfoView: UIViewController {
     
     @IBAction func deleteLog(_ sender: Any) {
         
-        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        let removeLogParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "food_log_id" : foodId_global!]
+        let DeleteAlert = UIAlertController(title: "Delete", message: "Are You Sure You Want To Delete.", preferredStyle: UIAlertControllerStyle.alert)
         
-        Alamofire.request(RemoveFoodLogAPI, method: .post, parameters: removeLogParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
-            if(response.result.value != nil)
-            {
-                
-                print(JSON(response.result.value))
-                
-                let tempDict = JSON(response.result.value!)
-                
-                //print(tempDict["data"]["user_id"])
-                
-                if(tempDict["status"] == "success")
+        DeleteAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            
+            let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+            
+            let removeLogParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "food_log_id" : foodId_global!]
+            
+            Alamofire.request(RemoveFoodLogAPI, method: .post, parameters: removeLogParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+                if(response.result.value != nil)
+                {
+                    
+                    print(JSON(response.result.value))
+                    
+                    let tempDict = JSON(response.result.value!)
+                    
+                    //print(tempDict["data"]["user_id"])
+                    
+                    if(tempDict["status"] == "success")
+                    {
+                        spinnerActivity.hide(animated: true)
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        
+                        let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
+                        
+                        //self.present(foodLogView, animated: true, completion: nil)
+                        
+                        self.fromLeft()
+                        self.present(foodLogView, animated: false, completion: nil)
+                    }
+                    else if(tempDict["status"] == "error")
+                    {
+                        spinnerActivity.hide(animated: true)
+                        self.showAlert(title: "Alert", message: "Something went Wrong")
+                    }
+                    
+                    
+                }
+                else
                 {
                     spinnerActivity.hide(animated: true)
-                    
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    
-                    let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
-                    
-                    self.present(foodLogView, animated: true, completion: nil)
+                    self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
                 }
-                else if(tempDict["status"] == "error")
-                {
-                    spinnerActivity.hide(animated: true)
-                    self.showAlert(title: "Alert", message: "Something went Wrong")
-                }
-                
-                
-            }
-            else
-            {
-                spinnerActivity.hide(animated: true)
-                self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
-            }
-        })
+            })
+            
+            
+        }))
+        
+        DeleteAlert.addAction(UIAlertAction(title: "NO", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+            print("Delete Cancelled")
+            
+        }))
+        
+        present(DeleteAlert, animated: true, completion: nil)
+        
+        
     }
     
     

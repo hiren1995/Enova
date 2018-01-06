@@ -46,8 +46,10 @@ class DashBoard: UIViewController{
         
         let glucoseView = storyboard.instantiateViewController(withIdentifier: "glucoseView") as! GlucoseView
         
-        self.present(glucoseView, animated: true, completion: nil)
+        //self.present(glucoseView, animated: true, completion: nil)
         
+        self.fromRight()
+        self.present(glucoseView, animated: false, completion: nil)
         
     }
     
@@ -57,7 +59,10 @@ class DashBoard: UIViewController{
         
         let ketonesView = storyboard.instantiateViewController(withIdentifier: "ketonesView") as! KetonesView
         
-        self.present(ketonesView, animated: true, completion: nil)
+        //self.present(ketonesView, animated: true, completion: nil)
+        
+        self.fromRight()
+        self.present(ketonesView, animated: false, completion: nil)
     }
    
     @IBAction func btnWeight(_ sender: Any) {
@@ -66,7 +71,10 @@ class DashBoard: UIViewController{
         
         let weightView = storyboard.instantiateViewController(withIdentifier: "weightView") as! WeightView
         
-        self.present(weightView, animated: true, completion: nil)
+        //self.present(weightView, animated: true, completion: nil)
+        
+        self.fromRight()
+        self.present(weightView, animated: false, completion: nil)
     }
     
     @IBAction func btnMeasurements(_ sender: Any) {
@@ -75,7 +83,10 @@ class DashBoard: UIViewController{
         
         let measurementsView = storyboard.instantiateViewController(withIdentifier: "measurementsView") as! MeasurementsView
         
-        self.present(measurementsView, animated: true, completion: nil)
+        //self.present(measurementsView, animated: true, completion: nil)
+        
+        self.fromRight()
+        self.present(measurementsView, animated: false, completion: nil)
     }
     
     @IBAction func btnFoodLog(_ sender: Any) {
@@ -84,7 +95,10 @@ class DashBoard: UIViewController{
         
         let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
         
-        self.present(foodLogView, animated: true, completion: nil)
+        //self.present(foodLogView, animated: true, completion: nil)
+        
+        self.fromRight()
+        self.present(foodLogView, animated: false, completion: nil)
         
     }
     
@@ -94,7 +108,10 @@ class DashBoard: UIViewController{
         
         let profileSettingView = storyboard.instantiateViewController(withIdentifier: "profileSettingView") as! ProfileSettingView
         
-        self.present(profileSettingView, animated: true, completion: nil)
+        //self.present(profileSettingView, animated: true, completion: nil)
+        
+        self.fromRight()
+        self.present(profileSettingView, animated: false, completion: nil)
     }
     
     @IBAction func btnLogoutPress(_ sender: Any) {
@@ -114,6 +131,9 @@ class DashBoard: UIViewController{
             
             let signIn = storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
             
+            //self.present(signIn, animated: true, completion: nil)
+            
+            self.fromLeft()
             self.present(signIn, animated: true, completion: nil)
             
         }))

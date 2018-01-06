@@ -103,7 +103,7 @@ extension UIView {
         self.layer.borderWidth = 1
     }
     
-   
+    
     
 }
 
@@ -118,6 +118,25 @@ extension UIViewController{
         
         // show the alert
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func fromRight()
+    {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+        transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+    }
+    func fromLeft()
+    {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromLeft
+        transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
     }
    
 }

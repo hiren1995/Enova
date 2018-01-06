@@ -186,24 +186,21 @@ class WeightView: UIViewController,UITextFieldDelegate {
                     
                     print(JSON(response.result.value))
                     
-                    self.tempDict = JSON(response.result.value!)
+                    let tempDictweight = JSON(response.result.value!)
                     
                     //print(tempDict["data"]["user_id"])
                     
-                    if(self.tempDict["status"] == "success")
+                    if(tempDictweight["status"] == "success")
                     {
                         self.newDataAddView.isHidden = true
                         self.AlphaView.isHidden = true
-                        
-                        self.lblHighWeight.text = self.tempDict["start_weight"].stringValue
-                        self.lblLowWeight.text = self.tempDict["weight_diff"].stringValue
-                        
+                    
                         spinnerActivity.hide(animated: true)
                         
                         self.viewDidLoad()
                         
                     }
-                    else if(self.tempDict["status"] == "error")
+                    else if(tempDictweight["status"] == "error")
                     {
                         spinnerActivity.hide(animated: true)
                         self.showAlert(title: "Alert", message: "Something went Wrong")
@@ -371,11 +368,17 @@ class WeightView: UIViewController,UITextFieldDelegate {
     
     @IBAction func btnBack(_ sender: UIButton) {
         
+        //self.dismiss(animated: true, completion: nil)
+        
+        self.fromLeft()
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func btnBack2(_ sender: UIButton) {
         
+        //self.dismiss(animated: true, completion: nil)
+        
+        self.fromLeft()
         self.dismiss(animated: true, completion: nil)
     }
     

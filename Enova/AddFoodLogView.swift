@@ -98,7 +98,7 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
     func addDoneButtonOnKeyboard()
     {
         var doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
-        doneToolbar.barStyle = UIBarStyle.blackTranslucent
+        doneToolbar.barStyle = UIBarStyle.default
         
         var flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         var done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(cancelKeyboard))
@@ -127,7 +127,10 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
         
         let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
         
-        self.present(foodLogView, animated: true, completion: nil)
+        //self.present(foodLogView, animated: true, completion: nil)
+        
+        self.fromLeft()
+        self.present(foodLogView, animated: false, completion: nil)
     }
     
     @IBAction func btnBack2(_ sender: UIButton) {
@@ -136,7 +139,10 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
         
         let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
         
-        self.present(foodLogView, animated: true, completion: nil)
+        //self.present(foodLogView, animated: true, completion: nil)
+        
+        self.fromLeft()
+        self.present(foodLogView, animated: false, completion: nil)
     }
 
     
@@ -219,7 +225,10 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
                         
                         let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
                         
-                        self.present(foodLogView, animated: true, completion: nil)
+                        //self.present(foodLogView, animated: true, completion: nil)
+                        
+                        self.fromLeft()
+                        self.present(foodLogView, animated: false, completion: nil)
                         
                     }
                 case .failure(let error):

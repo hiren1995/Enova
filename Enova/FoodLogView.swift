@@ -140,7 +140,10 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         let addFoodLogView = storyboard.instantiateViewController(withIdentifier: "addFoodLogView") as! AddFoodLogView
         
-        self.present(addFoodLogView, animated: true, completion: nil)
+        //self.present(addFoodLogView, animated: true, completion: nil)
+        
+        self.fromRight()
+        self.present(addFoodLogView, animated: false, completion: nil)
         
     }
     
@@ -173,7 +176,10 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         let foodLogInfoView = storyboard.instantiateViewController(withIdentifier: "foodLogInfoView") as! FoodLogInfoView
         
-        self.present(foodLogInfoView, animated: true, completion: nil)
+        //self.present(foodLogInfoView, animated: true, completion: nil)
+        
+        self.fromRight()
+        self.present(foodLogInfoView, animated: false, completion: nil)
         
     }
     
@@ -238,7 +244,7 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func addDoneButtonOnDatePicker()
     {
         var doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
-        doneToolbar.barStyle = UIBarStyle.blackTranslucent
+        doneToolbar.barStyle = UIBarStyle.default
         
         var flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         var done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(cancelPicker))
@@ -268,7 +274,10 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         let dashBoard = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
         
-        self.present(dashBoard, animated: true, completion: nil)
+        //self.present(dashBoard, animated: true, completion: nil)
+        
+        self.fromLeft()
+        self.present(dashBoard, animated: false, completion: nil)
     }
     
     @IBAction func btnBack2(_ sender: UIButton) {
@@ -279,7 +288,10 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         let dashBoard = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
         
-        self.present(dashBoard, animated: true, completion: nil)
+        //self.present(dashBoard, animated: true, completion: nil)
+        
+        self.fromLeft()
+        self.present(dashBoard, animated: false, completion: nil)
     }
     
     
