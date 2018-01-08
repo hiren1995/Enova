@@ -120,12 +120,12 @@ class KetonesView: UIViewController,UITextFieldDelegate {
                 
                 if(values[i] >= userData["data"]["ketones"].doubleValue)
                 {
-                    circleColors.append(NSUIColor.red)
+                    circleColors.append(NSUIColor.init(red: 50/255, green: 153/255, blue: 50/255, alpha: 1.0))
                 }
                 else
                 {
-                    circleColors.append(NSUIColor.init(red: 50/255, green: 153/255, blue: 50/255, alpha: 1.0))
                     
+                    circleColors.append(NSUIColor.red)
                 }
                 
                 let dataEntry = ChartDataEntry(x: Double(i), y: values[i] )
