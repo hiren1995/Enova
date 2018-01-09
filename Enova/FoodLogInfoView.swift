@@ -63,9 +63,6 @@ class FoodLogInfoView: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
-        
-        //self.present(foodLogView, animated: true, completion: nil)
-        
         self.fromLeft()
         self.present(foodLogView, animated: false, completion: nil)
     }
@@ -75,9 +72,6 @@ class FoodLogInfoView: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
-        
-        //self.present(foodLogView, animated: true, completion: nil)
-        
         self.fromLeft()
         self.present(foodLogView, animated: false, completion: nil)
     }
@@ -87,10 +81,7 @@ class FoodLogInfoView: UIViewController {
         txtNote.text = foodNote_global
         lblMealType.text = foodCategory_global
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
-        let date = dateFormatter.date(from: foodCreatedAt_global!)
+        let date = Date(timeIntervalSince1970: (Double(foodTimeStamp_global!)! / 1000.0))  //get the date from timstamp in miliseconds...
         
         print(date)
         
@@ -98,7 +89,7 @@ class FoodLogInfoView: UIViewController {
         normalDateFormatter.dateStyle = .long
         normalDateFormatter.timeStyle = .medium
         
-        let tempDateStr = normalDateFormatter.string(from: date!)
+        let tempDateStr = normalDateFormatter.string(from: date)
         
         let tempDateArray = tempDateStr.components(separatedBy: "at")
         
@@ -150,9 +141,6 @@ class FoodLogInfoView: UIViewController {
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         
                         let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
-                        
-                        //self.present(foodLogView, animated: true, completion: nil)
-                        
                         self.fromLeft()
                         self.present(foodLogView, animated: false, completion: nil)
                     }

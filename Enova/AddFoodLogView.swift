@@ -73,9 +73,7 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
     
     
     @IBAction func btnMealSelectPress(_ sender: Any) {
-        
-        
-        MealSelectTableView.isHidden = false
+       MealSelectTableView.isHidden = false
     }
     
     
@@ -110,9 +108,6 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
         doneToolbar.items = items as! [UIBarButtonItem]
         doneToolbar.sizeToFit()
         
-        //txtTo.inputAccessoryView = doneToolbar
-        //txtFrom.inputAccessoryView = doneToolbar
-        
         NoteText.inputAccessoryView = doneToolbar
         
     }
@@ -126,9 +121,6 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
-        
-        //self.present(foodLogView, animated: true, completion: nil)
-        
         self.fromLeft()
         self.present(foodLogView, animated: false, completion: nil)
     }
@@ -138,9 +130,6 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
-        
-        //self.present(foodLogView, animated: true, completion: nil)
-        
         self.fromLeft()
         self.present(foodLogView, animated: false, completion: nil)
     }
@@ -224,9 +213,6 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         
                         let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
-                        
-                        //self.present(foodLogView, animated: true, completion: nil)
-                        
                         self.fromLeft()
                         self.present(foodLogView, animated: false, completion: nil)
                         
@@ -298,11 +284,11 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
             
             //profileImg.image = image
             
-            
+            self.dismiss(animated: true, completion: nil)
             let cropViewController = CropViewController(image: image)
             cropViewController.delegate = self
             present(cropViewController, animated: true, completion: nil)
-            self.dismiss(animated: true, completion: nil)
+            //self.dismiss(animated: true, completion: nil)
             
         } else{
             print("Something went wrong")
@@ -331,20 +317,9 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MealTypeCell") as! MealSelectTableCell
         
-        //cell.MealType.text = foodType?[indexPath.row]
-        //cell.DateTime.text = date?[indexPath.row]
-        
         if(tempDict.count != 0)
         {
             cell.lblMealTypeName.text = tempDict["data"][indexPath.row]["name"].stringValue
-            
-            //MealSelectTableView.translatesAutoresizingMaskIntoConstraints = true
-            
-            //let newHeight = self.MealSelectTableView.rowHeight * CGFloat(self.tempDict["data"].count)
-            
-            //MealSelectTableView.frame = CGRect(x: MealSelectTableView.frame.origin.x, y: MealSelectTableView.frame.origin.y, width: MealSelectTableView.frame.size.width, height: newHeight)
-            
-            
             
         }
         

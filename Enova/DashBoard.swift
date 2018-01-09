@@ -21,14 +21,10 @@ class DashBoard: UIViewController{
     override func viewDidLoad()
     {
         super.viewDidLoad()
-       
+        
         HeaderView.ShadowHeader()                                       //pls check the CustomClass.swift file for this methods defined..
-        
         MenuView.menuViewBorder()
-
         MenuView.isHidden = true
-        
-        
         
         // Do any additional setup after loading the view.
     }
@@ -43,11 +39,7 @@ class DashBoard: UIViewController{
     @IBAction func btnGlucose(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let glucoseView = storyboard.instantiateViewController(withIdentifier: "glucoseView") as! GlucoseView
-        
-        //self.present(glucoseView, animated: true, completion: nil)
-        
         self.fromRight()
         self.present(glucoseView, animated: false, completion: nil)
         
@@ -56,11 +48,7 @@ class DashBoard: UIViewController{
     @IBAction func btnKetones(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let ketonesView = storyboard.instantiateViewController(withIdentifier: "ketonesView") as! KetonesView
-        
-        //self.present(ketonesView, animated: true, completion: nil)
-        
         self.fromRight()
         self.present(ketonesView, animated: false, completion: nil)
     }
@@ -68,11 +56,7 @@ class DashBoard: UIViewController{
     @IBAction func btnWeight(_ sender: Any) {
        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let weightView = storyboard.instantiateViewController(withIdentifier: "weightView") as! WeightView
-        
-        //self.present(weightView, animated: true, completion: nil)
-        
         self.fromRight()
         self.present(weightView, animated: false, completion: nil)
     }
@@ -80,11 +64,7 @@ class DashBoard: UIViewController{
     @IBAction func btnMeasurements(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let measurementsView = storyboard.instantiateViewController(withIdentifier: "measurementsView") as! MeasurementsView
-        
-        //self.present(measurementsView, animated: true, completion: nil)
-        
         self.fromRight()
         self.present(measurementsView, animated: false, completion: nil)
     }
@@ -92,11 +72,7 @@ class DashBoard: UIViewController{
     @IBAction func btnFoodLog(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let foodLogView = storyboard.instantiateViewController(withIdentifier: "foodLogView") as! FoodLogView
-        
-        //self.present(foodLogView, animated: true, completion: nil)
-        
         self.fromRight()
         self.present(foodLogView, animated: false, completion: nil)
         
@@ -105,11 +81,7 @@ class DashBoard: UIViewController{
     @IBAction func btnProfile(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let profileSettingView = storyboard.instantiateViewController(withIdentifier: "profileSettingView") as! ProfileSettingView
-        
-        //self.present(profileSettingView, animated: true, completion: nil)
-        
         self.fromRight()
         self.present(profileSettingView, animated: false, completion: nil)
     }
@@ -121,18 +93,13 @@ class DashBoard: UIViewController{
         LogoutAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             
             udefault.set(false, forKey: isLogin)
-            
             udefault.removeObject(forKey: UserId)
             udefault.removeObject(forKey: EmailAddress)
             udefault.removeObject(forKey: Password)
             udefault.removeObject(forKey: UserData)
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
             let signIn = storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
-            
-            //self.present(signIn, animated: true, completion: nil)
-            
             self.fromLeft()
             self.present(signIn, animated: true, completion: nil)
             

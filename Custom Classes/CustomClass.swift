@@ -202,8 +202,8 @@ extension UIImageView{
     
 }
 extension Date {
-    var currentTimeStamp: UInt64 {
-        return UInt64((self.timeIntervalSince1970 + 62_135_596_800) * 10_000_000)
+    var currentTimeStamp: Int64 {
+        return Int64(self.timeIntervalSince1970 * 1000)
     }
 }
 

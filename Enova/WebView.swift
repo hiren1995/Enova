@@ -28,9 +28,6 @@ class WebView: UIViewController {
         
         webView.loadRequest(URLRequest(url: URL(fileURLWithPath: Bundle.main.path(forResource: "TOS", ofType: "html")!)))
         
-        //mWebView.loadRequest(URLRequest(url: URL(fileURLWithPath: Bundle.main.path(forResource: "test/index", ofType: "html")!)))
-        
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func btnMenuPress(_ sender: Any) {
@@ -42,15 +39,11 @@ class WebView: UIViewController {
     
     @IBAction func btnBack(_ sender: UIButton) {
         
-        //self.dismiss(animated: true, completion: nil)
-        
         self.fromLeft()
         self.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func btnBack2(_ sender: UIButton) {
-        
-        //self.dismiss(animated: true, completion: nil)
         
         self.fromLeft()
         self.dismiss(animated: false, completion: nil)

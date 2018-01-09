@@ -36,9 +36,6 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var foodLogCount:Int = 0
     var tempDict : JSON = JSON.null
     
-    //let foodType = ["Meal","Snack","Meal","Snack","Meal","Snack","Meal","Snack"]
-    //let date = ["Today,10:00 AM","Today,2:00 PM","Today,10:00 AM","Today,2:00 PM","Today,10:00 AM","Today,2:00 PM","Today,10:00 AM","Today,2:00 PM"]
-    
     var foodType:[String]? = nil
     var date:[String]? = nil
     
@@ -70,13 +67,8 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let temp = Calendar.current.date(byAdding: dateComponent, to: currentDate)
         let from_date = formatter.string(from: temp!)
         
-        
-        
         txtFrom.text = from_date
         txtTo.text = to_date
-        
-        
-        
         loadFoodLogs(From_date : from_date, To_date: to_date)
 
         // Do any additional setup after loading the view.
@@ -92,21 +84,11 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "foodlogcell") as! FoodLogTableCell
         
-        //cell.MealType.text = foodType?[indexPath.row]
-        //cell.DateTime.text = date?[indexPath.row]
-        
         if(tempDict.count != 0)
         {
             cell.MealType.text = tempDict["data"][indexPath.row]["food_category"].stringValue
-            
-            let dateFormatter1 = DateFormatter()
-            dateFormatter1.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            
-            let stringtodate = dateFormatter1.date(from: tempDict["data"][indexPath.row]["created_at"].stringValue)
-            
-            cell.DateTime.text = dateLanguageFormat(DateValue: stringtodate!)
-            
-            //cell.DateTime.text = tempDict["data"][indexPath.row]["created_at"].stringValue
+            let stringtodate = Date(timeIntervalSince1970:  (Double(tempDict["data"][indexPath.row]["timestamp"].stringValue)! / 1000.0))
+            cell.DateTime.text = dateLanguageFormat(DateValue: stringtodate)
         }
         
         cell.btnView.addTarget(self, action: #selector(openFoodLogInfo), for: .touchUpInside)
@@ -140,8 +122,6 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         let addFoodLogView = storyboard.instantiateViewController(withIdentifier: "addFoodLogView") as! AddFoodLogView
         
-        //self.present(addFoodLogView, animated: true, completion: nil)
-        
         self.fromRight()
         self.present(addFoodLogView, animated: false, completion: nil)
         
@@ -167,16 +147,16 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         {
             foodDeleted_global = tempDict["data"][i]["deleted_at"].stringValue
         }
+        
+        
         if(tempDict["data"][i]["food_note"] != JSON.null)
         {
             foodNote_global = tempDict["data"][i]["food_note"].stringValue
         }
-        
+ 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let foodLogInfoView = storyboard.instantiateViewController(withIdentifier: "foodLogInfoView") as! FoodLogInfoView
-        
-        //self.present(foodLogInfoView, animated: true, completion: nil)
         
         self.fromRight()
         self.present(foodLogInfoView, animated: false, completion: nil)
@@ -201,9 +181,7 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         dateFormatter.dateFormat = "dd-MM-yyyy"
         
         txtFrom.text = convertDateFormater(dateFormatter.string(from: sender.date))
-        
-        //compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
-        
+       
     }
     
     //---------------------------------------------- End ------------------------------------------------------------------------------
@@ -225,8 +203,6 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         dateFormatter.dateFormat = "dd-MM-yyyy"
         
         txtTo.text = convertDateFormater(dateFormatter.string(from: sender.date))
-        
-         //compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
         
     }
     //---------------------------------------------- End ------------------------------------------------------------------------------
@@ -268,28 +244,16 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @IBAction func btnBack(_ sender: UIButton) {
         
-        //self.dismiss(animated: true, completion: nil)
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let dashBoard = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
-        
-        //self.present(dashBoard, animated: true, completion: nil)
-        
         self.fromLeft()
         self.present(dashBoard, animated: false, completion: nil)
     }
     
     @IBAction func btnBack2(_ sender: UIButton) {
         
-        //self.dismiss(animated: true, completion: nil)
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let dashBoard = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
-        
-        //self.present(dashBoard, animated: true, completion: nil)
-        
         self.fromLeft()
         self.present(dashBoard, animated: false, completion: nil)
     }
@@ -316,11 +280,6 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 if(self.tempDict["status"] == "success")
                 {
                     self.foodLogCount = self.tempDict["data"].count
-                    
-                    //print(self.tempDict["data"][0]["food_category"].stringValue)
-                    //print(self.tempDict["data"][0]["food_category"].stringValue)
-                   
-                    
                     self.foodLogTableView.reloadData()
                     
                     spinnerActivity.hide(animated: true)

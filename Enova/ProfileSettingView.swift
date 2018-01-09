@@ -401,11 +401,11 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
             
             //profileImg.image = image
             
-            
+            self.dismiss(animated: true, completion: nil)
             let cropViewController = CropViewController(image: image)
             cropViewController.delegate = self
             present(cropViewController, animated: true, completion: nil)
-            self.dismiss(animated: true, completion: nil)
+            
             
         } else{
             print("Something went wrong")
@@ -445,9 +445,6 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DiabetesCell") as! DiabetesSelectTableCell
-        
-        //cell.MealType.text = foodType?[indexPath.row]
-        //cell.DateTime.text = date?[indexPath.row]
         
         if(tempDict.count != 0)
         {

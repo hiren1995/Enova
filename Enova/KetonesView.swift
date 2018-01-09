@@ -58,14 +58,6 @@ class KetonesView: UIViewController,UITextFieldDelegate {
         
         txtNewValue.delegate = self
         
-        //days = [1,2,3,4,5,6,7]
-        //KetonesValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0,17.0]
-        
-        //setChart(dataPoints: days,values: KetonesValues)
-        
-        //lblHighKetones.text = String(describing: KetonesValues.max()!)
-        //lblLowKetones.text = String(describing: KetonesValues.min()!)
-        
         addDoneButtonOnDatePicker()
         addDoneOnTextView()
         
@@ -298,26 +290,12 @@ class KetonesView: UIViewController,UITextFieldDelegate {
         
         newDataAddView.frame.origin.y -= 150
         
-        /*
-         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-         if newDataAddView.frame.origin.y == 165{
-         newDataAddView.frame.origin.y -= keyboardSize.height
-         }
-         }
-         */
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         
         newDataAddView.frame.origin.y += 150
         
-        /*
-         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-         if newDataAddView.frame.origin.y != 165{
-         newDataAddView.frame.origin.y += keyboardSize.height
-         }
-         }
-         */
     }
     
     //-------------------------------------------------------- End -----------------------------------------------------------------------------------------
@@ -374,14 +352,10 @@ class KetonesView: UIViewController,UITextFieldDelegate {
     
     @IBAction func btnBack(_ sender: UIButton) {
         
-        //self.dismiss(animated: true, completion: nil)
-        
         self.fromLeft()
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func btnBack2(_ sender: UIButton) {
-        
-        //self.dismiss(animated: true, completion: nil)
         
         self.fromLeft()
         self.dismiss(animated: true, completion: nil)
@@ -412,18 +386,28 @@ class KetonesView: UIViewController,UITextFieldDelegate {
                 
                 if(self.tempDict["status"] == "success")
                 {
-                    self.lblHighKetones.text = self.tempDict["high_ketones"].stringValue
-                    self.lblLowKetones.text = self.tempDict["low_ketones"].stringValue
-                    
-                    for var i in 0...self.tempDict["data"].count-1
+                    if(self.tempDict["data"].count == 0)
                     {
-                        days.insert(i+1, at: i)
-                        KetonesValues.insert(self.tempDict["data"][i]["ketones"].doubleValue, at: i)
+                        days = []
+                        KetonesValues = []
+                        self.setChart(dataPoints: days,values: KetonesValues)
+                    }
+                    else
+                    {
+                        self.lblHighKetones.text = self.tempDict["high_ketones"].stringValue
+                        self.lblLowKetones.text = self.tempDict["low_ketones"].stringValue
+                        
+                        for var i in 0...self.tempDict["data"].count-1
+                        {
+                            days.insert(i+1, at: i)
+                            KetonesValues.insert(self.tempDict["data"][i]["ketones"].doubleValue, at: i)
+                            
+                        }
+                        
+                        
+                        self.setChart(dataPoints: days,values: KetonesValues)
                         
                     }
-                    
-                    
-                    self.setChart(dataPoints: days,values: KetonesValues)
                     
                     spinnerActivity.hide(animated: true)
                 }

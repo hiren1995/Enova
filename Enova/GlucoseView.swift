@@ -53,14 +53,6 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         
         txtNewValue.delegate = self
         
-        //days = [1,2,3,4,5,6,7]
-        //GlucoseValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0,17.0]
-        
-        //setChart(dataPoints: days,values: GlucoseValues)
-        
-        //lblHighGlucose.text = String(describing: GlucoseValues.max()!)
-        //lblLowGlucose.text = String(describing: GlucoseValues.min()!)
-        
         addDoneButtonOnDatePicker()
         addDoneOnTextView()
         
@@ -69,16 +61,12 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         formatter.dateFormat = "yyyy-MM-dd"
         let to_date = formatter.string(from: currentDate)
         
-        //print(result+"23:59:59")
-        
         let subtractDays = -7
         var dateComponent = DateComponents()
         dateComponent.day = subtractDays
         
         let temp = Calendar.current.date(byAdding: dateComponent, to: currentDate)
         let from_date = formatter.string(from: temp!)
-        
-        
         
         txtFrom.text = from_date
         txtTo.text = to_date
@@ -99,41 +87,6 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
     
         */
     }
-    
-    /*
-    func setChart(dataPoints: [Int] , values: [Double])
-    {
-        var circleColors: [NSUIColor] = []
-        
-        var dataEntries: [ChartDataEntry] = []
-        
-        for i in 0...dataPoints.count - 1
-        {
-           
-            if(values[i] >= 12.0)
-            {
-                circleColors.append(NSUIColor.red)
-            }
-            else
-            {
-                circleColors.append(NSUIColor.green)
-                
-            }
-            
-            let dataEntry = ChartDataEntry(x: Double(i), y: values[i] )
-            
-            dataEntries.append(dataEntry)
-            
-            
-        }
-        
-        let line1 = LineChartDataSet(values: dataEntries, label: "Glucose")
-        
-        
-        lineChatView.MakeLineGraph(line: line1, circleColors: circleColors, labelText: "Glucose Graph")   // for Make Graph method check the CustomClass.swift
-        
-    }
-    */
     
     func setChart(dataPoints: [Int] , values: [Double])
     {
@@ -181,7 +134,6 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         
         txtNewValue.text = ""
         
-        //AlphaView.bringSubview(toFront: newDataAddView)
     }
    
     @IBAction func btnCancel(_ sender: Any) {
@@ -208,15 +160,7 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         }
         else
         {
-           // days.append(days.count+1)
-            //GlucoseValues.append(Double(txtNewValue.text!)!)
-            //newDataAddView.isHidden = true
-            //AlphaView.isHidden = true
-            //setChart(dataPoints: days,values: GlucoseValues)
-            //lblHighGlucose.text = String(describing: GlucoseValues.max()!)
-            //lblLowGlucose.text = String(describing: GlucoseValues.min()!)
-            
-            let timeStamp = String(Date().currentTimeStamp)
+           let timeStamp = String(Date().currentTimeStamp)
             
             let addGlucoseParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "glucose" : txtNewValue.text! , "timestamp" : timeStamp]
             
@@ -277,8 +221,6 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         
         txtFrom.text = convertDateFormater(dateFormatter.string(from: sender.date))
         
-        //compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
-        
     }
    
     //---------------------------------------------- End ------------------------------------------------------------------------------
@@ -300,8 +242,6 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         dateFormatter.dateFormat = "dd MMM yyyy"
         
         txtTo.text = convertDateFormater(dateFormatter.string(from: sender.date))
-        
-        //compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
         
     }
     //---------------------------------------------- End ------------------------------------------------------------------------------
@@ -334,26 +274,12 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         
         newDataAddView.frame.origin.y -= 150
         
-        /*
-         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-         if newDataAddView.frame.origin.y == 165{
-         newDataAddView.frame.origin.y -= keyboardSize.height
-         }
-         }
-         */
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         
         newDataAddView.frame.origin.y += 150
         
-        /*
-         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-         if newDataAddView.frame.origin.y != 165{
-         newDataAddView.frame.origin.y += keyboardSize.height
-         }
-         }
-         */
     }
     
     //-------------------------------------------------------- End -----------------------------------------------------------------------------------------
@@ -411,14 +337,10 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
     
     @IBAction func btnBack(_ sender: UIButton) {
         
-        //self.dismiss(animated: true, completion: nil)
-        
         self.fromLeft()
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func btnBack2(_ sender: UIButton) {
-        
-        //self.dismiss(animated: true, completion: nil)
         
         self.fromLeft()
         self.dismiss(animated: true, completion: nil)
@@ -445,23 +367,31 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
                 print(JSON(response.result.value))
                 
                 self.tempDict = JSON(response.result.value!)
-                
-                //print(tempDict["data"]["user_id"])
-                
+               
                 if(self.tempDict["status"] == "success")
                 {
-                    self.lblHighGlucose.text = self.tempDict["max_glucose"].stringValue
-                    self.lblLowGlucose.text = self.tempDict["min_glucose"].stringValue
+                    print(self.tempDict["data"].count)
                     
-                    for var i in 0...self.tempDict["data"].count-1
+                    if(self.tempDict["data"].count == 0)
                     {
-                        days.insert(i+1, at: i)
-                        GlucoseValues.insert(self.tempDict["data"][i]["glucose"].doubleValue, at: i)
+                        days = []
+                        GlucoseValues = []
+                       self.setChart(dataPoints: days,values: GlucoseValues)
+                    }
+                    else
+                    {
+                        self.lblHighGlucose.text = self.tempDict["max_glucose"].stringValue
+                        self.lblLowGlucose.text = self.tempDict["min_glucose"].stringValue
+                        
+                        for var i in 0...self.tempDict["data"].count-1
+                        {
+                            days.insert(i+1, at: i)
+                            GlucoseValues.insert(self.tempDict["data"][i]["glucose"].doubleValue, at: i)
+                            
+                        }
+                        self.setChart(dataPoints: days,values: GlucoseValues)
                         
                     }
-                    
-                   
-                    self.setChart(dataPoints: days,values: GlucoseValues)
                     
                     spinnerActivity.hide(animated: true)
                 }
@@ -470,7 +400,6 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
                     spinnerActivity.hide(animated: true)
                     self.showAlert(title: "Alert", message: "Something went Wrong")
                 }
-                
                 
             }
             else

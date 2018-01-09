@@ -83,20 +83,6 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         
         txtNewValue.delegate = self
         
-        //days = [1,2,3,4,5,6,7]
-        //WaistValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0,17.0]
-        //HipsValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0,17.0]
-        //WristValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0,17.0]
-        //ForearmValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0,17.0]
-        
-        //setChart(dataPoints: days,valuesWaist: WaistValues ,  type: 1)
-        //setChart(dataPoints: days,valuesWaist: HipsValues ,  type: 2)
-        //setChart(dataPoints: days,valuesWaist: WristValues ,  type: 3)
-        //setChart(dataPoints: days,valuesWaist: ForearmValues ,  type: 4 )
-        
-        //lblHighWaist.text = String(describing: WaistValues.max()!)
-        //lblLowWaist.text = String(describing: WaistValues.min()!)
-        
         addDoneButtonOnDatePicker()
         addDoneOnTextView()
         
@@ -104,8 +90,6 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let to_date = formatter.string(from: currentDate)
-        
-        //print(result+"23:59:59")
         
         let subtractDays = -7
         var dateComponent = DateComponents()
@@ -260,35 +244,6 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
             }
         }
         
-        
-        
-        /*
-        for i in 0...dataPoints.count - 1
-        {
-            
-            if(valuesWaist[i] >= 12.0)
-            {
-                circleColors.append(NSUIColor.red)
-            }
-            else
-            {
-                circleColors.append(NSUIColor.green)
-                
-            }
-            
-            let dataEntry = ChartDataEntry(x: Double(i), y: valuesWaist[i] )
-            
-            dataEntries.append(dataEntry)
-            
-            
-        }
-        
-        let line1 = LineChartDataSet(values: dataEntries, label: "Waist")
-        
-        
-        lineChatView.MakeLineGraph(line: line1, circleColors: circleColors, labelText: " Graph")   // for Make Graph method check the CustomClass.swift
-        */
-       
     }
     
     @IBAction func btnAdd(_ sender: Any) {
@@ -301,29 +256,6 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         
         lblAddViewName.text = "WAIST"
         
-        
-        //newDataAddView.translatesAutoresizingMaskIntoConstraints = false
-       
-        //newDataAddView.frame = CGRect(x: w/2, y: h/2, width: 253, height: 232)
-        
-         //newDataAddView.translatesAutoresizingMaskIntoConstraints = false
-         
-        //let topSpaceWaist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 165)
-        //let topSpaceHips = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 619)
-        //let topSpaceWrist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1041)
-        //let topSpaceForearms = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1464)
-        
-        //NSLayoutConstraint.deactivate([topSpaceHips])
-        //NSLayoutConstraint.deactivate([topSpaceWrist])
-        //NSLayoutConstraint.deactivate([topSpaceForearms])
-        
-        
-        // activate the constraints
-        
-        //NSLayoutConstraint.activate([topSpaceWaist])
-        
-        
-        
     }
     
     @IBAction func btnAddHips(_ sender: Any) {
@@ -335,22 +267,6 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         txtNewValue.text = ""
         
         lblAddViewName.text = "HIPS"
-        
-        
-        //newDataAddView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //let topSpaceWaist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 165)
-        //let topSpaceHips = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 619)
-       // let topSpaceWrist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1041)
-       // let topSpaceForearms = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1464)
-        
-       // NSLayoutConstraint.deactivate([topSpaceWaist])
-        //NSLayoutConstraint.deactivate([topSpaceWrist])
-        //NSLayoutConstraint.deactivate([topSpaceForearms])
-    
-        // activate the constraints
-       // NSLayoutConstraint.activate([topSpaceHips])
- 
        
     }
     
@@ -363,25 +279,7 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         txtNewValue.text = ""
         
         lblAddViewName.text = "WRIST"
-        
-        
-        
-       // newDataAddView.translatesAutoresizingMaskIntoConstraints = false
-        
-       // let topSpaceWaist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 165)
-       // let topSpaceHips = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 619)
-       // let topSpaceWrist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1041)
-       // let topSpaceForearms = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1464)
-        
-        //NSLayoutConstraint.deactivate([topSpaceWaist])
-        //NSLayoutConstraint.deactivate([topSpaceHips])
-       // NSLayoutConstraint.deactivate([topSpaceForearms])
-        
-        
-        // activate the constraints
-       // NSLayoutConstraint.activate([topSpaceWrist])
- 
-        
+      
     }
     
     @IBAction func btnAddForearms(_ sender: Any) {
@@ -393,25 +291,7 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         txtNewValue.text = ""
         
         lblAddViewName.text = "FOREARM"
-        
-        
- 
-        //newDataAddView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //let topSpaceWaist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 165)
-       // let topSpaceHips = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 619)
-       // let topSpaceWrist = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1041)
-       // let topSpaceForearms = NSLayoutConstraint(item: newDataAddView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: InnerScrollView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 1464)
-        
-       // NSLayoutConstraint.deactivate([topSpaceWaist])
-        //NSLayoutConstraint.deactivate([topSpaceHips])
-         //NSLayoutConstraint.deactivate([topSpaceWrist])
-    
-        
-        // activate the constraints
-       // NSLayoutConstraint.activate([topSpaceForearms])
- 
-       
+      
     }
     
     @IBAction func btnCancel(_ sender: Any) {
@@ -609,15 +489,6 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
                     }
                 })
             }
-            
-            
-            //days.append(days.count+1)
-            //WaistValues.append(Double(txtNewValue.text!)!)
-            //newDataAddView.isHidden = true
-            //AlphaView.isHidden = true
-            //setChart(dataPoints: days,values: WaistValues, type: 1)
-            //lblHighWaist.text = String(describing: WaistValues.max()!)
-            //lblLowWaist.text = String(describing: WaistValues.min()!)
         }
     }
     
@@ -638,8 +509,6 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         dateFormatter.dateFormat = "dd MMM yyyy"
         
         txtFrom.text = convertDateFormater(dateFormatter.string(from: sender.date))
-        
-        //compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
         
     }
     
@@ -662,8 +531,6 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         dateFormatter.dateFormat = "dd MMM yyyy"
         
         txtTo.text = convertDateFormater(dateFormatter.string(from: sender.date))
-        
-        //compareDates(From_date: txtFrom.text!, To_date: txtTo.text!)
         
     }
     //---------------------------------------------- End ------------------------------------------------------------------------------
@@ -696,26 +563,12 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         
         newDataAddView.frame.origin.y -= 150
         
-        /*
-         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-         if newDataAddView.frame.origin.y == 165{
-         newDataAddView.frame.origin.y -= keyboardSize.height
-         }
-         }
-         */
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         
         newDataAddView.frame.origin.y += 150
         
-        /*
-         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-         if newDataAddView.frame.origin.y != 165{
-         newDataAddView.frame.origin.y += keyboardSize.height
-         }
-         }
-         */
     }
     
     //-------------------------------------------------------- End -----------------------------------------------------------------------------------------
@@ -772,15 +625,11 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
     
     @IBAction func btnBack(_ sender: UIButton) {
         
-        //self.dismiss(animated: true, completion: nil)
-        
         self.fromLeft()
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func btnBack2(_ sender: UIButton) {
-        
-        //self.dismiss(animated: true, completion: nil)
         
         self.fromLeft()
         self.dismiss(animated: true, completion: nil)
@@ -833,18 +682,28 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
                 {
                     if(userGender == "Male")
                     {
-                        self.lblHighWaist.text = self.tempDict["diff"]["start_waist"].stringValue
-                        self.lblLowWaist.text = self.tempDict["diff"]["waist_diff"].stringValue
-                        
-                        for var i in 0...self.tempDict["waist"].count-1
+                        if(self.tempDict["waist"].count == 0)
                         {
-                            daysWaist.insert(i+1, at: i)
+                            daysWaist = []
+                            WaistValues = []
+                            self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
+                        }
+                        else
+                        {
+                            self.lblHighWaist.text = self.tempDict["diff"]["start_waist"].stringValue
+                            self.lblLowWaist.text = self.tempDict["diff"]["waist_diff"].stringValue
                             
-                            WaistValues.insert(self.tempDict["waist"][i]["waist"].doubleValue, at: i)
+                            for var i in 0...self.tempDict["waist"].count-1
+                            {
+                                daysWaist.insert(i+1, at: i)
+                                
+                                WaistValues.insert(self.tempDict["waist"][i]["waist"].doubleValue, at: i)
+                                
+                            }
                             
+                            self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
                         }
                         
-                        self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
                         
                         self.lblHips.isHidden = true
                         
@@ -856,50 +715,89 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
                     }
                     else
                     {
-                        
-                        self.lblHighWaist.text = self.tempDict["diff"]["start_waist"].stringValue
-                        self.lblLowWaist.text = self.tempDict["diff"]["waist_diff"].stringValue
-                        self.lblStartHips.text = self.tempDict["diff"]["start_hips"].stringValue
-                        self.lblLossHips.text = self.tempDict["diff"]["hips_diff"].stringValue
-                        self.lblStartWrist.text = self.tempDict["diff"]["start_wrist"].stringValue
-                        self.lblLossWrist.text = self.tempDict["diff"]["wrist_diff"].stringValue
-                        self.lblStartForearm.text = self.tempDict["diff"]["start_forearm"].stringValue
-                        self.lbllossForearm.text = self.tempDict["diff"]["forearm_diff"].stringValue
-                        
-                        for var i in 0...self.tempDict["waist"].count-1
+                        if(self.tempDict["waist"].count == 0)
                         {
-                            daysWaist.insert(i+1, at: i)
-                            
-                            WaistValues.insert(self.tempDict["waist"][i]["waist"].doubleValue, at: i)
+                            daysWaist = []
+                            WaistValues = []
+                            self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
                             
                         }
-                        for var i in 0...self.tempDict["hips"].count-1
+                        else
                         {
-                            daysHips.insert(i+1, at: i)
-                            
-                            HipsValues.insert(self.tempDict["hips"][i]["hips"].doubleValue, at: i)
-                        }
-                        for var i in 0...self.tempDict["wrist"].count-1
-                        {
-                            daysWrist.insert(i+1, at: i)
-                            
-                            WristValues.insert(self.tempDict["wrist"][i]["wrist"].doubleValue, at: i)
-                        }
-                        for var i in 0...self.tempDict["forearm"].count-1
-                        {
-                            daysForearm.insert(i+1, at: i)
-                            ForearmValues.insert(self.tempDict["forearm"][i]["forearm"].doubleValue, at: i)
+                            self.lblHighWaist.text = self.tempDict["diff"]["start_waist"].stringValue
+                            self.lblLowWaist.text = self.tempDict["diff"]["waist_diff"].stringValue
+                            for var i in 0...self.tempDict["waist"].count-1
+                            {
+                                daysWaist.insert(i+1, at: i)
+                                
+                                WaistValues.insert(self.tempDict["waist"][i]["waist"].doubleValue, at: i)
+                                
+                            }
+                            self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
                         }
                         
                         
-                        self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
+                        if(self.tempDict["hips"].count == 0)
+                        {
+                            daysHips = []
+                            HipsValues = []
+                            self.setChart(dataPoints: daysHips,values: HipsValues, type: 2)
+                        }
+                        else
+                        {
+                            self.lblStartHips.text = self.tempDict["diff"]["start_hips"].stringValue
+                            self.lblLossHips.text = self.tempDict["diff"]["hips_diff"].stringValue
+                            for var i in 0...self.tempDict["hips"].count-1
+                            {
+                                daysHips.insert(i+1, at: i)
+                                
+                                HipsValues.insert(self.tempDict["hips"][i]["hips"].doubleValue, at: i)
+                            }
+                            self.setChart(dataPoints: daysHips,values: HipsValues, type: 2)
+                            
+                        }
                         
-                        self.setChart(dataPoints: daysHips,values: HipsValues, type: 2)
                         
-                        self.setChart(dataPoints: daysWrist,values: WristValues, type: 3)
+                        if(self.tempDict["wrist"].count == 0)
+                        {
+                            daysWrist = []
+                            WristValues = []
+                            self.setChart(dataPoints: daysWrist,values: WristValues, type: 3)
+                        }
+                        else
+                        {
+                            self.lblStartWrist.text = self.tempDict["diff"]["start_wrist"].stringValue
+                            self.lblLossWrist.text = self.tempDict["diff"]["wrist_diff"].stringValue
+                            for var i in 0...self.tempDict["wrist"].count-1
+                            {
+                                daysWrist.insert(i+1, at: i)
+                                
+                                WristValues.insert(self.tempDict["wrist"][i]["wrist"].doubleValue, at: i)
+                            }
+                            self.setChart(dataPoints: daysWrist,values: WristValues, type: 3)
+                            
+                        }
                         
-                        self.setChart(dataPoints: daysForearm,values: ForearmValues, type: 4)
                         
+                        if(self.tempDict["forearm"].count == 0)
+                        {
+                            daysForearm = []
+                            ForearmValues = []
+                           self.setChart(dataPoints: daysForearm,values: ForearmValues, type: 4)
+                        }
+                        else
+                        {
+                            self.lblStartForearm.text = self.tempDict["diff"]["start_forearm"].stringValue
+                            self.lbllossForearm.text = self.tempDict["diff"]["forearm_diff"].stringValue
+                            for var i in 0...self.tempDict["forearm"].count-1
+                            {
+                                daysForearm.insert(i+1, at: i)
+                                ForearmValues.insert(self.tempDict["forearm"][i]["forearm"].doubleValue, at: i)
+                            }
+                            self.setChart(dataPoints: daysForearm,values: ForearmValues, type: 4)
+                            
+                        }
+                       
                     }
                     
                     spinnerActivity.hide(animated: true)
