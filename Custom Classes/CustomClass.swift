@@ -247,3 +247,15 @@ func dateLanguageFormat(DateValue : Date) -> String
     return "\(dateFormatter.string(from: DateValue)), \(timeFormatter.string(from: DateValue))"
 }
 
+func minDate()->Date
+{
+    let calendar = Calendar.current
+    var minDateComponent = calendar.dateComponents([.day,.month,.year], from: Date())
+    minDateComponent.day = 01
+    minDateComponent.month = 01
+    minDateComponent.year = 1980
+    let minDate = calendar.date(from: minDateComponent)
+    
+    return minDate!
+}
+

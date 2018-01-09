@@ -222,7 +222,8 @@ class KetonesView: UIViewController,UITextFieldDelegate {
         var datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
-        
+        datePickerView.maximumDate = Date()
+        datePickerView.minimumDate = minDate()
         datePickerView.addTarget(self, action: #selector(handleDatePickertxtFrom), for: UIControlEvents.valueChanged)
         
     }
@@ -247,7 +248,8 @@ class KetonesView: UIViewController,UITextFieldDelegate {
         var datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
-        
+        datePickerView.maximumDate = Date()
+        datePickerView.minimumDate = minDate()
         datePickerView.addTarget(self, action: #selector(handleDatePickertxtTo), for: UIControlEvents.valueChanged)
     }
     
@@ -386,13 +388,7 @@ class KetonesView: UIViewController,UITextFieldDelegate {
                 
                 if(self.tempDict["status"] == "success")
                 {
-                    if(self.tempDict["data"].count == 0)
-                    {
-                        days = []
-                        KetonesValues = []
-                        self.setChart(dataPoints: days,values: KetonesValues)
-                    }
-                    else
+                    if(self.tempDict["data"].count != 0)
                     {
                         self.lblHighKetones.text = self.tempDict["high_ketones"].stringValue
                         self.lblLowKetones.text = self.tempDict["low_ketones"].stringValue
@@ -406,9 +402,8 @@ class KetonesView: UIViewController,UITextFieldDelegate {
                         
                         
                         self.setChart(dataPoints: days,values: KetonesValues)
-                        
                     }
-                    
+                   
                     spinnerActivity.hide(animated: true)
                 }
                 else if(self.tempDict["status"] == "error")
@@ -439,7 +434,7 @@ class KetonesView: UIViewController,UITextFieldDelegate {
         print(From_date)
         print(To_date)
         
-        if(date_from! < date_to!)
+        if(date_from! <= date_to!)
         {
             days = []
             KetonesValues = []

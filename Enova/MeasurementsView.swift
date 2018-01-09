@@ -499,7 +499,8 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         var datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
-        
+        datePickerView.maximumDate = Date()
+        datePickerView.minimumDate = minDate()
         datePickerView.addTarget(self, action: #selector(handleDatePickertxtFrom), for: UIControlEvents.valueChanged)
         
     }
@@ -522,7 +523,8 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         var datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
-        
+        datePickerView.maximumDate = Date()
+        datePickerView.minimumDate = minDate()
         datePickerView.addTarget(self, action: #selector(handleDatePickertxtTo), for: UIControlEvents.valueChanged)
     }
     
@@ -682,13 +684,7 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
                 {
                     if(userGender == "Male")
                     {
-                        if(self.tempDict["waist"].count == 0)
-                        {
-                            daysWaist = []
-                            WaistValues = []
-                            self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
-                        }
-                        else
+                        if(self.tempDict["waist"].count != 0)
                         {
                             self.lblHighWaist.text = self.tempDict["diff"]["start_waist"].stringValue
                             self.lblLowWaist.text = self.tempDict["diff"]["waist_diff"].stringValue
@@ -703,7 +699,6 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
                             
                             self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
                         }
-                        
                         
                         self.lblHips.isHidden = true
                         
@@ -715,14 +710,7 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
                     }
                     else
                     {
-                        if(self.tempDict["waist"].count == 0)
-                        {
-                            daysWaist = []
-                            WaistValues = []
-                            self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
-                            
-                        }
-                        else
+                        if(self.tempDict["waist"].count != 0)
                         {
                             self.lblHighWaist.text = self.tempDict["diff"]["start_waist"].stringValue
                             self.lblLowWaist.text = self.tempDict["diff"]["waist_diff"].stringValue
@@ -736,14 +724,7 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
                             self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
                         }
                         
-                        
-                        if(self.tempDict["hips"].count == 0)
-                        {
-                            daysHips = []
-                            HipsValues = []
-                            self.setChart(dataPoints: daysHips,values: HipsValues, type: 2)
-                        }
-                        else
+                        if(self.tempDict["hips"].count != 0)
                         {
                             self.lblStartHips.text = self.tempDict["diff"]["start_hips"].stringValue
                             self.lblLossHips.text = self.tempDict["diff"]["hips_diff"].stringValue
@@ -757,14 +738,7 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
                             
                         }
                         
-                        
-                        if(self.tempDict["wrist"].count == 0)
-                        {
-                            daysWrist = []
-                            WristValues = []
-                            self.setChart(dataPoints: daysWrist,values: WristValues, type: 3)
-                        }
-                        else
+                        if(self.tempDict["wrist"].count != 0)
                         {
                             self.lblStartWrist.text = self.tempDict["diff"]["start_wrist"].stringValue
                             self.lblLossWrist.text = self.tempDict["diff"]["wrist_diff"].stringValue
@@ -775,17 +749,9 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
                                 WristValues.insert(self.tempDict["wrist"][i]["wrist"].doubleValue, at: i)
                             }
                             self.setChart(dataPoints: daysWrist,values: WristValues, type: 3)
-                            
                         }
                         
-                        
-                        if(self.tempDict["forearm"].count == 0)
-                        {
-                            daysForearm = []
-                            ForearmValues = []
-                           self.setChart(dataPoints: daysForearm,values: ForearmValues, type: 4)
-                        }
-                        else
+                        if(self.tempDict["forearm"].count != 0)
                         {
                             self.lblStartForearm.text = self.tempDict["diff"]["start_forearm"].stringValue
                             self.lbllossForearm.text = self.tempDict["diff"]["forearm_diff"].stringValue
@@ -797,7 +763,7 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
                             self.setChart(dataPoints: daysForearm,values: ForearmValues, type: 4)
                             
                         }
-                       
+                        
                     }
                     
                     spinnerActivity.hide(animated: true)
@@ -830,7 +796,7 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         print(From_date)
         print(To_date)
         
-        if(date_from! < date_to!)
+        if(date_from! <= date_to!)
         {
             daysWaist = []
             daysHips = []

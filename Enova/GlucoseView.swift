@@ -210,8 +210,10 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         var datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
-        
+        datePickerView.minimumDate = minDate()
+        datePickerView.maximumDate = Date()
         datePickerView.addTarget(self, action: #selector(handleDatePickertxtFrom), for: UIControlEvents.valueChanged)
+        
        
     }
     
@@ -233,7 +235,8 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         var datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
-        
+         datePickerView.minimumDate = minDate() as Date
+        datePickerView.maximumDate = Date() as Date
         datePickerView.addTarget(self, action: #selector(handleDatePickertxtTo), for: UIControlEvents.valueChanged)
     }
     
@@ -370,15 +373,7 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
                
                 if(self.tempDict["status"] == "success")
                 {
-                    print(self.tempDict["data"].count)
-                    
-                    if(self.tempDict["data"].count == 0)
-                    {
-                        days = []
-                        GlucoseValues = []
-                       self.setChart(dataPoints: days,values: GlucoseValues)
-                    }
-                    else
+                    if(self.tempDict["data"].count != 0)
                     {
                         self.lblHighGlucose.text = self.tempDict["max_glucose"].stringValue
                         self.lblLowGlucose.text = self.tempDict["min_glucose"].stringValue
@@ -422,7 +417,7 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
         print(From_date)
         print(To_date)
         
-        if(date_from! < date_to!)
+        if(date_from! <= date_to!)
         {
             days = []
             GlucoseValues = []

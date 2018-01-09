@@ -211,7 +211,8 @@ class WeightView: UIViewController,UITextFieldDelegate {
         var datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
-        
+        datePickerView.maximumDate = Date()
+        datePickerView.minimumDate = minDate()
         datePickerView.addTarget(self, action: #selector(handleDatePickertxtFrom), for: UIControlEvents.valueChanged)
         
     }
@@ -234,7 +235,8 @@ class WeightView: UIViewController,UITextFieldDelegate {
         var datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
-        
+        datePickerView.maximumDate = Date()
+        datePickerView.minimumDate = minDate()
         datePickerView.addTarget(self, action: #selector(handleDatePickertxtTo), for: UIControlEvents.valueChanged)
     }
     
@@ -372,13 +374,7 @@ class WeightView: UIViewController,UITextFieldDelegate {
                 
                 if(self.tempDict["status"] == "success")
                 {
-                    if(self.tempDict["data"].count == 0)
-                    {
-                        days = []
-                        WeightValues = []
-                       self.setChart(dataPoints: days,values: WeightValues)
-                    }
-                    else
+                    if(self.tempDict["data"].count != 0)
                     {
                         self.lblHighWeight.text = self.tempDict["start_weight"].stringValue
                         self.lblLowWeight.text = self.tempDict["weight_diff"].stringValue
@@ -392,7 +388,6 @@ class WeightView: UIViewController,UITextFieldDelegate {
                         
                         
                         self.setChart(dataPoints: days,values: WeightValues)
-                        
                     }
                     
                     spinnerActivity.hide(animated: true)
@@ -425,7 +420,7 @@ class WeightView: UIViewController,UITextFieldDelegate {
         print(From_date)
         print(To_date)
         
-        if(date_from! < date_to!)
+        if(date_from! <= date_to!)
         {
             days = []
             WeightValues = []

@@ -171,7 +171,8 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         var datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
-        
+        datePickerView.maximumDate = Date()
+        datePickerView.minimumDate = minDate()
         datePickerView.addTarget(self, action: #selector(handleDatePickertxtFrom), for: UIControlEvents.valueChanged)
         
     }
@@ -194,7 +195,8 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         var datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
-        
+        datePickerView.maximumDate = Date()
+        datePickerView.minimumDate = minDate()
         datePickerView.addTarget(self, action: #selector(handleDatePickertxtTo), for: UIControlEvents.valueChanged)
     }
     
