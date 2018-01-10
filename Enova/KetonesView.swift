@@ -159,20 +159,20 @@ class KetonesView: UIViewController,UITextFieldDelegate {
         
         self.view.endEditing(true)
         
-        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
-        
-        days = []
-        KetonesValues = []
-        
-        self.setChart(dataPoints: days,values: KetonesValues)
-        
-        
         if(txtNewValue.text == "")
         {
             self.showAlert(title: "Alert", message: "Please Enter Ketones Level")
         }
         else
         {
+            
+            let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+            
+            days = []
+            KetonesValues = []
+            
+            self.setChart(dataPoints: days,values: KetonesValues)
+            
             let timeStamp = String(Date().currentTimeStamp)
             
             let addGlucoseParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "ketones" : txtNewValue.text! , "timestamp" : timeStamp]

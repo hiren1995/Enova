@@ -149,13 +149,6 @@ class WeightView: UIViewController,UITextFieldDelegate {
         
         self.view.endEditing(true)
         
-        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
-        
-        days = []
-        WeightValues = []
-        
-        self.setChart(dataPoints: days,values: WeightValues)
-        
         
         if(txtNewValue.text == "")
         {
@@ -163,6 +156,13 @@ class WeightView: UIViewController,UITextFieldDelegate {
         }
         else
         {
+            let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+            
+            days = []
+            WeightValues = []
+            
+            self.setChart(dataPoints: days,values: WeightValues)
+            
             let timeStamp = String(Date().currentTimeStamp)
             
             let addWeightParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "weight" : txtNewValue.text! , "timestamp" : timeStamp]

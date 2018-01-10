@@ -263,7 +263,7 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         AlphaView.isHidden = false
         newDataAddView.isHidden = false
         newDataAddView.layer.zPosition = 1
-        
+       
         txtNewValue.text = ""
         
         lblAddViewName.text = "HIPS"
@@ -303,25 +303,6 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
     @IBAction func btnSave(_ sender: Any) {
         
         self.view.endEditing(true)
-        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
-        
-        
-        daysWaist = []
-        daysHips = []
-        daysWrist = []
-        daysForearm = []
-        
-        WaistValues = []
-        HipsValues = []
-        WristValues = []
-        ForearmValues = []
-        
-        self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
-        self.setChart(dataPoints: daysHips,values: HipsValues, type: 2)
-        self.setChart(dataPoints: daysWrist,values: WristValues, type: 3)
-        self.setChart(dataPoints: daysForearm,values: ForearmValues, type: 4)
-        
-        
         
         if(txtNewValue.text == "")
         {
@@ -329,6 +310,22 @@ class MeasurementsView: UIViewController,UITextFieldDelegate{
         }
         else
         {
+            daysWaist = []
+            daysHips = []
+            daysWrist = []
+            daysForearm = []
+            
+            WaistValues = []
+            HipsValues = []
+            WristValues = []
+            ForearmValues = []
+            
+            self.setChart(dataPoints: daysWaist,values: WaistValues, type: 1)
+            self.setChart(dataPoints: daysHips,values: HipsValues, type: 2)
+            self.setChart(dataPoints: daysWrist,values: WristValues, type: 3)
+            self.setChart(dataPoints: daysForearm,values: ForearmValues, type: 4)
+            
+            let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
             let timeStamp = String(Date().currentTimeStamp)
             
             if(lblAddViewName.text == "WAIST")

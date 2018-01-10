@@ -146,21 +146,21 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
        
         self.view.endEditing(true)
         
-        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
-        
-        days = []
-        GlucoseValues = []
-        
-        self.setChart(dataPoints: days,values: GlucoseValues)
-       
-        
         if(txtNewValue.text == "")
         {
             self.showAlert(title: "Alert", message: "Please Enter Glucose Level")
         }
         else
         {
-           let timeStamp = String(Date().currentTimeStamp)
+            let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+            
+            days = []
+            GlucoseValues = []
+            
+            self.setChart(dataPoints: days,values: GlucoseValues)
+            
+            
+            let timeStamp = String(Date().currentTimeStamp)
             
             let addGlucoseParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "glucose" : txtNewValue.text! , "timestamp" : timeStamp]
             
