@@ -390,8 +390,10 @@ class KetonesView: UIViewController,UITextFieldDelegate {
                 {
                     if(self.tempDict["data"].count != 0)
                     {
-                        self.lblHighKetones.text = self.tempDict["high_ketones"].stringValue
-                        self.lblLowKetones.text = self.tempDict["low_ketones"].stringValue
+                        self.lblHighKetones.text = self.tempDict["low_ketones"].stringValue
+                        self.lblLowKetones.text = self.tempDict["high_ketones"].stringValue
+                        
+                        // NOTE: here the in api response the lower value comes in "high ketones" and vice versa
                         
                         for var i in 0...self.tempDict["data"].count-1
                         {

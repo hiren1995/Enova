@@ -450,6 +450,9 @@ class ProfileSettingView: UIViewController,UITextViewDelegate,UITextFieldDelegat
         {
             cell.lblName.text = tempDict["data"][indexPath.row]["name"].stringValue
             
+            var tableFrame:CGRect = self.DiabetesTypeSelectTableView.frame
+            tableFrame.size.height = DiabetesTypeSelectTableView.contentSize.height
+            DiabetesTypeSelectTableView.frame = tableFrame
         }
         
         return cell

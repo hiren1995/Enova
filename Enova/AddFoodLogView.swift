@@ -321,6 +321,9 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
         {
             cell.lblMealTypeName.text = tempDict["data"][indexPath.row]["name"].stringValue
             
+            var tableFrame:CGRect = self.MealSelectTableView.frame
+            tableFrame.size.height = MealSelectTableView.contentSize.height
+            MealSelectTableView.frame = tableFrame
         }
         
         return cell
@@ -369,6 +372,12 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
                 self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
             }
         }
+    }
+    
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
