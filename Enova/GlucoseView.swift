@@ -39,6 +39,8 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
     
     var tempDict : JSON = JSON.null
     
+    @IBOutlet weak var lblAvgGlucose: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -377,6 +379,8 @@ class GlucoseView: UIViewController,UITextFieldDelegate {
                     {
                         self.lblHighGlucose.text = self.tempDict["max_glucose"].stringValue
                         self.lblLowGlucose.text = self.tempDict["min_glucose"].stringValue
+                        
+                        self.lblAvgGlucose.text = String(Double(self.tempDict["avg_glucose"].doubleValue).rounded(toPlaces: 1))
                         
                         for var i in 0...self.tempDict["data"].count-1
                         {

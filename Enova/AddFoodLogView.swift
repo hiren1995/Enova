@@ -322,7 +322,7 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
             cell.lblMealTypeName.text = tempDict["data"][indexPath.row]["name"].stringValue
             
             var tableFrame:CGRect = self.MealSelectTableView.frame
-            tableFrame.size.height = MealSelectTableView.contentSize.height
+            tableFrame.size.height = MealSelectTableView.contentSize.height - 11
             MealSelectTableView.frame = tableFrame
         }
         
@@ -334,8 +334,7 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
         MealSelectTableView.isHidden = true
         
     }
-    
-    
+   
     func LoadMealTypeData()
     {
         let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)

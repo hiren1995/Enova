@@ -18,12 +18,31 @@ class SignIn: UIViewController,UITextFieldDelegate {
     
     @IBOutlet var txtPassword: UITextField!
     
+    @IBOutlet weak var ScrollView: UIScrollView!
+    
+    @IBOutlet weak var ScrollInnerView: UIView!
+    
+    @IBOutlet weak var copyright: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         txtEmail.delegate = self
         txtPassword.delegate = self
         
+        let bounds = UIScreen.main.bounds
+        let height  = bounds.height
+        print(height)
+        
+        /*
+        if(height == 667)
+        {
+            copyright.translatesAutoresizingMaskIntoConstraints = false
+            let bottomContraint = NSLayoutConstraint(item: copyright, attribute: NSLayoutAttribute.bottom , relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute:NSLayoutAttribute.bottomMargin, multiplier: 1, constant: 30)
+            NSLayoutConstraint.activate([bottomContraint])
+        }
+        */
+ 
         // Do any additional setup after loading the view.
     }
 
