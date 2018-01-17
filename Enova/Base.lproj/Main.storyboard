@@ -46,7 +46,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Enova Wellness!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ss9-B7-R9N">
-                                                <rect key="frame" x="69" y="152.5" width="238.5" height="25"/>
+                                                <rect key="frame" x="68.5" y="152.5" width="238.5" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="TfQ-ky-Lgu"/>
                                                 </constraints>
