@@ -52,6 +52,7 @@ extension UIView {
             MenuClicked = true
             self.isHidden = false
             self.layer.zPosition = 1
+            
         }
     }
     
@@ -67,6 +68,7 @@ extension UIView {
             MealClicked = true
             self.isHidden = false
             self.layer.zPosition = 1
+            
         }
     }
     
@@ -205,6 +207,10 @@ extension Date {
     var currentTimeStamp: Int64 {
         return Int64(self.timeIntervalSince1970 * 1000)
     }
+    
+    init(milliseconds:Int) {
+        self = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
+    }
 }
 
 extension UITableView{
@@ -229,6 +235,23 @@ extension Double {
     func rounded(toPlaces places:Int) -> Double {
         let divisor = pow(10.0, Double(places))
         return (self * divisor).rounded() / divisor
+    }
+}
+
+extension String {
+    func extractURLs() -> [URL] {
+        var urls : [URL] = []
+        do {
+            let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+            detector.enumerateMatches(in: self, options: [], range: NSMakeRange(0, self.characters.count), using: { (result, _, _) in
+                if let match = result, let url = match.url {
+                    urls.append(url)
+                }
+            })
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        return urls
     }
 }
 
@@ -266,4 +289,16 @@ func minDate()->Date
     
     return minDate!
 }
+
+
+func encodeEmojiMsg(_ s: String) -> String {
+    let data = s.data(using: .nonLossyASCII, allowLossyConversion: true)!
+    return String(data: data, encoding: .utf8)!
+}
+
+func decodeEmojiMsg(_ s: String) -> String? {
+    let data = s.data(using: .utf8)!
+    return String(data: data, encoding: .nonLossyASCII)
+}
+
 

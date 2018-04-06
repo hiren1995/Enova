@@ -12,6 +12,7 @@
 		2D08C76E1FE109500028FFDB /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08C76D1FE109500028FFDB /* SignIn.swift */; };
 		2D08C7701FE1229C0028FFDB /* ForgetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08C76F1FE1229C0028FFDB /* ForgetPassword.swift */; };
 		2D08C7721FE15B790028FFDB /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08C7711FE15B790028FFDB /* LineChart.swift */; };
+		2D1677FD205FD1150062D172 /* ChatScreenOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1677FC205FD1150062D172 /* ChatScreenOutlineView.swift */; };
 		2D1F2BAE2005E65400167606 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F2BAD2005E46700167606 /* Roboto-Bold.ttf */; };
 		2D1F2BAF2005E65400167606 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F2BAC2005E46700167606 /* Roboto-Italic.ttf */; };
 		2D1F2BB02005E65400167606 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D1F2BA92005E46600167606 /* Roboto-Light.ttf */; };
@@ -22,6 +23,7 @@
 		2D3D5DAC1FFE19C900141D81 /* ViewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3D5DAB1FFE19C800141D81 /* ViewImage.swift */; };
 		2D3D5DB01FFE33A200141D81 /* TOS.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D3D5DAF1FFE33A100141D81 /* TOS.html */; };
 		2D3D5DB21FFE359700141D81 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3D5DB11FFE359700141D81 /* WebView.swift */; };
+		2D7CC3FC206BB74C009EF7CF /* FastingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CC3FB206BB74C009EF7CF /* FastingView.swift */; };
 		2D7DF9001FF21D4E0039E991 /* MeasurementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7DF8FF1FF21D4E0039E991 /* MeasurementsView.swift */; };
 		2D7DF9021FF252C00039E991 /* FoodLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7DF9011FF252C00039E991 /* FoodLogView.swift */; };
 		2D7DF9041FF25B490039E991 /* FoodLogTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7DF9031FF25B490039E991 /* FoodLogTableCell.swift */; };
@@ -35,13 +37,26 @@
 		2D8975211FDFEDA40031EF45 /* EnovaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8975201FDFEDA40031EF45 /* EnovaUITests.swift */; };
 		2DB588661FF103A600DF088E /* KetonesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB588651FF103A600DF088E /* KetonesView.swift */; };
 		2DB588681FF10A1500DF088E /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB588671FF10A1500DF088E /* WeightView.swift */; };
+		2DB946FC2072359600EF4D35 /* FastingTableFirstIndexTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB946FA2072359600EF4D35 /* FastingTableFirstIndexTableCell.swift */; };
+		2DB946FD2072359600EF4D35 /* FastingTableFirstIndexTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB946FB2072359600EF4D35 /* FastingTableFirstIndexTableCell.xib */; };
+		2DB947002072376900EF4D35 /* FastingTableCountDownTimerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB946FE2072376900EF4D35 /* FastingTableCountDownTimerTableCell.swift */; };
+		2DB947012072376900EF4D35 /* FastingTableCountDownTimerTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB946FF2072376900EF4D35 /* FastingTableCountDownTimerTableCell.xib */; };
+		2DB9470420723DA300EF4D35 /* FastingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB9470220723DA300EF4D35 /* FastingTableCell.swift */; };
+		2DB9470520723DA300EF4D35 /* FastingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB9470320723DA300EF4D35 /* FastingTableCell.xib */; };
+		2DB9470820724B1800EF4D35 /* SelectDatesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB9470620724B1800EF4D35 /* SelectDatesTableCell.swift */; };
+		2DB9470920724B1800EF4D35 /* SelectDatesTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB9470720724B1800EF4D35 /* SelectDatesTableCell.xib */; };
 		2DBB7D301FF394A8005CEF05 /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB7D2F1FF394A8005CEF05 /* ProfileSettingView.swift */; };
 		2DBB7D321FF3CA10005CEF05 /* FoodLogInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB7D311FF3CA10005CEF05 /* FoodLogInfoView.swift */; };
 		2DC36A2620009BB200FF0563 /* MealSelectTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC36A2520009BB200FF0563 /* MealSelectTableCell.swift */; };
 		2DC36A292000CA1000FF0563 /* DiabetesSelectTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC36A282000CA1000FF0563 /* DiabetesSelectTableCell.swift */; };
+		2DC9FED4206125350009B245 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC9FED3206125350009B245 /* NotificationView.swift */; };
+		2DC9FED6206125710009B245 /* NotificationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC9FED5206125710009B245 /* NotificationTableCell.swift */; };
+		2DE71E00205F992B00C584B1 /* ChatScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE71DFF205F992B00C584B1 /* ChatScreenView.swift */; };
+		2DE71E03205FB72B00C584B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE71E01205F9F1200C584B1 /* GoogleService-Info.plist */; };
 		2DEB27C41FEB8AB700D679FA /* GlucoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB27C31FEB8AB700D679FA /* GlucoseView.swift */; };
 		2DEB27C61FEB8B1900D679FA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB27C51FEB8B1900D679FA /* Constants.swift */; };
 		2DEB27C81FEB8DE100D679FA /* CustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB27C71FEB8DE100D679FA /* CustomClass.swift */; };
+		2DEE6B8C207256530033BD88 /* AddFastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEE6B8B207256530033BD88 /* AddFastView.swift */; };
 		2DF734141FE5240400A0A754 /* DashBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF734131FE5240400A0A754 /* DashBoard.swift */; };
 		81FB84073240B0E649364A8C /* Pods_EnovaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A0E2A6B0C20503CB770B59 /* Pods_EnovaTests.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +83,7 @@
 		2D08C76D1FE109500028FFDB /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		2D08C76F1FE1229C0028FFDB /* ForgetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPassword.swift; sourceTree = "<group>"; };
 		2D08C7711FE15B790028FFDB /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		2D1677FC205FD1150062D172 /* ChatScreenOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreenOutlineView.swift; sourceTree = "<group>"; };
 		2D1F2BA82005E46500167606 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		2D1F2BA92005E46600167606 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		2D1F2BAA2005E46600167606 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -78,6 +94,7 @@
 		2D3D5DAB1FFE19C800141D81 /* ViewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewImage.swift; sourceTree = "<group>"; };
 		2D3D5DAF1FFE33A100141D81 /* TOS.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = TOS.html; sourceTree = "<group>"; };
 		2D3D5DB11FFE359700141D81 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		2D7CC3FB206BB74C009EF7CF /* FastingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingView.swift; sourceTree = "<group>"; };
 		2D7DF8FF1FF21D4E0039E991 /* MeasurementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementsView.swift; sourceTree = "<group>"; };
 		2D7DF9011FF252C00039E991 /* FoodLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogView.swift; sourceTree = "<group>"; };
 		2D7DF9031FF25B490039E991 /* FoodLogTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogTableCell.swift; sourceTree = "<group>"; };
@@ -97,13 +114,27 @@
 		2D8975221FDFEDA40031EF45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DB588651FF103A600DF088E /* KetonesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KetonesView.swift; sourceTree = "<group>"; };
 		2DB588671FF10A1500DF088E /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
+		2DB946FA2072359600EF4D35 /* FastingTableFirstIndexTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingTableFirstIndexTableCell.swift; sourceTree = "<group>"; };
+		2DB946FB2072359600EF4D35 /* FastingTableFirstIndexTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FastingTableFirstIndexTableCell.xib; sourceTree = "<group>"; };
+		2DB946FE2072376900EF4D35 /* FastingTableCountDownTimerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingTableCountDownTimerTableCell.swift; sourceTree = "<group>"; };
+		2DB946FF2072376900EF4D35 /* FastingTableCountDownTimerTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FastingTableCountDownTimerTableCell.xib; sourceTree = "<group>"; };
+		2DB9470220723DA300EF4D35 /* FastingTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingTableCell.swift; sourceTree = "<group>"; };
+		2DB9470320723DA300EF4D35 /* FastingTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FastingTableCell.xib; sourceTree = "<group>"; };
+		2DB9470620724B1800EF4D35 /* SelectDatesTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDatesTableCell.swift; sourceTree = "<group>"; };
+		2DB9470720724B1800EF4D35 /* SelectDatesTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectDatesTableCell.xib; sourceTree = "<group>"; };
 		2DBB7D2F1FF394A8005CEF05 /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
 		2DBB7D311FF3CA10005CEF05 /* FoodLogInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogInfoView.swift; sourceTree = "<group>"; };
 		2DC36A2520009BB200FF0563 /* MealSelectTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSelectTableCell.swift; sourceTree = "<group>"; };
 		2DC36A282000CA1000FF0563 /* DiabetesSelectTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiabetesSelectTableCell.swift; sourceTree = "<group>"; };
+		2DC9FED3206125350009B245 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		2DC9FED5206125710009B245 /* NotificationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableCell.swift; sourceTree = "<group>"; };
+		2DE71DFF205F992B00C584B1 /* ChatScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreenView.swift; sourceTree = "<group>"; };
+		2DE71E01205F9F1200C584B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2DE71E04205FB7C000C584B1 /* Enova.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Enova.entitlements; sourceTree = "<group>"; };
 		2DEB27C31FEB8AB700D679FA /* GlucoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseView.swift; sourceTree = "<group>"; };
 		2DEB27C51FEB8B1900D679FA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2DEB27C71FEB8DE100D679FA /* CustomClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomClass.swift; sourceTree = "<group>"; };
+		2DEE6B8B207256530033BD88 /* AddFastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFastView.swift; sourceTree = "<group>"; };
 		2DF734131FE5240400A0A754 /* DashBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoard.swift; sourceTree = "<group>"; };
 		31CD561D22CE266F81EA651A /* Pods-Enova.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enova.release.xcconfig"; path = "Pods/Target Support Files/Pods-Enova/Pods-Enova.release.xcconfig"; sourceTree = "<group>"; };
 		36A7ABD61CE8CDF9C5CFFED4 /* Pods-EnovaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnovaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EnovaTests/Pods-EnovaTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -202,6 +233,7 @@
 		2D8974FF1FDFEDA40031EF45 /* Enova */ = {
 			isa = PBXGroup;
 			children = (
+				2DE71E04205FB7C000C584B1 /* Enova.entitlements */,
 				2D08C7711FE15B790028FFDB /* LineChart.swift */,
 				2D8975001FDFEDA40031EF45 /* AppDelegate.swift */,
 				2D8975041FDFEDA40031EF45 /* Main.storyboard */,
@@ -222,9 +254,24 @@
 				2D08C76F1FE1229C0028FFDB /* ForgetPassword.swift */,
 				2D3D5DAB1FFE19C800141D81 /* ViewImage.swift */,
 				2D3D5DB11FFE359700141D81 /* WebView.swift */,
+				2DE71DFF205F992B00C584B1 /* ChatScreenView.swift */,
+				2D1677FC205FD1150062D172 /* ChatScreenOutlineView.swift */,
+				2DC9FED3206125350009B245 /* NotificationView.swift */,
+				2DC9FED5206125710009B245 /* NotificationTableCell.swift */,
+				2D7CC3FB206BB74C009EF7CF /* FastingView.swift */,
+				2DB946FA2072359600EF4D35 /* FastingTableFirstIndexTableCell.swift */,
+				2DB946FB2072359600EF4D35 /* FastingTableFirstIndexTableCell.xib */,
+				2DB946FE2072376900EF4D35 /* FastingTableCountDownTimerTableCell.swift */,
+				2DB946FF2072376900EF4D35 /* FastingTableCountDownTimerTableCell.xib */,
+				2DB9470220723DA300EF4D35 /* FastingTableCell.swift */,
+				2DB9470320723DA300EF4D35 /* FastingTableCell.xib */,
+				2DB9470620724B1800EF4D35 /* SelectDatesTableCell.swift */,
+				2DB9470720724B1800EF4D35 /* SelectDatesTableCell.xib */,
+				2DEE6B8B207256530033BD88 /* AddFastView.swift */,
 				2D8975071FDFEDA40031EF45 /* Assets.xcassets */,
 				2D8975091FDFEDA40031EF45 /* LaunchScreen.storyboard */,
 				2D89750C1FDFEDA40031EF45 /* Info.plist */,
+				2DE71E01205F9F1200C584B1 /* GoogleService-Info.plist */,
 			);
 			path = Enova;
 			sourceTree = "<group>";
@@ -348,6 +395,11 @@
 					2D8974FC1FDFEDA30031EF45 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2D8975101FDFEDA40031EF45 = {
 						CreatedOnToolsVersion = 9.1;
@@ -386,15 +438,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DB947012072376900EF4D35 /* FastingTableCountDownTimerTableCell.xib in Resources */,
 				2D1F2BAE2005E65400167606 /* Roboto-Bold.ttf in Resources */,
 				2D1F2BAF2005E65400167606 /* Roboto-Italic.ttf in Resources */,
 				2D1F2BB02005E65400167606 /* Roboto-Light.ttf in Resources */,
+				2DB9470920724B1800EF4D35 /* SelectDatesTableCell.xib in Resources */,
 				2D1F2BB12005E65400167606 /* Roboto-Medium.ttf in Resources */,
 				2D1F2BB22005E65400167606 /* Roboto-MediumItalic.ttf in Resources */,
 				2D1F2BB32005E65400167606 /* Roboto-Regular.ttf in Resources */,
 				2D89750B1FDFEDA40031EF45 /* LaunchScreen.storyboard in Resources */,
 				2D3D5DB01FFE33A200141D81 /* TOS.html in Resources */,
+				2DB946FD2072359600EF4D35 /* FastingTableFirstIndexTableCell.xib in Resources */,
 				2D8975081FDFEDA40031EF45 /* Assets.xcassets in Resources */,
+				2DB9470520723DA300EF4D35 /* FastingTableCell.xib in Resources */,
+				2DE71E03205FB72B00C584B1 /* GoogleService-Info.plist in Resources */,
 				2D8975061FDFEDA40031EF45 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,21 +591,37 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Enova/Pods-Enova-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SRCountdownTimer/SRCountdownTimer.framework",
+				"${BUILT_PRODUCTS_DIR}/StretchHeader/StretchHeader.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SRCountdownTimer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StretchHeader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -581,26 +654,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DF734141FE5240400A0A754 /* DashBoard.swift in Sources */,
+				2D1677FD205FD1150062D172 /* ChatScreenOutlineView.swift in Sources */,
 				2DC36A292000CA1000FF0563 /* DiabetesSelectTableCell.swift in Sources */,
 				2D3D5DB21FFE359700141D81 /* WebView.swift in Sources */,
 				2D7DF9021FF252C00039E991 /* FoodLogView.swift in Sources */,
+				2DE71E00205F992B00C584B1 /* ChatScreenView.swift in Sources */,
 				2D7DF9001FF21D4E0039E991 /* MeasurementsView.swift in Sources */,
 				2D3D5DAC1FFE19C900141D81 /* ViewImage.swift in Sources */,
+				2DB946FC2072359600EF4D35 /* FastingTableFirstIndexTableCell.swift in Sources */,
 				2D8975031FDFEDA40031EF45 /* ViewController.swift in Sources */,
+				2DC9FED4206125350009B245 /* NotificationView.swift in Sources */,
 				2D08C7701FE1229C0028FFDB /* ForgetPassword.swift in Sources */,
 				2DEB27C81FEB8DE100D679FA /* CustomClass.swift in Sources */,
 				2D08C76E1FE109500028FFDB /* SignIn.swift in Sources */,
 				2DB588681FF10A1500DF088E /* WeightView.swift in Sources */,
 				2D8975011FDFEDA40031EF45 /* AppDelegate.swift in Sources */,
 				2DBB7D321FF3CA10005CEF05 /* FoodLogInfoView.swift in Sources */,
+				2D7CC3FC206BB74C009EF7CF /* FastingView.swift in Sources */,
 				2D7DF9041FF25B490039E991 /* FoodLogTableCell.swift in Sources */,
 				2D08C7721FE15B790028FFDB /* LineChart.swift in Sources */,
+				2DB9470820724B1800EF4D35 /* SelectDatesTableCell.swift in Sources */,
 				2DEB27C41FEB8AB700D679FA /* GlucoseView.swift in Sources */,
 				2D7DF9061FF2703B0039E991 /* AddFoodLogView.swift in Sources */,
 				2D307ABD1FF4DD41001A06B1 /* Reachability.swift in Sources */,
 				2DBB7D301FF394A8005CEF05 /* ProfileSettingView.swift in Sources */,
 				2DC36A2620009BB200FF0563 /* MealSelectTableCell.swift in Sources */,
+				2DB9470420723DA300EF4D35 /* FastingTableCell.swift in Sources */,
+				2DC9FED6206125710009B245 /* NotificationTableCell.swift in Sources */,
+				2DB947002072376900EF4D35 /* FastingTableCountDownTimerTableCell.swift in Sources */,
 				2DB588661FF103A600DF088E /* KetonesView.swift in Sources */,
+				2DEE6B8C207256530033BD88 /* AddFastView.swift in Sources */,
 				2DEB27C61FEB8B1900D679FA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -768,8 +851,9 @@
 			baseConfigurationReference = 9251746246B1399F3A3CA475 /* Pods-Enova.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jay Bowen (QM32Z9CP5C)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jay Bowen (QM32Z9CP5C)";
+				CODE_SIGN_ENTITLEMENTS = Enova/Enova.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jay Bowen (P25R5K67YU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jay Bowen (P25R5K67YU)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = QM32Z9CP5C;
 				INFOPLIST_FILE = Enova/Info.plist;
@@ -777,8 +861,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.Enovawellness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "abf82bcf-2496-4d97-8d73-6c7d4b698786";
-				PROVISIONING_PROFILE_SPECIFIER = Enova_Distribution;
+				PROVISIONING_PROFILE = "20a85000-999b-45cd-9f9d-675311b40fbe";
+				PROVISIONING_PROFILE_SPECIFIER = Enova_Development2;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -789,7 +873,9 @@
 			baseConfigurationReference = 31CD561D22CE266F81EA651A /* Pods-Enova.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jay Bowen (QM32Z9CP5C)";
+				CODE_SIGN_ENTITLEMENTS = Enova/Enova.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jay Bowen (P25R5K67YU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jay Bowen (P25R5K67YU)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = QM32Z9CP5C;
 				INFOPLIST_FILE = Enova/Info.plist;
@@ -797,8 +883,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.Enovawellness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "abf82bcf-2496-4d97-8d73-6c7d4b698786";
-				PROVISIONING_PROFILE_SPECIFIER = Enova_Distribution;
+				PROVISIONING_PROFILE = "20a85000-999b-45cd-9f9d-675311b40fbe";
+				PROVISIONING_PROFILE_SPECIFIER = Enova_Development2;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

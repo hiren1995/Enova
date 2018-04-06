@@ -24,6 +24,8 @@ var udefault = UserDefaults.standard
 var baseURL = "https://enovawellness.com/api/api/"
 var userImgPath = "https://enovawellness.com/api/upload/user/"
 var foodImgPath = "https://enovawellness.com/api/upload/food/"
+var chatImgPath = "http://enovawellness.com/api/upload/message/"
+var notificationImgPath = "http://enovawellness.com/api/upload/notification/"
 
 var LoginAPI = "\(baseURL)/login"
 var UpdateProfileAPI = "\(baseURL)/update-profile"
@@ -44,6 +46,13 @@ var AddWristAPI = "\(baseURL)/add/wrist"
 var AddForearmAPI = "\(baseURL)/add/forearm"
 var GetMealTypeAPI = "\(baseURL)/get-food-category"
 var GetDiabetesTypeAPI = "\(baseURL)/get-diabetes-type"
+var GetMessagesAPI = "\(baseURL)/message/get"
+var SendMessagesAPI = "\(baseURL)/message/add"
+var GetNotificationAPI = "\(baseURL)/notification/get"
+var AddFastAPI = "\(baseURL)/fasting/add"
+var GetFastAPI = "\(baseURL)/fasting/get"
+var CancelFastAPI = "\(baseURL)/fasting/cancel"
+var UpdateFastAPI = "\(baseURL)/fasting/update"
 
 
 // values for userdefaults...
@@ -64,4 +73,5 @@ var GlucoseConditionValue = "glucoseConditionValue"
 var KetonesConditionValue = "ketonesConditionValue"
 var WeightConditionValue = "weightConditionValue"
 var FoodImageDefault = "foodimage"
+var DeviceToken = "devicetoken"
 
