@@ -150,10 +150,12 @@ class ChatScreenView: JSQMessagesViewController,UIImagePickerControllerDelegate,
         if(messagesitem.senderId == self.senderId)
         {
             cellchat.cellBottomLabel.textAlignment = .right
+            cellchat.textView.textColor = UIColor.black
         }
         else
         {
             cellchat.cellBottomLabel.textAlignment = .left
+            cellchat.textView.textColor = UIColor.white
         }
         
         return cellchat
