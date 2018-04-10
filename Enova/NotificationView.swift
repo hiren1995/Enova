@@ -50,6 +50,9 @@ class NotificationView: UIViewController,UITableViewDelegate,UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        /*
+        
         let cell = NotificationTable.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath) as! NotificationTableCell
         
         //cell.lblNotificationTitle.text = noti[indexPath.row]
@@ -134,6 +137,174 @@ class NotificationView: UIViewController,UITableViewDelegate,UITableViewDataSour
         
         
         return cell
+ 
+        */
+        
+        
+        if(tempDict["data"][indexPath.row]["image"] != JSON.null)
+        {
+            /*
+            KingfisherManager.shared.downloader.downloadImage(with: NSURL(string: "\(notificationImgPath)/\(tempDict["data"][indexPath.row]["image"].stringValue)")! as URL, retrieveImageTask: RetrieveImageTask.empty, options: [], progressBlock: nil, completionHandler: { (image,error, imageURL, imageData) in
+                
+                
+                cell.imgNotification.image = image
+                
+            })
+            */
+            
+            let cell = Bundle.main.loadNibNamed("NotificationTableCellWithImage", owner: self, options: nil)?.first as! NotificationTableCellWithImage
+            
+            
+            let date = Date(timeIntervalSince1970:  (tempDict["data"][indexPath.row]["time"].doubleValue / 1000.0))
+            
+            cell.lblNotificationTitle.enabledTypes = [.url]
+            cell.lblNotificationTitle.text = tempDict["data"][indexPath.row]["message"].stringValue
+            cell.lblNotificationTitle.URLColor = UIColor.blue
+            cell.lblNotificationTitle.handleURLTap {
+                
+                //self.showAlert(title: "Open URL", message: $0.absoluteString)
+                
+                let urlString = $0.absoluteString
+                var openURL = $0.absoluteURL
+                
+                let LogoutAlert = UIAlertController(title: "Open URL", message: "Are You Sure You Want To open Link.\(urlString)", preferredStyle: UIAlertControllerStyle.alert)
+                
+                LogoutAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+                    
+                    /*
+                     guard let url = URL(string: urlString) else {
+                     return //be safe
+                     }
+                     */
+                    
+                    if urlString.hasPrefix("http://")
+                    {
+                        openURL = URL(string: urlString)!
+                    }
+                    else if urlString.hasPrefix("https://")
+                    {
+                        openURL = URL(string: urlString)!
+                    }
+                    else
+                    {
+                        openURL = URL(string: "https://" + urlString)!
+                    }
+                    
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(openURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(openURL)
+                    }
+                    
+                    
+                }))
+                
+                LogoutAlert.addAction(UIAlertAction(title: "NO", style: .cancel, handler: { (action: UIAlertAction!) in
+                    
+                    print("open url Cancelled")
+                    
+                }))
+                
+                self.present(LogoutAlert, animated: true, completion: nil)
+                
+            }
+            
+            
+            //cell.lblNotificationTitle.sizeToFit()
+            //cell.lblNotificationTitle.translatesAutoresizingMaskIntoConstraints = true
+            
+            let dateformatter = DateFormatter()
+            dateformatter.dateStyle = .medium
+            dateformatter.timeStyle = .medium
+            let datestr = dateformatter.string(from: date)
+            cell.lblNotificationDate.text = datestr
+            
+            
+            KingfisherManager.shared.downloader.downloadImage(with: NSURL(string: "\(notificationImgPath)/\(tempDict["data"][indexPath.row]["image"].stringValue)")! as URL, retrieveImageTask: RetrieveImageTask.empty, options: [], progressBlock: nil, completionHandler: { (image,error, imageURL, imageData) in
+                
+                
+                cell.imgNotification.image = image
+                
+            })
+           
+            return cell
+            
+        }
+        else
+        {
+            let cell = Bundle.main.loadNibNamed("NotificationTableCellWithoutImage", owner: self, options: nil)?.first as! NotificationTableCellWithoutImage
+            
+            
+            let date = Date(timeIntervalSince1970:  (tempDict["data"][indexPath.row]["time"].doubleValue / 1000.0))
+            
+            cell.lblNotificationTitle.enabledTypes = [.url]
+            cell.lblNotificationTitle.text = tempDict["data"][indexPath.row]["message"].stringValue
+            cell.lblNotificationTitle.URLColor = UIColor.blue
+            cell.lblNotificationTitle.handleURLTap {
+                
+                //self.showAlert(title: "Open URL", message: $0.absoluteString)
+                
+                let urlString = $0.absoluteString
+                var openURL = $0.absoluteURL
+                
+                let LogoutAlert = UIAlertController(title: "Open URL", message: "Are You Sure You Want To open Link.\(urlString)", preferredStyle: UIAlertControllerStyle.alert)
+                
+                LogoutAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+                    
+                    /*
+                     guard let url = URL(string: urlString) else {
+                     return //be safe
+                     }
+                     */
+                    
+                    if urlString.hasPrefix("http://")
+                    {
+                        openURL = URL(string: urlString)!
+                    }
+                    else if urlString.hasPrefix("https://")
+                    {
+                        openURL = URL(string: urlString)!
+                    }
+                    else
+                    {
+                        openURL = URL(string: "https://" + urlString)!
+                    }
+                    
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(openURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(openURL)
+                    }
+                    
+                    
+                }))
+                
+                LogoutAlert.addAction(UIAlertAction(title: "NO", style: .cancel, handler: { (action: UIAlertAction!) in
+                    
+                    print("open url Cancelled")
+                    
+                }))
+                
+                self.present(LogoutAlert, animated: true, completion: nil)
+                
+            }
+            
+            
+            //cell.lblNotificationTitle.sizeToFit()
+            //cell.lblNotificationTitle.translatesAutoresizingMaskIntoConstraints = true
+            
+            let dateformatter = DateFormatter()
+            dateformatter.dateStyle = .medium
+            dateformatter.timeStyle = .medium
+            let datestr = dateformatter.string(from: date)
+            cell.lblNotificationDate.text = datestr
+            
+            
+            
+            
+            return cell
+        }
+        
         
     }
     

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="71" id="KGk-i7-Jjw" customClass="NotificationTableCellWithoutImage" customModule="Enova" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="70.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFs-4E-JTJ">
+                        <rect key="frame" x="4" y="3" width="312" height="63.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GA3-I5-cGK" customClass="ActiveLabel" customModule="ActiveLabel">
+                                <rect key="frame" x="8" y="8" width="296" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qQ-b4-GNN">
+                                <rect key="frame" x="8" y="37" width="296" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="296" id="nv3-aP-5QG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GA3-I5-cGK" firstAttribute="top" secondItem="oFs-4E-JTJ" secondAttribute="top" constant="8" id="27Q-by-5OX"/>
+                            <constraint firstAttribute="trailing" secondItem="6qQ-b4-GNN" secondAttribute="trailing" constant="8" id="6kG-HO-jJJ"/>
+                            <constraint firstItem="6qQ-b4-GNN" firstAttribute="top" secondItem="GA3-I5-cGK" secondAttribute="bottom" constant="8" id="Sh8-JF-bI3"/>
+                            <constraint firstAttribute="trailing" secondItem="GA3-I5-cGK" secondAttribute="trailing" constant="8" id="Zxy-ce-mi9"/>
+                            <constraint firstAttribute="bottom" secondItem="6qQ-b4-GNN" secondAttribute="bottom" constant="13" id="mwp-vn-vXk"/>
+                            <constraint firstItem="GA3-I5-cGK" firstAttribute="leading" secondItem="oFs-4E-JTJ" secondAttribute="leading" constant="8" id="yag-M3-E1M"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="oFs-4E-JTJ" secondAttribute="bottom" constant="4" id="ACs-iE-600"/>
+                    <constraint firstItem="oFs-4E-JTJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="Alh-0A-r0r"/>
+                    <constraint firstItem="oFs-4E-JTJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="Ovj-Wd-Y90"/>
+                    <constraint firstAttribute="trailing" secondItem="oFs-4E-JTJ" secondAttribute="trailing" constant="4" id="PUr-rB-1nU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblNotificationDate" destination="6qQ-b4-GNN" id="LUx-3z-UGf"/>
+                <outlet property="lblNotificationTitle" destination="GA3-I5-cGK" id="YH0-jC-bRc"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="65.5"/>
+        </tableViewCell>
+    </objects>
+</document>

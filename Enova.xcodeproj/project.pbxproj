@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1806A0EE207D1E7700D492ED /* NotificationTableCellWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1806A0EC207D1E7700D492ED /* NotificationTableCellWithImage.swift */; };
+		1806A0EF207D1E7700D492ED /* NotificationTableCellWithImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1806A0ED207D1E7700D492ED /* NotificationTableCellWithImage.xib */; };
+		1806A0F2207D1EA500D492ED /* NotificationTableCellWithoutImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1806A0F0207D1EA500D492ED /* NotificationTableCellWithoutImage.swift */; };
+		1806A0F3207D1EA500D492ED /* NotificationTableCellWithoutImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1806A0F1207D1EA500D492ED /* NotificationTableCellWithoutImage.xib */; };
 		1A714704195092BAF76EB9E0 /* Pods_EnovaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94ABFED568C1B004ED734BCC /* Pods_EnovaUITests.framework */; };
 		1F71D800C32FDF96E1B8B438 /* Pods_Enova.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A71177A4F29B77F9D94445A /* Pods_Enova.framework */; };
 		2D08C76E1FE109500028FFDB /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08C76D1FE109500028FFDB /* SignIn.swift */; };
@@ -79,6 +83,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1806A0EC207D1E7700D492ED /* NotificationTableCellWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableCellWithImage.swift; sourceTree = "<group>"; };
+		1806A0ED207D1E7700D492ED /* NotificationTableCellWithImage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableCellWithImage.xib; sourceTree = "<group>"; };
+		1806A0F0207D1EA500D492ED /* NotificationTableCellWithoutImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableCellWithoutImage.swift; sourceTree = "<group>"; };
+		1806A0F1207D1EA500D492ED /* NotificationTableCellWithoutImage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableCellWithoutImage.xib; sourceTree = "<group>"; };
 		2A71177A4F29B77F9D94445A /* Pods_Enova.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Enova.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D08C76D1FE109500028FFDB /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		2D08C76F1FE1229C0028FFDB /* ForgetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPassword.swift; sourceTree = "<group>"; };
@@ -258,6 +266,10 @@
 				2D1677FC205FD1150062D172 /* ChatScreenOutlineView.swift */,
 				2DC9FED3206125350009B245 /* NotificationView.swift */,
 				2DC9FED5206125710009B245 /* NotificationTableCell.swift */,
+				1806A0EC207D1E7700D492ED /* NotificationTableCellWithImage.swift */,
+				1806A0ED207D1E7700D492ED /* NotificationTableCellWithImage.xib */,
+				1806A0F0207D1EA500D492ED /* NotificationTableCellWithoutImage.swift */,
+				1806A0F1207D1EA500D492ED /* NotificationTableCellWithoutImage.xib */,
 				2D7CC3FB206BB74C009EF7CF /* FastingView.swift */,
 				2DB946FA2072359600EF4D35 /* FastingTableFirstIndexTableCell.swift */,
 				2DB946FB2072359600EF4D35 /* FastingTableFirstIndexTableCell.xib */,
@@ -443,6 +455,7 @@
 				2D1F2BAF2005E65400167606 /* Roboto-Italic.ttf in Resources */,
 				2D1F2BB02005E65400167606 /* Roboto-Light.ttf in Resources */,
 				2DB9470920724B1800EF4D35 /* SelectDatesTableCell.xib in Resources */,
+				1806A0EF207D1E7700D492ED /* NotificationTableCellWithImage.xib in Resources */,
 				2D1F2BB12005E65400167606 /* Roboto-Medium.ttf in Resources */,
 				2D1F2BB22005E65400167606 /* Roboto-MediumItalic.ttf in Resources */,
 				2D1F2BB32005E65400167606 /* Roboto-Regular.ttf in Resources */,
@@ -452,6 +465,7 @@
 				2D8975081FDFEDA40031EF45 /* Assets.xcassets in Resources */,
 				2DB9470520723DA300EF4D35 /* FastingTableCell.xib in Resources */,
 				2DE71E03205FB72B00C584B1 /* GoogleService-Info.plist in Resources */,
+				1806A0F3207D1EA500D492ED /* NotificationTableCellWithoutImage.xib in Resources */,
 				2D8975061FDFEDA40031EF45 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -663,11 +677,13 @@
 				2D3D5DAC1FFE19C900141D81 /* ViewImage.swift in Sources */,
 				2DB946FC2072359600EF4D35 /* FastingTableFirstIndexTableCell.swift in Sources */,
 				2D8975031FDFEDA40031EF45 /* ViewController.swift in Sources */,
+				1806A0F2207D1EA500D492ED /* NotificationTableCellWithoutImage.swift in Sources */,
 				2DC9FED4206125350009B245 /* NotificationView.swift in Sources */,
 				2D08C7701FE1229C0028FFDB /* ForgetPassword.swift in Sources */,
 				2DEB27C81FEB8DE100D679FA /* CustomClass.swift in Sources */,
 				2D08C76E1FE109500028FFDB /* SignIn.swift in Sources */,
 				2DB588681FF10A1500DF088E /* WeightView.swift in Sources */,
+				1806A0EE207D1E7700D492ED /* NotificationTableCellWithImage.swift in Sources */,
 				2D8975011FDFEDA40031EF45 /* AppDelegate.swift in Sources */,
 				2DBB7D321FF3CA10005CEF05 /* FoodLogInfoView.swift in Sources */,
 				2D7CC3FC206BB74C009EF7CF /* FastingView.swift in Sources */,
