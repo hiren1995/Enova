@@ -32,7 +32,7 @@ class DashBoard: UIViewController{
     @IBAction func btnMenuPress(_ sender: Any) {
        
         MenuView.menuClicked()
-        
+        UIApplication.shared.keyWindow?.bringSubview(toFront: MenuView)
     }
     
     
@@ -101,7 +101,7 @@ class DashBoard: UIViewController{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let signIn = storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
             self.fromLeft()
-            self.present(signIn, animated: true, completion: nil)
+            self.present(signIn, animated: false, completion: nil)
             
         }))
         
@@ -114,6 +114,28 @@ class DashBoard: UIViewController{
         present(LogoutAlert, animated: true, completion: nil)
     }
     
+    @IBAction func btnChat(_ sender: UIButton) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let chatScreenOutlineView = storyboard.instantiateViewController(withIdentifier: "chatScreenOutlineView") as! ChatScreenOutlineView
+        self.fromRight()
+        self.present(chatScreenOutlineView, animated: false, completion: nil)
+    }
+    @IBAction func btnNotification(_ sender: UIButton) {
+    
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let notificationView = storyboard.instantiateViewController(withIdentifier: "notificationView") as! NotificationView
+        self.fromRight()
+        self.present(notificationView, animated: false, completion: nil)
+    }
+    
+    @IBAction func btnFasting(_ sender: UIButton) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let fastingView = storyboard.instantiateViewController(withIdentifier: "fastingView") as! FastingView
+        self.fromRight()
+        self.present(fastingView, animated: false, completion: nil)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

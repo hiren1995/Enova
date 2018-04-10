@@ -312,7 +312,7 @@ class FoodLogView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let date_from = dateFormatter.date(from: From_date)
         let date_to = dateFormatter.date(from: To_date)
         
-        if(date_from! < date_to!)
+        if(date_from! <= date_to!)
         {
             
             loadFoodLogs(From_date: dateFormatter.string(from: date_from!), To_date: dateFormatter.string(from: date_to!))

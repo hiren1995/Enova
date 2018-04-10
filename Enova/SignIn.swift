@@ -27,6 +27,11 @@ class SignIn: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //NotificationCenter.default.addObserver(self , selector: #selector(loadMessages), name: "MessageNotification", object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(messageReceived(notification:)), name: NSNotification.Name("MessageNotification"), object: nil)
+        
+        
+        
         txtEmail.delegate = self
         txtPassword.delegate = self
         
@@ -98,7 +103,8 @@ class SignIn: UIViewController,UITextFieldDelegate {
         let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         
         
-        let loginParameters:Parameters = ["email": txtEmail.text! , "password" : txtPassword.text! , "device_token" : "" , "device_type" : 2]
+        //let loginParameters:Parameters = ["email": txtEmail.text! , "password" : txtPassword.text! , "device_token" : "" , "device_type" : 2]
+        let loginParameters:Parameters = ["email": txtEmail.text! , "password" : txtPassword.text! , "device_token" : udefault.value(forKey: DeviceToken)! , "device_type" : 2]
         
         
         Alamofire.request(LoginAPI, method: .post, parameters: loginParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
@@ -156,6 +162,23 @@ class SignIn: UIViewController,UITextFieldDelegate {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
     }
+    
+    /*
+    func messageReceived (notification : NSNotification)
+    {
+        print(notification)
+        print("Notification Received")
+        
+        let dataDic = notification.object as? NSDictionary
+        let fromId = dataDic?["chat_random_id"] as? String
+        print("Notification Chat Random id:\(fromId)")
+        print("Chat Random Id is:\(strChatRandomID)")
+        if fromId == strChatRandomID
+        {
+            getAllMessages()
+        }
+    }
+    */
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
