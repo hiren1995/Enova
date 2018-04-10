@@ -158,7 +158,35 @@ class ChatScreenView: JSQMessagesViewController,UIImagePickerControllerDelegate,
         
         return cellchat
     }
-    
+   
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
+        
+        let message =  self.messages[indexPath.row]
+        if message.isMediaMessage == true{
+            let mediaItem =  message.media
+            if mediaItem is JSQPhotoMediaItem{
+                let photoItem = mediaItem as! JSQPhotoMediaItem
+                let image:UIImage = photoItem.image //UIImage obtained.
+                
+                print("image obtained...")
+                
+                let imgData = UIImageJPEGRepresentation(image, 1.0)! as NSData
+                
+                UserDefaults.standard.set(imgData, forKey: FoodImageDefault)
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                let viewImage = storyboard.instantiateViewController(withIdentifier: "viewImage") as! ViewImage
+                
+                self.present(viewImage, animated: true, completion: nil)
+                
+                
+            }
+            
+        }
+        
+        
+    }
     
     
     
@@ -368,7 +396,6 @@ class ChatScreenView: JSQMessagesViewController,UIImagePickerControllerDelegate,
         // dismiss(animated: true, completion: nil)
     }
    
-    
     @objc func messageReceived (notification : NSNotification)
     {
         print(notification)
