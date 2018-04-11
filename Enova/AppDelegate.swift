@@ -88,9 +88,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
             if Login{
                 
-                //let loginParameters:Parameters = ["email": udefault.value(forKey: EmailAddress)! , "password" : udefault.value(forKey: Password)! , "device_token" : "" , "device_type" : 2]
+                let loginParameters:Parameters = ["email": udefault.value(forKey: EmailAddress)! , "password" : udefault.value(forKey: Password)! , "device_token" : "" , "device_type" : 2]
                 
-                let loginParameters:Parameters = ["email": udefault.value(forKey: EmailAddress)! , "password" :  udefault.value(forKey: Password)! , "device_token" : udefault.value(forKey: DeviceToken)! , "device_type" : 2]
+                //let loginParameters:Parameters = ["email": udefault.value(forKey: EmailAddress)! , "password" :  udefault.value(forKey: Password)! , "device_token" : udefault.value(forKey: DeviceToken)! , "device_type" : 2]
                 
                 print(loginParameters)
                 

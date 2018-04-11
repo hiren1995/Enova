@@ -234,9 +234,9 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 
                 //print(x)
                 //print(y)
-                //print(currentDate.timeIntervalSince1970)
-                //print(x?.timeIntervalSince1970)
-                //print(y?.timeIntervalSince1970)
+                print(currentDate.timeIntervalSince1970)
+                print(x?.timeIntervalSince1970)
+                print(y?.timeIntervalSince1970)
             
                 totalTime = Int((y?.timeIntervalSince1970)! - currentDate.timeIntervalSince1970)
                 
