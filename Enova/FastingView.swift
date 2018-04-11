@@ -466,6 +466,7 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
             totalTime -= 1
            
         } else {
+            
             endTimer()
         }
     }
