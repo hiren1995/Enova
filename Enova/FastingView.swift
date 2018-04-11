@@ -86,11 +86,7 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         // Do any additional setup after loading the view.
     }
    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        startTimer()
-    }
-    
+   
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -241,6 +237,8 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 totalTime = Int((y?.timeIntervalSince1970)! - currentDate.timeIntervalSince1970)
                 
                 print(totalTime)
+                
+                startTimer()
                 
                 
                 if((x?.currentTimeStamp)! > currentDate.currentTimeStamp)
