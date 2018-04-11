@@ -271,13 +271,23 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
     @IBAction func btnBack1(_ sender: UIButton) {
         
+        //self.fromLeft()
+        //self.dismiss(animated: false, completion: nil)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let dashBoard = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
         self.fromLeft()
-        self.dismiss(animated: false, completion: nil)
+        self.present(dashBoard, animated: false, completion: nil)
     }
     @IBAction func btnBack2(_ sender: UIButton) {
         
+        //self.fromLeft()
+        //self.dismiss(animated: false, completion: nil)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let dashBoard = storyboard.instantiateViewController(withIdentifier: "dashBoard") as! DashBoard
         self.fromLeft()
-        self.dismiss(animated: false, completion: nil)
+        self.present(dashBoard, animated: false, completion: nil)
         
     }
     

@@ -235,9 +235,9 @@ class AddFastView: UIViewController {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let fastingView = storyboard.instantiateViewController(withIdentifier: "fastingView") as! FastingView
                     
-                    //self.fromLeft()
+                    self.fromLeft()
                     
-                    self.present(fastingView, animated: true, completion: nil)
+                    self.present(fastingView, animated: false, completion: nil)
  
                     
                     //self.dismiss(animated: true, completion: nil)
@@ -256,8 +256,8 @@ class AddFastView: UIViewController {
             }
         })
         
-        self.fromLeft()
-        self.dismiss(animated: false, completion: nil)
+        //self.fromLeft()
+        //self.dismiss(animated: false, completion: nil)
         
         
         //let storyboard = UIStoryboard(name: "Main", bundle: nil)
