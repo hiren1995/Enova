@@ -146,6 +146,16 @@ class ChatScreenView: JSQMessagesViewController,UIImagePickerControllerDelegate,
         if messagesitem.isMediaMessage
         {
             cellchat.messageBubbleContainerView.backgroundColor = UIColor.clear
+            if(messagesitem.senderId == self.senderId)
+            {
+                cellchat.cellBottomLabel.textAlignment = .right
+                
+            }
+            else
+            {
+                cellchat.cellBottomLabel.textAlignment = .left
+                
+            }
         }
         else
         {
