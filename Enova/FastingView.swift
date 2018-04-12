@@ -50,6 +50,7 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     var refreshControl = UIRefreshControl()
     
+    private var notification: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,10 +94,24 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         tableView.addSubview(refreshControl)
         
         
+        notification = NotificationCenter.default.addObserver(forName: .UIApplicationWillEnterForeground, object: nil, queue: .main) {
+            [unowned self] notification in
+            
+            self.refresh()
+        }
+        
         // Do any additional setup after loading the view.
     }
    
-   
+    deinit {
+        // make sure to remove the observer when this view controller is dismissed/deallocated
+        
+        if let notification = notification {
+            NotificationCenter.default.removeObserver(notification)
+        }
+    }
+    
+    
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -240,6 +255,12 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 
                 //print(x)
                 //print(y)
+                let date  = Date()
+                let cal = Calendar.current
+                let sec = cal.component(.second, from: date)
+                print(sec)
+                
+                print("This seconds from cureent time")
                 print(currentDate.timeIntervalSince1970)
                 print(x?.timeIntervalSince1970)
                 print(y?.timeIntervalSince1970)
@@ -598,8 +619,10 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         ViewCancel.frame = CGRect(x: ViewCancel.frame.origin.x, y: ViewCancel.frame.origin.y + 150, width: ViewCancel.frame.size.width, height: ViewCancel.frame.size.height)
     }
     
-    @objc func refresh(_ sender: Any) {
+    @objc func refresh() {
         //  your code to refresh tableView
+        
+        endTimer()
         
         self.loadFastLog(From_Date : self.from_date , To_Date : self.to_date)
         
