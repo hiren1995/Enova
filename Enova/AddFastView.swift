@@ -267,8 +267,15 @@ class AddFastView: UIViewController {
     
     @IBAction func btnBack(_ sender: UIButton) {
         
+        //self.fromLeft()
+        //self.dismiss(animated: false, completion: nil)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let fastingView = storyboard.instantiateViewController(withIdentifier: "fastingView") as! FastingView
+        
         self.fromLeft()
-        self.dismiss(animated: false, completion: nil)
+        
+        self.present(fastingView, animated: false, completion: nil)
         
     }
     override func didReceiveMemoryWarning() {
