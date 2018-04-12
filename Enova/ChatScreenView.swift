@@ -96,6 +96,7 @@ class ChatScreenView: JSQMessagesViewController,UIImagePickerControllerDelegate,
                                     
                                     img?.appliesMediaViewMaskAsOutgoing = true
                                     
+                                    
                                     let date = Date(timeIntervalSince1970:  (Double(tempDictMsg["data"][i]["time"].stringValue)! / 1000.0))
                                     
                                     self.messages.append(JSQMessage(senderId: tempDictMsg["data"][i]["sent_admin"].stringValue, senderDisplayName: "sender", date: date as Date!, media: img))
@@ -146,16 +147,18 @@ class ChatScreenView: JSQMessagesViewController,UIImagePickerControllerDelegate,
         {
             cellchat.messageBubbleContainerView.backgroundColor = UIColor.clear
         }
-        
-        if(messagesitem.senderId == self.senderId)
-        {
-            cellchat.cellBottomLabel.textAlignment = .right
-            cellchat.textView.textColor = UIColor.black
-        }
         else
         {
-            cellchat.cellBottomLabel.textAlignment = .left
-            cellchat.textView.textColor = UIColor.white
+            if(messagesitem.senderId == self.senderId)
+            {
+                cellchat.cellBottomLabel.textAlignment = .right
+                cellchat.textView.textColor = UIColor.black
+            }
+            else
+            {
+                cellchat.cellBottomLabel.textAlignment = .left
+                cellchat.textView.textColor = UIColor.white
+            }
         }
         
         return cellchat

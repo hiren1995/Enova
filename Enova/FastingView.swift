@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import MBProgressHUD
+import Foundation
 
 //import StretchHeader
 //import SRCountdownTimer
@@ -47,6 +48,9 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     var totalTime = Int()
     
+    var refreshControl = UIRefreshControl()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -82,6 +86,12 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         
         addDoneButtonOnTextView()
         addDoneButtonOnDatePicker()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+        
         
         // Do any additional setup after loading the view.
     }
@@ -543,8 +553,8 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                         self.ViewAlpha.isHidden = true
                         self.view.bringSubview(toFront: self.tableView)
                         
-                        self.viewDidLoad()
-                        
+                        //self.viewDidLoad()
+                        self.loadFastLog(From_Date : self.from_date , To_Date : self.to_date)
                       
                     }
                     else if(tempDict["status"] == "error")
@@ -587,6 +597,15 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         
         ViewCancel.frame = CGRect(x: ViewCancel.frame.origin.x, y: ViewCancel.frame.origin.y + 150, width: ViewCancel.frame.size.width, height: ViewCancel.frame.size.height)
     }
+    
+    @objc func refresh(_ sender: Any) {
+        //  your code to refresh tableView
+        
+        self.loadFastLog(From_Date : self.from_date , To_Date : self.to_date)
+        
+        refreshControl.endRefreshing()
+    }
+   
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
