@@ -53,6 +53,8 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     private var AppForegroundNotification: NSObjectProtocol?
     private var AppBackgroundNotification: NSObjectProtocol?
     
+    weak var timer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -108,6 +110,8 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
             self.PauseApp()
         }
         
+        startRefreshTimer()
+        
         // Do any additional setup after loading the view.
     }
    
@@ -121,8 +125,25 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
             
             NotificationCenter.default.removeObserver(appbackgroundnotification)
         }
+        
+        stoprefreshTimer()
     }
     
+    
+    func startRefreshTimer() {
+        timer?.invalidate()   // just in case you had existing `Timer`, `invalidate` it before we lose our reference to it
+        timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { [weak self] _ in
+            // do something here
+            
+            self?.loadFastLog(From_Date : "" , To_Date : "")
+            
+        }
+    }
+    
+    func stoprefreshTimer() {
+        timer?.invalidate()
+    }
+   
     
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -689,6 +710,8 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         
         //self.loadFastLog(From_Date : self.from_date , To_Date : self.to_date)
         
+        print("table refresh function called by pilling the table view")
+        
         self.loadFastLog(From_Date : "" , To_Date :"")
         
         refreshControl.endRefreshing()
@@ -696,7 +719,7 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     @objc func ResumeApp()
     {
-        
+        print("Application running again from background")
         
         currentDate = Date()
         print(currentDate.timeIntervalSince1970)
@@ -709,6 +732,8 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     @objc func PauseApp()
     {
+        print("Application is kept in background")
+        
         endTimer()
     }
     
