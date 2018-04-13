@@ -25,7 +25,7 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     @IBOutlet weak var txtCancelReason: UITextView!
     
-    let currentDate = Date()
+    var currentDate = Date()
     let formatter = DateFormatter()
     var to_date = String()
     
@@ -50,7 +50,8 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     var refreshControl = UIRefreshControl()
     
-    private var notification: NSObjectProtocol?
+    private var AppForegroundNotification: NSObjectProtocol?
+    private var AppBackgroundNotification: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +78,8 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         ViewCancel.isHidden = true
         ViewAlpha.isHidden = true
         
-        loadFastLog(From_Date : from_date , To_Date : to_date)
+        //loadFastLog(From_Date : from_date , To_Date : to_date)
+        loadFastLog(From_Date : "" , To_Date : "")
         
         txtCancelReason.delegate = self
         txtCancelReason.layer.borderColor = UIColor.lightGray.cgColor
@@ -94,10 +96,16 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         tableView.addSubview(refreshControl)
         
         
-        notification = NotificationCenter.default.addObserver(forName: .UIApplicationWillEnterForeground, object: nil, queue: .main) {
+        AppForegroundNotification = NotificationCenter.default.addObserver(forName: .UIApplicationWillEnterForeground, object: nil, queue: .main) {
             [unowned self] notification in
             
-            self.refresh()
+            self.ResumeApp()
+        }
+        
+        AppBackgroundNotification = NotificationCenter.default.addObserver(forName: .UIApplicationDidEnterBackground, object: nil, queue: .main) {
+            [unowned self] notification in
+            
+            self.PauseApp()
         }
         
         // Do any additional setup after loading the view.
@@ -106,8 +114,12 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     deinit {
         // make sure to remove the observer when this view controller is dismissed/deallocated
         
-        if let notification = notification {
-            NotificationCenter.default.removeObserver(notification)
+        if let appforegroundnotification = AppForegroundNotification {
+            NotificationCenter.default.removeObserver(appforegroundnotification)
+        }
+        if let appbackgroundnotification = AppBackgroundNotification{
+            
+            NotificationCenter.default.removeObserver(appbackgroundnotification)
         }
     }
     
@@ -205,6 +217,33 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 cell.lblEndDate.text = self.tempDict["data"][indexPath.row - 3]["end_date"].stringValue
                 cell.lblEndTime.text = self.tempDict["data"][indexPath.row - 3]["to_time"].stringValue
                 
+               
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd h:mm a"
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.amSymbol = "AM"
+                dateFormatter.pmSymbol = "PM"
+                
+                let x = dateFormatter.date(from: self.tempDict["data"][indexPath.row - 3]["date"].stringValue + " " + self.tempDict["data"][indexPath.row - 3]["from_time"].stringValue)
+                let y = dateFormatter.date(from: self.tempDict["data"][indexPath.row - 3]["end_date"].stringValue + " " + self.tempDict["data"][indexPath.row - 3]["to_time"].stringValue)
+                
+                print("x= \(x)")
+                print("y= \(y)")
+                
+                if(x != nil && y != nil)
+                {
+                    let z = try Int((y?.timeIntervalSince1970)! - (x?.timeIntervalSince1970)!)
+                    print("difference \(z)")
+                    
+                    let minutes: Int = (z / 60) % 60
+                    let hours: Int = z / 3600
+                    
+                    print("minutes \(minutes)")
+                    print("hours \(hours)")
+                    
+                    cell.lblTotalFastTime.text = "\(hours)hr " + "\(minutes)min "
+                }
+               
                return cell
             }
             else
@@ -218,6 +257,33 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 cell.lblStartTime.text = self.tempDict["data"][indexPath.row - 3]["from_time"].stringValue
                 cell.lblEndDate.text = self.tempDict["data"][indexPath.row - 3]["end_date"].stringValue
                 cell.lblEndTime.text = self.tempDict["data"][indexPath.row - 3]["to_time"].stringValue
+                
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd h:mm a"
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.amSymbol = "AM"
+                dateFormatter.pmSymbol = "PM"
+                
+                let x = dateFormatter.date(from: self.tempDict["data"][indexPath.row - 3]["date"].stringValue + " " + self.tempDict["data"][indexPath.row - 3]["from_time"].stringValue)
+                let y = dateFormatter.date(from: self.tempDict["data"][indexPath.row - 3]["end_date"].stringValue + " " + self.tempDict["data"][indexPath.row - 3]["to_time"].stringValue)
+                
+                print("x= \(x)")
+                print("y= \(y)")
+                
+                if(x != nil && y != nil)
+                {
+                    let z = try Int((y?.timeIntervalSince1970)! - (x?.timeIntervalSince1970)!)
+                    print("difference \(z)")
+                    
+                    let minutes: Int = (z / 60) % 60
+                    let hours: Int = z / 3600
+                    
+                    print("minutes \(minutes)")
+                    print("hours \(hours)")
+                    
+                    cell.lblTotalFastTime.text = "\(hours)hr " + "\(minutes)min "
+                }
                 
                 return cell
                 
@@ -255,10 +321,6 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 
                 //print(x)
                 //print(y)
-                let date  = Date()
-                let cal = Calendar.current
-                let sec = cal.component(.second, from: date)
-                print(sec)
                 
                 print("This seconds from cureent time")
                 print(currentDate.timeIntervalSince1970)
@@ -292,7 +354,9 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         }
         else if(indexPath.row == 2)
         {
-            return 63
+            //return 63
+            
+            return 0
         }
         else
         {
@@ -444,7 +508,7 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         
         //let FastLogParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "from_date" : From_Date , "to_date" : To_Date + "23:59:59" , "current_date" : To_Date + "23:59:59"]
         
-        let FastLogParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "from_date" : From_Date , "to_date" : To_Date , "current_date" : To_Date]
+        let FastLogParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "from_date" : From_Date , "to_date" : To_Date , "current_date" : to_date ]
         
         print(FastLogParameters)
         
@@ -575,7 +639,8 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                         self.view.bringSubview(toFront: self.tableView)
                         
                         //self.viewDidLoad()
-                        self.loadFastLog(From_Date : self.from_date , To_Date : self.to_date)
+                        //self.loadFastLog(From_Date : self.from_date , To_Date : self.to_date)
+                        self.loadFastLog(From_Date : "" , To_Date : "")
                       
                     }
                     else if(tempDict["status"] == "error")
@@ -622,13 +687,30 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     @objc func refresh() {
         //  your code to refresh tableView
         
-        endTimer()
+        //self.loadFastLog(From_Date : self.from_date , To_Date : self.to_date)
         
-        self.loadFastLog(From_Date : self.from_date , To_Date : self.to_date)
+        self.loadFastLog(From_Date : "" , To_Date :"")
         
         refreshControl.endRefreshing()
     }
-   
+    
+    @objc func ResumeApp()
+    {
+        
+        
+        currentDate = Date()
+        print(currentDate.timeIntervalSince1970)
+        
+        //self.loadFastLog(From_Date : self.from_date , To_Date : self.to_date)
+        
+        self.loadFastLog(From_Date : "" , To_Date : "")
+        
+    }
+    
+    @objc func PauseApp()
+    {
+        endTimer()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
