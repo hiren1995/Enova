@@ -110,7 +110,7 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
             self.PauseApp()
         }
         
-        startRefreshTimer()
+        startAutoRefreshTimer()
         
         // Do any additional setup after loading the view.
     }
@@ -126,24 +126,9 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
             NotificationCenter.default.removeObserver(appbackgroundnotification)
         }
         
-        stoprefreshTimer()
+        stopAutoRefreshTimer()
     }
     
-    
-    func startRefreshTimer() {
-        timer?.invalidate()   // just in case you had existing `Timer`, `invalidate` it before we lose our reference to it
-        timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { [weak self] _ in
-            // do something here
-            
-            self?.loadFastLog(From_Date : "" , To_Date : "")
-            
-        }
-    }
-    
-    func stoprefreshTimer() {
-        timer?.invalidate()
-    }
-   
     
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -736,6 +721,23 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         
         endTimer()
     }
+    
+    
+    func startAutoRefreshTimer() {
+        timer?.invalidate()   // just in case you had existing `Timer`, `invalidate` it before we lose our reference to it
+        timer = Timer.scheduledTimer(withTimeInterval: 50.0, repeats: true) { [weak self] _ in
+            // do something here
+            
+            self?.loadFastLog(From_Date : "" , To_Date : "")
+            
+        }
+    }
+    
+    func stopAutoRefreshTimer() {
+        timer?.invalidate()
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
