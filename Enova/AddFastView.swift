@@ -36,7 +36,7 @@ class AddFastView: UIViewController {
         //datePickerView.maximumDate = Date()
         //datePickerView.minimumDate = minDate()
         
-        datePickerView.minimumDate = Date()
+        //datePickerView.minimumDate = Date()
         
         datePickerView.addTarget(self, action: #selector(handleDatePickertxtStart), for: UIControlEvents.valueChanged)
         
@@ -58,7 +58,7 @@ class AddFastView: UIViewController {
         //datePickerView.maximumDate = Date()
         //datePickerView.minimumDate = minDate()
         
-        datePickerView.minimumDate = Date()
+        //datePickerView.minimumDate = Date()
         
         datePickerView.addTarget(self, action: #selector(handleDatePickertxtEnd), for: UIControlEvents.valueChanged)
     }

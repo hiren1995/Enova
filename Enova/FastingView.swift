@@ -110,7 +110,7 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
             self.PauseApp()
         }
         
-        startAutoRefreshTimer()
+        //startAutoRefreshTimer()
         
         // Do any additional setup after loading the view.
     }
@@ -126,7 +126,7 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
             NotificationCenter.default.removeObserver(appbackgroundnotification)
         }
         
-        stopAutoRefreshTimer()
+        //stopAutoRefreshTimer()
     }
     
     
@@ -154,6 +154,35 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
             
              cell.btnAdd.addTarget(self, action: #selector(openAddFast), for: .touchUpInside)
             
+           
+            
+            if(tempDict["current_fasting"][0]["date"].stringValue != "" && tempDict["current_fasting"][0]["end_date"].stringValue != "")
+            {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd h:mm a"
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.amSymbol = "AM"
+                dateFormatter.pmSymbol = "PM"
+                
+                
+                let x = dateFormatter.date(from: self.tempDict["current_fasting"][0]["date"].stringValue + " " + self.tempDict["current_fasting"][0]["from_time"].stringValue)
+                let y = dateFormatter.date(from: self.tempDict["current_fasting"][0]["end_date"].stringValue + " " + self.tempDict["current_fasting"][0]["to_time"].stringValue)
+                
+                if((x?.currentTimeStamp)! > currentDate.currentTimeStamp)
+                {
+                    cell.btnAdd.isHidden = false
+                }
+                else if((y?.currentTimeStamp)! < currentDate.currentTimeStamp)
+                {
+                    cell.btnAdd.isHidden = false
+                }
+                else
+                {
+                    cell.btnAdd.isHidden = true
+                }
+            }
+            
+           
              return cell
             
         }
@@ -169,9 +198,11 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 cell.lblStartTime.text = self.tempDict["current_fasting"][0]["from_time"].stringValue
                 cell.lblEndTime.text = self.tempDict["current_fasting"][0]["to_time"].stringValue
                 
+                
                 cell.btnCancel.addTarget(self, action: #selector(StopFast), for: .touchUpInside)
                 
                 tempTimer = cell.lblTimer
+                
                 
             }
             
@@ -573,6 +604,7 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
     
     func endTimer() {
+        
         countdownTimer.invalidate()
     }
     
