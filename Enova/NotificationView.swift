@@ -219,7 +219,6 @@ class NotificationView: UIViewController,UITableViewDelegate,UITableViewDataSour
             let datestr = dateformatter.string(from: date)
             cell.lblNotificationDate.text = datestr
             
-            
             KingfisherManager.shared.downloader.downloadImage(with: NSURL(string: "\(notificationImgPath)/\(tempDict["data"][indexPath.row]["image"].stringValue)")! as URL, retrieveImageTask: RetrieveImageTask.empty, options: [], progressBlock: nil, completionHandler: { (image,error, imageURL, imageData) in
                 
                 

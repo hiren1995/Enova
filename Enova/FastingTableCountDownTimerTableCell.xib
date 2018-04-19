@@ -86,7 +86,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_stop" translatesAutoresizingMaskIntoConstraints="NO" id="zLB-xO-vjJ">
-                        <rect key="frame" x="108" y="168" width="15" height="15"/>
+                        <rect key="frame" x="108" y="170" width="15" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="STOP FAST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfE-4C-Zdq">
@@ -115,11 +115,14 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="btnCancel" destination="2QJ-Ay-lM6" id="KdM-9f-LSA"/>
+                <outlet property="imgStopBtn" destination="zLB-xO-vjJ" id="o47-3b-YTS"/>
                 <outlet property="lblEndDate" destination="dUI-7H-KXK" id="Hls-LU-RvX"/>
                 <outlet property="lblEndTime" destination="sVD-4s-beI" id="vVP-92-a1H"/>
                 <outlet property="lblStartDate" destination="FdW-tT-PVI" id="90R-sg-FeI"/>
                 <outlet property="lblStartTime" destination="WdA-ZR-11G" id="hFM-0M-Fan"/>
+                <outlet property="lblStopFast" destination="bfE-4C-Zdq" id="rEf-L3-adz"/>
                 <outlet property="lblTimer" destination="Fs1-bn-xdL" id="CFM-kH-5uh"/>
+                <outlet property="viewStopBtnBg" destination="rDx-e0-s1U" id="abR-0b-1i4"/>
             </connections>
             <point key="canvasLocation" x="6" y="132"/>
         </tableViewCell>

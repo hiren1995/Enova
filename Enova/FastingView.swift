@@ -41,6 +41,13 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     var tempTxtTo = UITextField()
     var tempTimer = UILabel()
     
+    
+    var tempStopBtn = UIButton()
+    var tempImgStopBtn = UIImageView()
+    var tempViewStopBtn = UIView()
+    var tempLblStopBtn = UILabel()
+    
+    
     var tempDict = JSON()
     
     
@@ -203,6 +210,12 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 
                 tempTimer = cell.lblTimer
                 
+                //this to temporary store this data and can be hidden when the fast finishes...
+                
+                tempStopBtn = cell.btnCancel
+                tempViewStopBtn = cell.viewStopBtnBg
+                tempImgStopBtn = cell.imgStopBtn
+                tempLblStopBtn = cell.lblStopFast
                 
             }
             
@@ -267,6 +280,7 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 print("x= \(x)")
                 print("y= \(y)")
                 
+                /*
                 if(x != nil && y != nil)
                 {
                     let z = try Int((y?.timeIntervalSince1970)! - (x?.timeIntervalSince1970)!)
@@ -280,7 +294,60 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                     
                     cell.lblTotalFastTime.text = "\(hours)hr " + "\(minutes)min "
                 }
-               
+                */
+                
+                if(self.tempDict["data"][indexPath.row - 3]["cancel_fast_time"].stringValue != "")
+                {
+                    let tempCancelDate = dateFormatter.date(from: self.tempDict["data"][indexPath.row - 3]["cancel_fast_time"].stringValue)
+                    
+                    if(tempCancelDate != nil)
+                    {
+                        let completeTime = try Int((tempCancelDate?.timeIntervalSince1970)! - (x?.timeIntervalSince1970)!)
+                        print(completeTime)
+                        
+                        let minutes: Int = (completeTime / 60) % 60
+                        let hours: Int = completeTime / 3600
+                        
+                        print("minutes \(minutes)")
+                        print("hours \(hours)")
+                        
+                        cell.lblCompletedFastTime.text = "\(hours)hr " + "\(minutes)min "
+                        
+                        if(x != nil && y != nil)
+                        {
+                            let z = try Int((y?.timeIntervalSince1970)! - (x?.timeIntervalSince1970)!)
+                            print("difference \(z)")
+                            
+                            let minutes: Int = (z / 60) % 60
+                            let hours: Int = z / 3600
+                            
+                            print("minutes \(minutes)")
+                            print("hours \(hours)")
+                            
+                            cell.lblTotalFastTime.text = "\(hours)hr " + "\(minutes)min "
+                        }
+                    }
+                    
+                    
+                }
+                else
+                {
+                    if(x != nil && y != nil)
+                    {
+                        let z = try Int((y?.timeIntervalSince1970)! - (x?.timeIntervalSince1970)!)
+                        print("difference \(z)")
+                        
+                        let minutes: Int = (z / 60) % 60
+                        let hours: Int = z / 3600
+                        
+                        print("minutes \(minutes)")
+                        print("hours \(hours)")
+                        
+                        cell.lblTotalFastTime.text = "\(hours)hr " + "\(minutes)min "
+                        cell.lblCompletedFastTime.text = "\(hours)hr " + "\(minutes)min "
+                    }
+                }
+                
                return cell
             }
             else
@@ -599,6 +666,12 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
            
         } else {
             
+            tempStopBtn.isHidden = true
+            tempViewStopBtn.isHidden = true
+            tempImgStopBtn.isHidden = true
+            tempLblStopBtn.isHidden = true
+            
+            
             endTimer()
         }
     }
@@ -655,7 +728,18 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         {
             let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
             
-            let CancelFastParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "cancel_reason" : txtCancelReason.text , "fasting_id" : self.tempDict["current_fasting"][0]["fasting_id"].intValue]
+            var dateFormatter = DateFormatter()
+            dateFormatter.timeStyle = .short
+            dateFormatter.dateFormat = "yyyy-MM-dd h:mm a"
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.amSymbol = "AM"
+            dateFormatter.pmSymbol = "PM"
+            
+            let cancelTime = dateFormatter.string(from: Date())
+            
+            print(cancelTime)
+            
+            let CancelFastParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "cancel_reason" : txtCancelReason.text! , "fasting_id" : self.tempDict["current_fasting"][0]["fasting_id"].intValue , "cancel_fast_time" : cancelTime]
             
             
             Alamofire.request(CancelFastAPI, method: .post, parameters: CancelFastParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in

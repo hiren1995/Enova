@@ -182,7 +182,7 @@ class AddFoodLogView: UIViewController,UITextViewDelegate,UIImagePickerControlle
             
             let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
             
-            let updateParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "food_category" : lblFoodLabel.text! , "timestamp" : timeStamp , "food_note" : NoteText.text]
+            let updateParameters:Parameters = ["user_id": udefault.value(forKey: UserId)! , "food_category" : lblFoodLabel.text! , "timestamp" : timeStamp , "food_note" : NoteText.text!]
             
             
             Alamofire.upload(multipartFormData: { (multipartFormData) in

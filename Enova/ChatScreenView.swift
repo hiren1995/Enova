@@ -257,7 +257,10 @@ class ChatScreenView: JSQMessagesViewController,UIImagePickerControllerDelegate,
         
         let timeStamp = String(Date().currentTimeStamp)
         
-        let sendMsgdata:Parameters = ["user_id": udefault.value(forKey: UserId)! ,"time": timeStamp,"message":text,"is_image": 0]
+        let sendMsgdata:Parameters = ["user_id": udefault.value(forKey: UserId)! ,"time": timeStamp,"message":text!,"is_image": 0]
+         //let sendMsgdata:Parameters = ["user_id": udefault.value(forKey: UserId)! ,"time": timeStamp,"message":String(describing: text),"is_image": 0]
+        
+        print(sendMsgdata)
         
         Alamofire.request(SendMessagesAPI, method: HTTPMethod.post, parameters: sendMsgdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
             { (response) in

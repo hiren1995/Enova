@@ -19,6 +19,7 @@ class FastingTableCell: UITableViewCell {
     @IBOutlet var lblEndTime: UILabel!
     
     @IBOutlet var lblTotalFastTime: UILabel!
+    @IBOutlet var lblCompletedFastTime: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

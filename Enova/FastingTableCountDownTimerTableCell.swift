@@ -21,6 +21,12 @@ class FastingTableCountDownTimerTableCell: UITableViewCell {
     
     @IBOutlet var btnCancel: UIButton!
     
+    
+    @IBOutlet var viewStopBtnBg: UIView!
+    @IBOutlet var imgStopBtn: UIImageView!
+    @IBOutlet var lblStopFast: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
