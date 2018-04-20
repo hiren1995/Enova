@@ -103,8 +103,8 @@ class SignIn: UIViewController,UITextFieldDelegate {
         let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         
         
-        //let loginParameters:Parameters = ["email": txtEmail.text! , "password" : txtPassword.text! , "device_token" : "" , "device_type" : 2]
-        let loginParameters:Parameters = ["email": txtEmail.text! , "password" : txtPassword.text! , "device_token" : udefault.value(forKey: DeviceToken)! , "device_type" : 2]
+        let loginParameters:Parameters = ["email": txtEmail.text! , "password" : txtPassword.text! , "device_token" : "" , "device_type" : 2]
+        //let loginParameters:Parameters = ["email": txtEmail.text! , "password" : txtPassword.text! , "device_token" : udefault.value(forKey: DeviceToken)! , "device_type" : 2]
         
         
         Alamofire.request(LoginAPI, method: .post, parameters: loginParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in

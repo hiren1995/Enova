@@ -264,8 +264,8 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 
                 cell.lblStartDate.text = self.tempDict["data"][indexPath.row - 3]["date"].stringValue
                 cell.lblStartTime.text = self.tempDict["data"][indexPath.row - 3]["from_time"].stringValue
-                cell.lblEndDate.text = self.tempDict["data"][indexPath.row - 3]["end_date"].stringValue
-                cell.lblEndTime.text = self.tempDict["data"][indexPath.row - 3]["to_time"].stringValue
+                //cell.lblEndDate.text = self.tempDict["data"][indexPath.row - 3]["end_date"].stringValue
+                //cell.lblEndTime.text = self.tempDict["data"][indexPath.row - 3]["to_time"].stringValue
                 
                
                 let dateFormatter = DateFormatter()
@@ -326,6 +326,20 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                             
                             cell.lblTotalFastTime.text = "\(hours)hr " + "\(minutes)min "
                         }
+                        
+                        
+                        let endDateFormatter = DateFormatter()
+                        endDateFormatter.dateFormat = "yyyy-MM-dd"
+                        
+                        let endTimeFormatter = DateFormatter()
+                        endTimeFormatter.dateFormat = "h:mm a"
+                       
+                        let endDateString = endDateFormatter.string(from: tempCancelDate!)
+                        let endTimeString = endTimeFormatter.string(from: tempCancelDate!)
+                        
+                        cell.lblEndDate.text = endDateString
+                        cell.lblEndTime.text = endTimeString
+                        
                     }
                     
                     
@@ -346,6 +360,9 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                         cell.lblTotalFastTime.text = "\(hours)hr " + "\(minutes)min "
                         cell.lblCompletedFastTime.text = "\(hours)hr " + "\(minutes)min "
                     }
+                    
+                    cell.lblEndDate.text = self.tempDict["data"][indexPath.row - 3]["end_date"].stringValue
+                    cell.lblEndTime.text = self.tempDict["data"][indexPath.row - 3]["to_time"].stringValue
                 }
                 
                return cell
@@ -359,8 +376,8 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 
                 cell.lblStartDate.text = self.tempDict["data"][indexPath.row - 3]["date"].stringValue
                 cell.lblStartTime.text = self.tempDict["data"][indexPath.row - 3]["from_time"].stringValue
-                cell.lblEndDate.text = self.tempDict["data"][indexPath.row - 3]["end_date"].stringValue
-                cell.lblEndTime.text = self.tempDict["data"][indexPath.row - 3]["to_time"].stringValue
+                //cell.lblEndDate.text = self.tempDict["data"][indexPath.row - 3]["end_date"].stringValue
+                //cell.lblEndTime.text = self.tempDict["data"][indexPath.row - 3]["to_time"].stringValue
                 
                 
                 let dateFormatter = DateFormatter()
@@ -375,6 +392,7 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 print("x= \(x)")
                 print("y= \(y)")
                 
+                /*
                 if(x != nil && y != nil)
                 {
                     let z = try Int((y?.timeIntervalSince1970)! - (x?.timeIntervalSince1970)!)
@@ -388,7 +406,78 @@ class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,
                     
                     cell.lblTotalFastTime.text = "\(hours)hr " + "\(minutes)min "
                 }
+ 
+                */
                 
+                if(self.tempDict["data"][indexPath.row - 3]["cancel_fast_time"].stringValue != "")
+                {
+                    let tempCancelDate = dateFormatter.date(from: self.tempDict["data"][indexPath.row - 3]["cancel_fast_time"].stringValue)
+                    
+                    if(tempCancelDate != nil)
+                    {
+                        let completeTime = try Int((tempCancelDate?.timeIntervalSince1970)! - (x?.timeIntervalSince1970)!)
+                        print(completeTime)
+                        
+                        let minutes: Int = (completeTime / 60) % 60
+                        let hours: Int = completeTime / 3600
+                        
+                        print("minutes \(minutes)")
+                        print("hours \(hours)")
+                        
+                        cell.lblCompletedFastTime.text = "\(hours)hr " + "\(minutes)min "
+                        
+                        if(x != nil && y != nil)
+                        {
+                            let z = try Int((y?.timeIntervalSince1970)! - (x?.timeIntervalSince1970)!)
+                            print("difference \(z)")
+                            
+                            let minutes: Int = (z / 60) % 60
+                            let hours: Int = z / 3600
+                            
+                            print("minutes \(minutes)")
+                            print("hours \(hours)")
+                            
+                            cell.lblTotalFastTime.text = "\(hours)hr " + "\(minutes)min "
+                        }
+                        
+                        
+                        let endDateFormatter = DateFormatter()
+                        endDateFormatter.dateFormat = "yyyy-MM-dd"
+                        
+                        let endTimeFormatter = DateFormatter()
+                        endTimeFormatter.dateFormat = "h:mm a"
+                        
+                        let endDateString = endDateFormatter.string(from: tempCancelDate!)
+                        let endTimeString = endTimeFormatter.string(from: tempCancelDate!)
+                        
+                        cell.lblEndDate.text = endDateString
+                        cell.lblEndTime.text = endTimeString
+                        
+                    }
+                    
+                    
+                }
+                else
+                {
+                    if(x != nil && y != nil)
+                    {
+                        let z = try Int((y?.timeIntervalSince1970)! - (x?.timeIntervalSince1970)!)
+                        print("difference \(z)")
+                        
+                        let minutes: Int = (z / 60) % 60
+                        let hours: Int = z / 3600
+                        
+                        print("minutes \(minutes)")
+                        print("hours \(hours)")
+                        
+                        cell.lblTotalFastTime.text = "\(hours)hr " + "\(minutes)min "
+                        cell.lblCompletedFastTime.text = "\(hours)hr " + "\(minutes)min "
+                    }
+                    
+                    cell.lblEndDate.text = self.tempDict["data"][indexPath.row - 3]["end_date"].stringValue
+                    cell.lblEndTime.text = self.tempDict["data"][indexPath.row - 3]["to_time"].stringValue
+                }
+ 
                 return cell
                 
             }
