@@ -12,8 +12,6 @@ import SwiftyJSON
 import MBProgressHUD
 import Foundation
 
-//import StretchHeader
-//import SRCountdownTimer
 
 class FastingView: UIViewController, UITableViewDataSource, UITableViewDelegate,UITextViewDelegate {
 

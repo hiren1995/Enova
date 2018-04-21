@@ -341,7 +341,6 @@
 				2D8974FA1FDFEDA30031EF45 /* Frameworks */,
 				2D8974FB1FDFEDA30031EF45 /* Resources */,
 				B6C42FA7A99ECA5050947A22 /* [CP] Embed Pods Frameworks */,
-				19371D5F50F21C903F4C0998 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -360,8 +359,6 @@
 				2D89750D1FDFEDA40031EF45 /* Sources */,
 				2D89750E1FDFEDA40031EF45 /* Frameworks */,
 				2D89750F1FDFEDA40031EF45 /* Resources */,
-				43AC8ED02A839F0540F863BC /* [CP] Embed Pods Frameworks */,
-				03E60143503788E0723091A3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -381,8 +378,6 @@
 				2D8975181FDFEDA40031EF45 /* Sources */,
 				2D8975191FDFEDA40031EF45 /* Frameworks */,
 				2D89751A1FDFEDA40031EF45 /* Resources */,
-				9009D78075919C1CD79246A3 /* [CP] Embed Pods Frameworks */,
-				541309908189F89A80EF4213 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -487,36 +482,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		03E60143503788E0723091A3 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EnovaTests/Pods-EnovaTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		19371D5F50F21C903F4C0998 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Enova/Pods-Enova-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3BC3C43E77739D75538557D7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -533,51 +498,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		43AC8ED02A839F0540F863BC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EnovaTests/Pods-EnovaTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		541309908189F89A80EF4213 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EnovaUITests/Pods-EnovaUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9009D78075919C1CD79246A3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EnovaUITests/Pods-EnovaUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		927E54E6B133482E5D89B8FF /* [CP] Check Pods Manifest.lock */ = {
@@ -615,8 +535,6 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SRCountdownTimer/SRCountdownTimer.framework",
-				"${BUILT_PRODUCTS_DIR}/StretchHeader/StretchHeader.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -632,8 +550,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SRCountdownTimer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StretchHeader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -868,8 +784,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Enova/Enova.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jay Bowen (P25R5K67YU)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jay Bowen (P25R5K67YU)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jay Bowen (QM32Z9CP5C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jay Bowen (QM32Z9CP5C)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = QM32Z9CP5C;
 				INFOPLIST_FILE = Enova/Info.plist;
@@ -877,8 +793,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.Enovawellness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3175fc79-8c81-4143-80d5-3208a4275854";
-				PROVISIONING_PROFILE_SPECIFIER = Enova_Development1;
+				PROVISIONING_PROFILE = "e9e42234-c49f-4075-b44d-4f7c43f9a03b";
+				PROVISIONING_PROFILE_SPECIFIER = Enova_Distribution1;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -890,8 +806,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Enova/Enova.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jay Bowen (P25R5K67YU)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jay Bowen (P25R5K67YU)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jay Bowen (QM32Z9CP5C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jay Bowen (QM32Z9CP5C)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = QM32Z9CP5C;
 				INFOPLIST_FILE = Enova/Info.plist;
@@ -899,8 +815,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.Enovawellness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3175fc79-8c81-4143-80d5-3208a4275854";
-				PROVISIONING_PROFILE_SPECIFIER = Enova_Development1;
+				PROVISIONING_PROFILE = "e9e42234-c49f-4075-b44d-4f7c43f9a03b";
+				PROVISIONING_PROFILE_SPECIFIER = Enova_Distribution1;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

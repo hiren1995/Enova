@@ -17,8 +17,7 @@ target 'Enova' do
   pod 'Firebase/Messaging'
   pod 'JSQMessagesViewController'
   pod 'ActiveLabel'
-  pod 'StretchHeader'
-  pod 'SRCountdownTimer'
+  
 
   target 'EnovaTests' do
     inherit! :search_paths
