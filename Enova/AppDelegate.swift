@@ -99,40 +99,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
             if Login{
                 
-                //let loginParameters:Parameters = ["email": udefault.value(forKey: EmailAddress)! , "password" : udefault.value(forKey: Password)! , "device_token" : "" , "device_type" : 2]
-                let loginParameters:Parameters = ["email": udefault.value(forKey: EmailAddress)! , "password" :  udefault.value(forKey: Password)! , "device_token" : udefault.value(forKey: DeviceToken)! , "device_type" : 2]
-                
-                print(loginParameters)
-                
-                Alamofire.request(LoginAPI, method: .post, parameters: loginParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
-                    if(response.result.value != nil)
-                    {
-                        
-                        print(JSON(response.result.value))
-                        
-                        let tempDict = JSON(response.result.value!)
-                        
-                        //print(tempDict["data"]["user_id"])
-                        
-                        if(tempDict["status"] == "success")
+                if let fcmToken = UserDefaults.standard.value(forKey: DeviceToken)
+                {
+                    //for version 1 the fcm token is nil so it would crash when we need to get fcm token from userdefault so this code helps in saving app from crashing..!
+                    
+                    print(fcmToken)
+                    
+                    //let loginParameters:Parameters = ["email": udefault.value(forKey: EmailAddress)! , "password" : udefault.value(forKey: Password)! , "device_token" : "" , "device_type" : 2]
+                    let loginParameters:Parameters = ["email": udefault.value(forKey: EmailAddress)! , "password" :  udefault.value(forKey: Password)! , "device_token" : udefault.value(forKey: DeviceToken)! , "device_type" : 2]
+                    
+                    print(loginParameters)
+                    
+                    Alamofire.request(LoginAPI, method: .post, parameters: loginParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+                        if(response.result.value != nil)
                         {
-                            udefault.set(response.result.value, forKey: UserData)
+                            
+                            print(JSON(response.result.value))
+                            
+                            let tempDict = JSON(response.result.value!)
+                            
+                            //print(tempDict["data"]["user_id"])
+                            
+                            if(tempDict["status"] == "success")
+                            {
+                                udefault.set(response.result.value, forKey: UserData)
+                                
+                            }
+                            else if(tempDict["status"] == "error")
+                            {
+                                self.window?.rootViewController?.showAlert(title: "Alert", message: "Invalid Email or Password")
+                                let initialView = self.storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
+                                self.window?.rootViewController = initialView
+                            }
                             
                         }
-                        else if(tempDict["status"] == "error")
+                        else
                         {
-                            self.window?.rootViewController?.showAlert(title: "Alert", message: "Invalid Email or Password")
-                            let initialView = self.storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
-                            self.window?.rootViewController = initialView
+                            self.window?.rootViewController?.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+                            
                         }
-                        
-                    }
-                    else
-                    {
-                        self.window?.rootViewController?.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
-                        
-                    }
-                })
+                    })
+                }
+                else
+                {
+                    print("nil")
+                    let initialView = self.storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
+                    self.window?.rootViewController = initialView
+                }
+                
+                
                 
             }
             else
@@ -170,6 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func connectToFcm() {
+        
         Messaging.messaging().connect{ (error) in
             if (error != nil) {
                 print("Unable to connect with FCM. \(error)")
